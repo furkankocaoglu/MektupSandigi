@@ -2,24 +2,9 @@ CREATE DATABASE MektupSandigi_DB
 GO
 USE MektupSandigi_DB
 GO
-
-CREATE TABLE YoneticiTurleriTable
-(
-    ID int IDENTITY(1,1),
-    Isim nvarchar(50),
-    CONSTRAINT pk_YoneticiTurleri PRIMARY KEY(ID)
-)
-GO
-
-INSERT INTO YoneticiTurleriTable(Isim) VALUES('Admin')
-INSERT INTO YoneticiTurleriTable(Isim) VALUES('Moderator')
-
-GO
-
 CREATE TABLE YoneticilerTable
 (
-    ID int IDENTITY(1,1),
-    YoneticiTurID int,
+    YoneticiID int IDENTITY(1,1),
     Isim nvarchar(50),
     Soyisim nvarchar(50),
     KullaniciAdi nvarchar(50),
@@ -27,13 +12,12 @@ CREATE TABLE YoneticilerTable
     Sifre nvarchar(20),
     Durum bit,
     Silinmis bit,
-    CONSTRAINT pk_Yoneticiler PRIMARY KEY(ID),
-    CONSTRAINT fk_YoneticilerYoneticiTurleri FOREIGN KEY(YoneticiTurID) REFERENCES YoneticiTurleriTable(ID)
+    CONSTRAINT pk_Yoneticiler PRIMARY KEY(YoneticiID),
 )
 GO
 
-INSERT INTO YoneticilerTable(YoneticiTurID, Isim, Soyisim, KullaniciAdi, Mail, Sifre, Durum, Silinmis)
-VALUES(1, 'Furkan', 'Kocaoðlu', 'Admin', 'furkan.kocaoglu@gmail.com', '1234', 1, 0)
+INSERT INTO YoneticilerTable(Isim, Soyisim, KullaniciAdi, Mail, Sifre, Durum, Silinmis)
+VALUES('Furkan', 'Kocaoðlu', 'Admin', 'furkan.kocaoglu@gmail.com', '1234', 1, 0)
 
 GO
 CREATE TABLE KullanicilarTable
@@ -92,3 +76,13 @@ CREATE TABLE YorumlarTable
     CONSTRAINT fk_YorumlarKullanicilar FOREIGN KEY(KullaniciID) REFERENCES KullanicilarTable(KullaniciID)
 )
 GO
+CREATE TABLE DesteklerTable
+
+(
+	DestekID int IDENTITY (1,1),
+	KullaniciID int,
+	Baslik nvarchar(200),
+	Icerik ntext, 
+	CONSTRAINT pk_Destekler PRIMARY KEY(DestekID),
+	CONSTRAINT fk_DesteklerKullanicilar FOREIGN KEY(KullaniciID) REFERENCES KullanicilarTable(KullaniciID)
+)

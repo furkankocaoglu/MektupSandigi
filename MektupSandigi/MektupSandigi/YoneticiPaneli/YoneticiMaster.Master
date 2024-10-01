@@ -4,12 +4,46 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>Mektup Sandığı - Yönetici Ekranı</title>
+    <link href="CSS/YoneticiMaster.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="ustcubuk">
+            <div class="anaBaslik">
+                <h2>Mektup Sandığı</h2>
+                <br />
+                <h5>Yönetici Ekranı</h5>
+            </div>
+            <div class="kullaniciAlani">
+                <asp:Label ID="lbl_kullanici" runat="server" CssClass="kullanicieleman">Kullanıcı Adı(Yetki)</asp:Label>
+                <asp:LinkButton ID="lbtn_cikis" runat="server" CssClass="kullanicieleman" OnClick="lbtn_cikis_Click">Çıkış Yap</asp:LinkButton>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <div>
+            <div class="anaMenu">
+                <a href="YoneticiDefault.aspx">Anasayfa</a>
+                <div class="cizgi"></div>
+                <a href="YoneticiDefault.aspx">Mektuplar</a>
+                <div class="cizgi"></div>
+                <a href="KategoriEkle.aspx">Kategori Ekle</a>
+                <div class="cizgi"></div>
+                <a href="YoneticiDefault.aspx">Kategori Listele</a>
+                <div class="cizgi"></div>
+                <a href="YoneticiDefault.aspx">Üye Kullanıcılar</a>
+                <div class="cizgi"></div>
+                <a href="YoneticiDefault.aspx">Yorumlar</a>
+                <div class="cizgi"></div>
+                <a href="YoneticiDefault.aspx">Destek Talepleri</a>
+            </div>
+            <div class="anaIcerik">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

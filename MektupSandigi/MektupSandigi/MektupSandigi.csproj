@@ -69,8 +69,10 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Web.config" />
+    <Content Include="YoneticiPaneli\CSS\YoneticiMaster.css" />
     <Content Include="YoneticiPaneli\CSS\YöneticiEkrani.css" />
     <Content Include="YoneticiPaneli\Giris.aspx" />
+    <Content Include="YoneticiPaneli\KategoriEkle.aspx" />
     <Content Include="YoneticiPaneli\YoneticiDefault.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -81,13 +83,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPage.Master.cs">
-      <DependentUpon>MasterPage.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPage.Master.designer.cs">
-      <DependentUpon>MasterPage.Master</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YoneticiPaneli\Giris.aspx.cs">
       <DependentUpon>Giris.aspx</DependentUpon>
@@ -95,6 +90,13 @@
     </Compile>
     <Compile Include="YoneticiPaneli\Giris.aspx.designer.cs">
       <DependentUpon>Giris.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YoneticiPaneli\KategoriEkle.aspx.cs">
+      <DependentUpon>KategoriEkle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YoneticiPaneli\KategoriEkle.aspx.designer.cs">
+      <DependentUpon>KategoriEkle.aspx</DependentUpon>
     </Compile>
     <Compile Include="YoneticiPaneli\YoneticiDefault.aspx.cs">
       <DependentUpon>YoneticiDefault.aspx</DependentUpon>
@@ -112,7 +114,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MasterPage.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

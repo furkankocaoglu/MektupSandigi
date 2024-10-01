@@ -8,9 +8,7 @@ namespace VeriErisimKatmani
 {
     public class Yonetici
     {
-        public int ID { get; set; }
-        public int YoneticiTurID { get; set; }
-        public string YoneticiTur { get; set; }
+        public int YoneticiID { get; set; }
         public string Isim { get; set; }
         public string Soyisim { get; set; }
         public string KullaniciAdi { get; set; }

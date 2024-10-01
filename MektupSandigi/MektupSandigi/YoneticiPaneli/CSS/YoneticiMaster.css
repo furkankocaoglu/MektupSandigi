@@ -1,0 +1,88 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+
+.ustcubuk {
+    background-color: #3b3f51;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.anaBaslik {
+    text-align: left;
+}
+
+    .anaBaslik h2 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .anaBaslik h5 {
+        margin: 5px 0 0 0;
+        font-size: 14px;
+        color: #cfcfcf;
+    }
+
+.kullaniciAlani {
+    text-align: right;
+    margin-left:1050px;
+}
+
+.kullanicieleman {
+    margin-left: 10px;
+    color: #cfcfcf;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+.anaMenu {
+    background-color: #2f323a;
+    padding: 15px;
+    width: 200px;
+    min-height: 100vh;
+    float: left;
+}
+
+    .anaMenu a {
+        display: block;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 10px 0;
+        font-size: 16px;
+    }
+
+        .anaMenu a:hover {
+            background-color: #3b3f51;
+        }
+
+.cizgi {
+    height: 1px;
+    background-color: #444;
+    margin: 10px 0;
+}
+
+
+.anaIcerik {
+    margin-left: 220px;
+    padding: 20px;
+    background-color: #fff;
+    min-height: 100vh;
+}
+
