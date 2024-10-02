@@ -31,7 +31,7 @@
                 <div class="cizgi"></div>
                 <a href="KategoriEkle.aspx">Kategori Ekle</a>
                 <div class="cizgi"></div>
-                <a href="YoneticiDefault.aspx">Kategori Listele</a>
+                <a href="KategoriListele.aspx">Kategori Listele</a>
                 <div class="cizgi"></div>
                 <a href="YoneticiDefault.aspx">Üye Kullanıcılar</a>
                 <div class="cizgi"></div>

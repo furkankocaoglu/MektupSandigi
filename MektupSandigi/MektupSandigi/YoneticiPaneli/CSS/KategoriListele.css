@@ -1,0 +1,15 @@
+﻿.tabloTasiyici {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.gv-style {
+    margin: 0 auto; 
+    width: 150%; 
+    text-align: center; 
+    margin-left:-75px;
+}
+.sayfaBaslik {
+    text-align: center;
+}

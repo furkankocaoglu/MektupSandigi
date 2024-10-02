@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,48 +24,40 @@ namespace VeriErisimKatmani
         {
             try
             {
-                komut.CommandText = "SELECT COUNT(*) FROM YoneticilerTable WHERE Mail = @mail AND Sifre = @sifre";
+                komut.CommandText = @"SELECT Y.YoneticiID, Y.Isim, Y.Soyisim, Y.KullaniciAdi, Y.Mail, Y.Sifre, Y.Durum, Y.Silinmis FROM YoneticilerTable AS Y WHERE Y.Mail = @mail AND Y.Sifre = @sifre";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@mail", mail);
                 komut.Parameters.AddWithValue("@sifre", sifre);
                 baglanti.Open();
 
-                int sayi = Convert.ToInt32(komut.ExecuteScalar());
-                if (sayi == 1)
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                if (okuyucu.Read())
                 {
-                    komut.CommandText = @"SELECT Y.YoneticiID, Y.Isim, Y.Soyisim, Y.KullaniciAdi, Y.Mail, Y.Sifre, Y.Durum, Y.Silinmis 
-                                  FROM YoneticilerTable AS Y 
-                                  WHERE Y.Mail = @mail AND Y.Sifre = @sifre";
-                    komut.Parameters.Clear();
-                    komut.Parameters.AddWithValue("@mail", mail);
-                    komut.Parameters.AddWithValue("@sifre", sifre);
-                    SqlDataReader okuyucu = komut.ExecuteReader();
-                    Yonetici y = new Yonetici();
-                    while (okuyucu.Read())
+                    Yonetici y = new Yonetici
                     {
-                        y.YoneticiID = okuyucu.GetInt32(0);
-                        y.Isim = okuyucu.GetString(1);
-                        y.Soyisim = okuyucu.GetString(2);
-                        y.KullaniciAdi = okuyucu.GetString(3);
-                        y.Mail = okuyucu.GetString(4);
-                        y.Sifre = okuyucu.GetString(5);
-                        y.Durum = okuyucu.GetBoolean(6);
-                        y.Silinmis = okuyucu.GetBoolean(7);
-                    }
+                        YoneticiID = okuyucu.GetInt32(0),
+                        Isim = okuyucu.GetString(1),
+                        Soyisim = okuyucu.GetString(2),
+                        KullaniciAdi = okuyucu.GetString(3),
+                        Mail = okuyucu.GetString(4),
+                        Sifre = okuyucu.GetString(5),
+                        Durum = okuyucu.GetBoolean(6),
+                        Silinmis = okuyucu.GetBoolean(7)
+                    };
                     return y;
                 }
                 else
                 {
-                    return null; 
+                    return null;
                 }
             }
             catch
             {
-                return null; 
+                return null;
             }
             finally
             {
-                baglanti.Close(); 
+                baglanti.Close();
             }
         }
         #endregion
@@ -73,9 +67,11 @@ namespace VeriErisimKatmani
         {
             try
             {
-                komut.CommandText = "INSERT INTO KategorilerTable(KategoriIsim) VALUES(@isim)";
+                komut.CommandText = "INSERT INTO KategorilerTable(KategoriIsim,Durum,Silinmis) VALUES(@isim,@durum,@silinmis)";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@isim", kat.KategoriIsim);
+                komut.Parameters.AddWithValue("@durum", kat.Durum);
+                komut.Parameters.AddWithValue("@silinmis", kat.Silinmis);
                 baglanti.Open();
                 komut.ExecuteNonQuery();
                 return true;
@@ -90,49 +86,58 @@ namespace VeriErisimKatmani
             }
         }
 
-        public List<Kategori> KategoriListele()
+        public List<Kategori> KategorileriListele()
         {
             List<Kategori> kategoriler = new List<Kategori>();
 
             try
             {
-                komut.CommandText = "SELECT ID, Isim FROM KategorilerTable ";
+                komut.CommandText = "SELECT KategoriID, KategoriIsim FROM KategorilerTable WHERE Silinmis = 0"; 
                 komut.Parameters.Clear();
                 baglanti.Open();
                 SqlDataReader reader = komut.ExecuteReader();
                 while (reader.Read())
                 {
-                    Kategori kat = new Kategori();
-                    kat.KategoriID = reader.GetInt32(0);
-                    kat.KategoriIsim = reader.GetString(1);
+                    Kategori kat = new Kategori
+                    {
+                        KategoriID = reader.GetInt32(0),
+                        KategoriIsim = reader.GetString(1)
+                    };
                     kategoriler.Add(kat);
                 }
-                return kategoriler;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                
+                Console.WriteLine(ex.Message);
             }
             finally
             {
                 baglanti.Close();
             }
+
+            return kategoriler; 
         }
+
         public void KategoriSilHardDelete(int id)
         {
             try
             {
-                komut.CommandText = "DELETE FROM KategorilerTable WHERE ID=@id";
+                
+                komut.CommandText = "DELETE FROM KategorilerTable WHERE KategoriID = @id";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", id);
                 baglanti.Open();
-                komut.ExecuteNonQuery();
+                komut.ExecuteNonQuery(); 
             }
+            
             finally
             {
                 baglanti.Close();
             }
         }
+
+
 
 
         #endregion

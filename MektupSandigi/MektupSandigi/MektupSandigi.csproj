@@ -67,22 +67,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
     <Content Include="Web.config" />
+    <Content Include="YoneticiPaneli\CSS\KategoriEkleme.css" />
+    <Content Include="YoneticiPaneli\CSS\KategoriListele.css" />
     <Content Include="YoneticiPaneli\CSS\YoneticiMaster.css" />
     <Content Include="YoneticiPaneli\CSS\YöneticiEkrani.css" />
     <Content Include="YoneticiPaneli\Giris.aspx" />
     <Content Include="YoneticiPaneli\KategoriEkle.aspx" />
+    <Content Include="YoneticiPaneli\KategoriListele.aspx" />
     <Content Include="YoneticiPaneli\YoneticiDefault.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YoneticiPaneli\Giris.aspx.cs">
       <DependentUpon>Giris.aspx</DependentUpon>
@@ -97,6 +92,13 @@
     </Compile>
     <Compile Include="YoneticiPaneli\KategoriEkle.aspx.designer.cs">
       <DependentUpon>KategoriEkle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YoneticiPaneli\KategoriListele.aspx.cs">
+      <DependentUpon>KategoriListele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YoneticiPaneli\KategoriListele.aspx.designer.cs">
+      <DependentUpon>KategoriListele.aspx</DependentUpon>
     </Compile>
     <Compile Include="YoneticiPaneli\YoneticiDefault.aspx.cs">
       <DependentUpon>YoneticiDefault.aspx</DependentUpon>

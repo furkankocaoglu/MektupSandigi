@@ -36,6 +36,8 @@ CREATE TABLE KategorilerTable
 (
     KategoriID int IDENTITY(1,1),
     KategoriIsim nvarchar(50) NOT NULL,
+	Durum bit,
+	Silinmis bit,
     CONSTRAINT pk_Kategoriler PRIMARY KEY(KategoriID)
 )
 GO
