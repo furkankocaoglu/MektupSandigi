@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>Mektup Sandığı</title>
     <link href="CSS/AnaEkran.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -13,9 +13,12 @@
     <form id="form1" runat="server">
         <div class="uyePanel">
             <asp:Panel ID="pnl_girisyok" runat="server" class="uyePanel">
+                <a href="Default.aspx">Ana Sayfa </a>
+                <a href="Default.aspx">Mektup Yaz</a>
+                <a href="Default.aspx">Yorumlar</a>
                 <a href="UyeOl.aspx">Üye Ol</a>
-                <a href="UyeGiris.aspx">Üye Giris</a>
-
+                <a href="UyeGiris.aspx">Giriş yap</a>
+                <a href="SSS.aspx">Sıkça Sorulan Sorular</a>
             </asp:Panel>
             </div>
             <div>

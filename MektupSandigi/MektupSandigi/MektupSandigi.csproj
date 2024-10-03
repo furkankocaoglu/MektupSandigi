@@ -71,6 +71,7 @@
     <Content Include="CSS\UyeGiris.css" />
     <Content Include="CSS\UyeOl.css" />
     <Content Include="Default.aspx" />
+    <Content Include="SSS.aspx" />
     <Content Include="UyeGiris.aspx" />
     <Content Include="UyeOl.aspx" />
     <Content Include="Web.config" />
@@ -84,6 +85,7 @@
     <Content Include="YoneticiPaneli\KategoriListele.aspx" />
     <Content Include="YoneticiPaneli\UyeListele.aspx" />
     <Content Include="YoneticiPaneli\YoneticiDefault.aspx" />
+    <Content Include="Yorumlar.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnaEkran.Master.cs">
@@ -101,6 +103,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SSS.aspx.cs">
+      <DependentUpon>SSS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SSS.aspx.designer.cs">
+      <DependentUpon>SSS.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UyeGiris.aspx.cs">
       <DependentUpon>UyeGiris.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,6 +165,13 @@
     </Compile>
     <Compile Include="YoneticiPaneli\YoneticiMaster.Master.designer.cs">
       <DependentUpon>YoneticiMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Yorumlar.aspx.cs">
+      <DependentUpon>Yorumlar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yorumlar.aspx.designer.cs">
+      <DependentUpon>Yorumlar.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
