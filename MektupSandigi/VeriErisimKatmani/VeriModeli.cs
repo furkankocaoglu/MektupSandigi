@@ -148,7 +148,7 @@ namespace VeriErisimKatmani
             List<Uyeler> uyeler = new List<Uyeler>();
             try
             {
-                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum, FROM Uyeler";
+                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum FROM KullanicilarTable";
                 komut.Parameters.Clear();
                 baglanti.Open();
                 SqlDataReader okuyucu = komut.ExecuteReader();

@@ -76,11 +76,13 @@
     <Content Include="Web.config" />
     <Content Include="YoneticiPaneli\CSS\KategoriEkleme.css" />
     <Content Include="YoneticiPaneli\CSS\KategoriListele.css" />
+    <Content Include="YoneticiPaneli\CSS\UyeListele.css" />
     <Content Include="YoneticiPaneli\CSS\YoneticiMaster.css" />
     <Content Include="YoneticiPaneli\CSS\YöneticiEkrani.css" />
     <Content Include="YoneticiPaneli\Giris.aspx" />
     <Content Include="YoneticiPaneli\KategoriEkle.aspx" />
     <Content Include="YoneticiPaneli\KategoriListele.aspx" />
+    <Content Include="YoneticiPaneli\UyeListele.aspx" />
     <Content Include="YoneticiPaneli\YoneticiDefault.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +135,13 @@
     </Compile>
     <Compile Include="YoneticiPaneli\KategoriListele.aspx.designer.cs">
       <DependentUpon>KategoriListele.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YoneticiPaneli\UyeListele.aspx.cs">
+      <DependentUpon>UyeListele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YoneticiPaneli\UyeListele.aspx.designer.cs">
+      <DependentUpon>UyeListele.aspx</DependentUpon>
     </Compile>
     <Compile Include="YoneticiPaneli\YoneticiDefault.aspx.cs">
       <DependentUpon>YoneticiDefault.aspx</DependentUpon>
