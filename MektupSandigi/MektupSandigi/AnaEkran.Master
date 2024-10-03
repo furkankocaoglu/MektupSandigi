@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AnaEkran.master.cs" Inherits="MektupSandigi.AnaEkran" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="CSS/AnaEkran.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="uyePanel">
+            <asp:Panel ID="pnl_girisyok" runat="server" class="uyePanel">
+                <a href="UyeOl.aspx">Üye Ol</a>
+                <a href="UyeGiris.aspx">Üye Giris</a>
+
+            </asp:Panel>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+    </form>
+</body>
+</html>

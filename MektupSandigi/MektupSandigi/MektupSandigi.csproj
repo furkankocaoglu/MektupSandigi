@@ -67,6 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\AnaEkran.css" />
+    <Content Include="CSS\UyeGiris.css" />
+    <Content Include="CSS\UyeOl.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="UyeGiris.aspx" />
+    <Content Include="UyeOl.aspx" />
     <Content Include="Web.config" />
     <Content Include="YoneticiPaneli\CSS\KategoriEkleme.css" />
     <Content Include="YoneticiPaneli\CSS\KategoriListele.css" />
@@ -78,7 +84,35 @@
     <Content Include="YoneticiPaneli\YoneticiDefault.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnaEkran.Master.cs">
+      <DependentUpon>AnaEkran.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnaEkran.Master.designer.cs">
+      <DependentUpon>AnaEkran.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UyeGiris.aspx.cs">
+      <DependentUpon>UyeGiris.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyeGiris.aspx.designer.cs">
+      <DependentUpon>UyeGiris.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UyeOl.aspx.cs">
+      <DependentUpon>UyeOl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyeOl.aspx.designer.cs">
+      <DependentUpon>UyeOl.aspx</DependentUpon>
+    </Compile>
     <Compile Include="YoneticiPaneli\Giris.aspx.cs">
       <DependentUpon>Giris.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -116,6 +150,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AnaEkran.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -126,8 +161,8 @@
     <Content Include="YoneticiPaneli\YoneticiMaster.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CSS\" />
     <Folder Include="Resim\" />
+    <Folder Include="UyelikPanel\CSS\" />
     <Folder Include="YoneticiPaneli\Resim\" />
   </ItemGroup>
   <ItemGroup>

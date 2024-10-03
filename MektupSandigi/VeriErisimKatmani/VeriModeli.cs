@@ -92,7 +92,7 @@ namespace VeriErisimKatmani
 
             try
             {
-                komut.CommandText = "SELECT KategoriID, KategoriIsim FROM KategorilerTable WHERE Silinmis = 0"; 
+                komut.CommandText = "SELECT KategoriID, KategoriIsim FROM KategorilerTable WHERE Silinmis = 0";
                 komut.Parameters.Clear();
                 baglanti.Open();
                 SqlDataReader reader = komut.ExecuteReader();
@@ -108,7 +108,7 @@ namespace VeriErisimKatmani
             }
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine(ex.Message);
             }
             finally
@@ -116,21 +116,21 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
 
-            return kategoriler; 
+            return kategoriler;
         }
 
         public void KategoriSilHardDelete(int id)
         {
             try
             {
-                
+
                 komut.CommandText = "DELETE FROM KategorilerTable WHERE KategoriID = @id";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", id);
                 baglanti.Open();
-                komut.ExecuteNonQuery(); 
+                komut.ExecuteNonQuery();
             }
-            
+
             finally
             {
                 baglanti.Close();
@@ -140,6 +140,96 @@ namespace VeriErisimKatmani
 
 
 
+        #endregion
+
+        #region üyeler metodu
+        public List<Uyeler> TumUyeleriGetir()
+        {
+            List<Uyeler> uyeler = new List<Uyeler>();
+            try
+            {
+                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum, FROM Uyeler";
+                komut.Parameters.Clear();
+                baglanti.Open();
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                while (okuyucu.Read())
+                {
+                    Uyeler u = new Uyeler();
+                    u.KullaniciID = okuyucu.GetInt32(0);
+                    u.KullaniciAdi = okuyucu.GetString(1);
+                    u.Mail = okuyucu.GetString(2);
+                    u.Sifre = okuyucu.GetString(3);
+                    u.OlusturmaTarihi = okuyucu.GetDateTime(4);
+                    u.Durum = okuyucu.GetBoolean(5);
+                    uyeler.Add(u);
+                }
+                return uyeler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public bool UyeOl(Uyeler u)
+        {
+            try
+            {
+                komut.CommandText = "INSERT INTO KullanicilarTable(KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum) VALUES(@kullaniciAdi, @mail, @sifre, @olusturmatarihi, @durum)";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@kullaniciadi", u.KullaniciAdi);
+                komut.Parameters.AddWithValue("@mail", u.Mail);
+                komut.Parameters.AddWithValue("@sifre", u.Sifre);
+                komut.Parameters.AddWithValue("@olusturmatarihi", u.OlusturmaTarihi);
+                komut.Parameters.AddWithValue("@durum", u.Durum);
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public Uyeler UyeGiris(string mail, string sifre)
+        {
+            try
+            {
+                Uyeler u = new Uyeler();
+                komut.CommandText = "SELECT * FROM KullanicilarTable WHERE Mail = @e AND Sifre = @s";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@e", mail);
+                komut.Parameters.AddWithValue("@s", sifre);
+                baglanti.Open();
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                while (okuyucu.Read())
+                {
+                    u.KullaniciID = okuyucu.GetInt32(0);
+                    u.KullaniciAdi = okuyucu.GetString(1);
+                    u.Mail = okuyucu.GetString(2);
+                    u.Sifre = okuyucu.GetString(3);
+                    u.OlusturmaTarihi = okuyucu.GetDateTime(4);
+                    u.Durum = okuyucu.GetBoolean(5);
+                }
+                return u;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+       
         #endregion
     }
 }

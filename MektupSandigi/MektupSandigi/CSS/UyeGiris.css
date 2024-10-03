@@ -1,0 +1,83 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.tasiyici {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.GirisKutu {
+    padding: 20px;
+}
+
+.baslik h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.baslik h3 {
+    margin: 5px 0 20px;
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+}
+
+.GirisForm {
+    margin-top: 20px;
+}
+
+.satir {
+    margin-bottom: 15px;
+}
+
+.FormMetinKutu {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+    .FormMetinKutu:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+.FormGirisButon {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none; /* Link görünümünü butona dönüştürme */
+    transition: background-color 0.3s;
+}
+
+    .FormGirisButon:hover {
+        background-color: #0056b3;
+    }
+
+.basarisizpanel {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
