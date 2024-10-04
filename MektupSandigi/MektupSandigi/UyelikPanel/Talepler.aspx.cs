@@ -5,18 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MektupSandigi
+namespace MektupSandigi.UyelikPanel
 {
-    public partial class Yorumlar : System.Web.UI.Page
+    public partial class Talepler : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnYorumEkle_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

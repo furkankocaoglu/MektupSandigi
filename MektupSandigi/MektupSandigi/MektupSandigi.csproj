@@ -73,6 +73,11 @@
     <Content Include="Default.aspx" />
     <Content Include="SSS.aspx" />
     <Content Include="UyeGiris.aspx" />
+    <Content Include="UyelikPanel\Default.aspx" />
+    <Content Include="UyelikPanel\Gonderiler.aspx" />
+    <Content Include="UyelikPanel\Profil.aspx" />
+    <Content Include="UyelikPanel\Talepler.aspx" />
+    <Content Include="UyelikPanel\Yorumlar.aspx" />
     <Content Include="UyeOl.aspx" />
     <Content Include="Web.config" />
     <Content Include="YoneticiPaneli\CSS\KategoriEkleme.css" />
@@ -116,6 +121,48 @@
     </Compile>
     <Compile Include="UyeGiris.aspx.designer.cs">
       <DependentUpon>UyeGiris.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\Gonderiler.aspx.cs">
+      <DependentUpon>Gonderiler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\Gonderiler.aspx.designer.cs">
+      <DependentUpon>Gonderiler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\Profil.aspx.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\Profil.aspx.designer.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\Talepler.aspx.cs">
+      <DependentUpon>Talepler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\Talepler.aspx.designer.cs">
+      <DependentUpon>Talepler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\UyeEkran.Master.cs">
+      <DependentUpon>UyeEkran.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\UyeEkran.Master.designer.cs">
+      <DependentUpon>UyeEkran.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\Yorumlar.aspx.cs">
+      <DependentUpon>Yorumlar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\Yorumlar.aspx.designer.cs">
+      <DependentUpon>Yorumlar.aspx</DependentUpon>
     </Compile>
     <Compile Include="UyeOl.aspx.cs">
       <DependentUpon>UyeOl.aspx</DependentUpon>
@@ -177,6 +224,7 @@
   <ItemGroup>
     <Content Include="AnaEkran.Master" />
     <None Include="packages.config" />
+    <Content Include="UyelikPanel\UyeEkran.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

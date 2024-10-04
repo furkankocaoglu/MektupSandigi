@@ -1,3 +1,5 @@
+C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\obj\Debug\MektupSandigi.csproj.AssemblyReference.cache
+C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\obj\Debug\MektupSandigi.csproj.CoreCompileInputs.cache
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\bin\MektupSandigi.dll.config
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\bin\MektupSandigi.dll
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\bin\MektupSandigi.pdb
@@ -54,8 +56,6 @@ C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\bin\Mic
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\bin\VeriErisimKatmani.dll
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\bin\VeriErisimKatmani.pdb
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\obj\Debug\MektupSandigi.csproj.AssemblyReference.cache
-C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\obj\Debug\MektupSandigi.csproj.CoreCompileInputs.cache
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\obj\Debug\MektupSa.B33707AB.Up2Date
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\obj\Debug\MektupSandigi.dll
 C:\Users\user\Documents\GitHub\MektupSandigi\MektupSandigi\MektupSandigi\obj\Debug\MektupSandigi.pdb

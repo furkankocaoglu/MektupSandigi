@@ -73,6 +73,8 @@ CREATE TABLE YorumlarTable
     KullaniciID int,
     YorumIcerik ntext,
     OlusturmaTarihi datetime,
+	Onay bit,
+	Durum bit,
     CONSTRAINT pk_Yorumlar PRIMARY KEY(YorumID),
     CONSTRAINT fk_YorumlarMektuplar FOREIGN KEY(MektupID) REFERENCES MektuplarTable(MektupID),
     CONSTRAINT fk_YorumlarKullanicilar FOREIGN KEY(KullaniciID) REFERENCES KullanicilarTable(KullaniciID)

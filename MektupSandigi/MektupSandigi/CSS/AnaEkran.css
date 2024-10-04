@@ -1,28 +1,41 @@
 ﻿body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    background-color: navajowhite;
+   
 }
 
-/* Üye paneli stili */
-.uyepanel {
-    background-color: #fff; /* Arka plan rengi */
-    border: 1px solid #ddd; /* Kenar rengi */
-    border-radius: 5px; /* Kenar yuvarlama */
-    padding: 20px; /* İç boşluk */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Gölgelendirme */
-    margin: 20px; /* Dış boşluk */
+
+.uyePanel {
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    margin: 20px; 
 }
 
-    /* Bağlantı stili */
-    .uyepanel a {
-        color: #007bff; /* Bağlantı rengi */
-        text-decoration: none; /* Alt çizgi yok */
-        margin-right: 15px; /* Sağda boşluk */
-        font-weight: bold; /* Kalın yazı */
+ 
+    .uyePanel a {
+        display: inline-block; 
+        padding: 10px 15px; 
+        color: #333; 
+        text-decoration: none; 
+        margin: 5px; 
+        transition: background-color 0.3s; 
     }
 
+        
         .uyepanel a:hover {
-            text-decoration: underline; /* Üzerine gelince alt çizgi */
+            background-color: #007bff; 
+            color: white; 
         }
+
+
+#ContentPlaceHolder1 {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
