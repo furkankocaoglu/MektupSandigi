@@ -332,7 +332,69 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        
+
+
+
+
+        #endregion
+
+        #region destek talep metodu
+        public bool TalepEkle(DestekTalep talep)
+        {
+            try
+            {
+                komut.CommandText = "INSERT INTO DesteklerTable (KullaniciID, Baslik, Icerik) VALUES (@kullaniciID, @baslik, @icerik)";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@kullaniciID", talep.KullaniciID);
+                komut.Parameters.AddWithValue("@baslik", talep.Baslik);
+                komut.Parameters.AddWithValue("@icerik", talep.Icerik);
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public List<DestekTalep> TumTalepleriGetir()
+        {
+            List<DestekTalep> talepler = new List<DestekTalep>();
+
+            try
+            {
+                komut.CommandText = "SELECT DestekID, KullaniciID, Baslik, Icerik FROM DesteklerTable"; 
+                komut.Parameters.Clear();
+                baglanti.Open();
+
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                while (okuyucu.Read())
+                {
+                    DestekTalep talep = new DestekTalep
+                    {
+                        DestekID = okuyucu.GetInt32(0),
+                        KullaniciID = okuyucu.GetInt32(1),
+                        Baslik = okuyucu.GetString(2), 
+                        Icerik = okuyucu.GetString(3)  
+                                                          
+                    };
+                    talepler.Add(talep);
+                }
+                return talepler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
 
 
 

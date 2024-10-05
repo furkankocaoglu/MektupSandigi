@@ -27,7 +27,7 @@
             <div class="anaMenu">
                 <a href="YoneticiDefault.aspx">Anasayfa</a>
                 <div class="cizgi"></div>
-                <a href="YoneticiDefault.aspx">Mektuplar</a>
+                <a href="YoneticiDefault.aspx">Giden Mektuplar</a>
                 <div class="cizgi"></div>
                 <a href="KategoriEkle.aspx">Kategori Ekle</a>
                 <div class="cizgi"></div>
@@ -37,7 +37,7 @@
                 <div class="cizgi"></div>
                 <a href="Yorumlar.aspx">Yorumlar</a>
                 <div class="cizgi"></div>
-                <a href="YoneticiDefault.aspx">Destek Talepleri</a>
+                <a href="DestekTalepListele.aspx">Destek Talepleri</a>
             </div>
         </div>
         <div class="anaIcerik">

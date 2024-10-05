@@ -14,8 +14,28 @@ namespace MektupSandigi
         Uyeler u=new Uyeler();
         protected void Page_Load(object sender, EventArgs e)
         {
-            u = (Uyeler)Session["uye"];
             
+            u = (Uyeler)Session["uye"];
+
+            
+            if (u == null)
+            {
+                
+                txtYorumIcerik.Visible = false;
+                btnYorumEkle.Visible = false;
+
+                
+                lblSonuc.Text = "Üye girişi yapmanız gerekmektedir.";
+                lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                lblSonuc.Visible = true;
+            }
+            else
+            {
+               
+                txtYorumIcerik.Visible = true;
+                btnYorumEkle.Visible = true;
+            }
+
         }
 
         protected void btnYorumEkle_Click(object sender, EventArgs e)

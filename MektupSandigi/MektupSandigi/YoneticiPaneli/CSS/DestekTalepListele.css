@@ -1,0 +1,16 @@
+﻿.tabloTasiyici {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.destek-talep {
+    margin: 0 auto;
+    width: 125%;
+    text-align: center;
+    margin-left: -75px;
+}
+
+.sayfaBaslik {
+    text-align: center;
+}

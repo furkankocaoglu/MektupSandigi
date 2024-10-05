@@ -1,0 +1,57 @@
+﻿.formTasiyici {
+    max-width: 500px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background-color: #f9f9f9; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+
+.formBaslik {
+    margin-bottom: 30px;
+    text-align: center; 
+    margin-top:10px;
+}
+
+    .formBaslik h3 {
+        font-size: 24px; 
+        color: #333; 
+    }
+
+
+asp\:TextBox {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    font-size: 16px; 
+}
+
+
+.button-container {
+    text-align: center; 
+    margin-top: 20px; 
+}
+
+asp\:Button {
+    background-color: #5cb85c; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    width: 100%; 
+    max-width: 200px;
+    display: inline-block; 
+}
+
+    asp\:Button:hover {
+        background-color: #4cae4c; 
+    }

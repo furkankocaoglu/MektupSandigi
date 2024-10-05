@@ -70,9 +70,11 @@
     <Content Include="AnaSayfaYorumlar.aspx" />
     <Content Include="CSS\AnaEkran.css" />
     <Content Include="CSS\AnSayfaYorumlar.css" />
+    <Content Include="CSS\DestekTalepleri.css" />
     <Content Include="CSS\UyeGiris.css" />
     <Content Include="CSS\UyeOl.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DestekTalepleri.aspx" />
     <Content Include="SSS.aspx" />
     <Content Include="UyeGiris.aspx" />
     <Content Include="UyelikPanel\Default.aspx" />
@@ -81,12 +83,14 @@
     <Content Include="UyelikPanel\Talepler.aspx" />
     <Content Include="UyeOl.aspx" />
     <Content Include="Web.config" />
+    <Content Include="YoneticiPaneli\CSS\DestekTalepListele.css" />
     <Content Include="YoneticiPaneli\CSS\KategoriEkleme.css" />
     <Content Include="YoneticiPaneli\CSS\KategoriListele.css" />
     <Content Include="YoneticiPaneli\CSS\UyeListele.css" />
     <Content Include="YoneticiPaneli\CSS\YoneticiMaster.css" />
     <Content Include="YoneticiPaneli\CSS\Yorumlar.css" />
     <Content Include="YoneticiPaneli\CSS\YöneticiEkrani.css" />
+    <Content Include="YoneticiPaneli\DestekTalepListele.aspx" />
     <Content Include="YoneticiPaneli\Giris.aspx" />
     <Content Include="YoneticiPaneli\KategoriEkle.aspx" />
     <Content Include="YoneticiPaneli\KategoriListele.aspx" />
@@ -115,6 +119,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DestekTalepleri.aspx.cs">
+      <DependentUpon>DestekTalepleri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DestekTalepleri.aspx.designer.cs">
+      <DependentUpon>DestekTalepleri.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SSS.aspx.cs">
@@ -172,6 +183,13 @@
     </Compile>
     <Compile Include="UyeOl.aspx.designer.cs">
       <DependentUpon>UyeOl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YoneticiPaneli\DestekTalepListele.aspx.cs">
+      <DependentUpon>DestekTalepListele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YoneticiPaneli\DestekTalepListele.aspx.designer.cs">
+      <DependentUpon>DestekTalepListele.aspx</DependentUpon>
     </Compile>
     <Compile Include="YoneticiPaneli\Giris.aspx.cs">
       <DependentUpon>Giris.aspx</DependentUpon>

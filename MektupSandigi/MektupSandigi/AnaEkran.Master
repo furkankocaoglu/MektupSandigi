@@ -19,6 +19,7 @@
                 <a href="UyeOl.aspx">Üye Ol</a>
                 <a href="UyeGiris.aspx">Giriş yap</a>
                 <a href="SSS.aspx">Sıkça Sorulan Sorular</a>
+                <a href="DestekTalepleri.aspx">Geliştirmemize Yardımcı Olun</a>
             </asp:Panel>
             </div>
             <div>
