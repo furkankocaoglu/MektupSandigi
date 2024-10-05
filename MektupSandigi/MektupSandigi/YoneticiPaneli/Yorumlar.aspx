@@ -1,13 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/YoneticiPaneli/YoneticiMaster.Master" AutoEventWireup="true" CodeBehind="Yorumlar.aspx.cs" Inherits="MektupSandigi.YoneticiPaneli.Yorumlar" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="CSS/Yorumlar.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="formTasiyici">    
         <div class="formBaslik">
-            <h3>Yorumlar</h3>
+            <h3>YORUMLAR</h3>
         </div>
-        <asp:GridView ID="gv_yorumlar" runat="server" AutoGenerateColumns="False" OnRowCommand="gv_yorumlar_RowCommand">
+        <asp:GridView ID="gv_yorumlar" runat="server" CssClass="gv-style" AutoGenerateColumns="False" OnRowCommand="gv_yorumlar_RowCommand">
             <Columns>
                 <asp:BoundField DataField="YorumID" HeaderText="Yorum ID" />
                 <asp:BoundField DataField="MektupID" HeaderText="Mektup ID" />

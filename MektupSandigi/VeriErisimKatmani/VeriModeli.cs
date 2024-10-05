@@ -286,7 +286,7 @@ namespace VeriErisimKatmani
                 }
                 return yorumlar;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 
                 return null;

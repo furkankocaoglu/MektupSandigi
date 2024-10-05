@@ -67,7 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AnaSayfaYorumlar.aspx" />
     <Content Include="CSS\AnaEkran.css" />
+    <Content Include="CSS\AnSayfaYorumlar.css" />
     <Content Include="CSS\UyeGiris.css" />
     <Content Include="CSS\UyeOl.css" />
     <Content Include="Default.aspx" />
@@ -83,6 +85,7 @@
     <Content Include="YoneticiPaneli\CSS\KategoriListele.css" />
     <Content Include="YoneticiPaneli\CSS\UyeListele.css" />
     <Content Include="YoneticiPaneli\CSS\YoneticiMaster.css" />
+    <Content Include="YoneticiPaneli\CSS\Yorumlar.css" />
     <Content Include="YoneticiPaneli\CSS\YöneticiEkrani.css" />
     <Content Include="YoneticiPaneli\Giris.aspx" />
     <Content Include="YoneticiPaneli\KategoriEkle.aspx" />
@@ -98,6 +101,13 @@
     </Compile>
     <Compile Include="AnaEkran.Master.designer.cs">
       <DependentUpon>AnaEkran.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AnaSayfaYorumlar.aspx.cs">
+      <DependentUpon>AnaSayfaYorumlar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnaSayfaYorumlar.aspx.designer.cs">
+      <DependentUpon>AnaSayfaYorumlar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
