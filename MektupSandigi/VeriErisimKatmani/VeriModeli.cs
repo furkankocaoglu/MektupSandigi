@@ -238,13 +238,14 @@ namespace VeriErisimKatmani
         {
             try
             {
-                komut.CommandText = "INSERT INTO YorumlarTable (MektupID, KullaniciID, YorumIcerik, OlusturmaTarihi, Durum) VALUES (@mektupID, @kullaniciID, @yorumIcerik, @olusturmaTarihi, @durum)";
+                komut.CommandText = "INSERT INTO YorumlarTable (MektupID, KullaniciID, YorumIcerik, OlusturmaTarihi, Durum, Onay) VALUES (@mektupID, @kullaniciID, @yorumIcerik, @olusturmaTarihi, @durum, @onay)";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@mektupID", yorum.MektupID);
                 komut.Parameters.AddWithValue("@kullaniciID", yorum.KullaniciID);
                 komut.Parameters.AddWithValue("@yorumIcerik", yorum.YorumIcerik);
                 komut.Parameters.AddWithValue("@olusturmaTarihi", yorum.OlusturmaTarihi);
                 komut.Parameters.AddWithValue("@durum", yorum.Durum);
+                komut.Parameters.AddWithValue("@onay", yorum.Onay);
                 baglanti.Open();
                 komut.ExecuteNonQuery();
                 return true;
@@ -264,25 +265,30 @@ namespace VeriErisimKatmani
 
             try
             {
-                komut.CommandText = "SELECT YorumID, MektupID, KullaniciID, YorumIcerik, OlusturmaTarihi, Durum FROM YorumlarTable";
+                komut.CommandText = "SELECT YorumID, MektupID, KullaniciID, YorumIcerik, OlusturmaTarihi, Onay, Durum FROM YorumlarTable";
                 komut.Parameters.Clear();
                 baglanti.Open();
+
                 SqlDataReader okuyucu = komut.ExecuteReader();
                 while (okuyucu.Read())
                 {
-                    Yorumlar yorum = new Yorumlar();
-                    yorum.YorumID = okuyucu.GetInt32(0);
-                    yorum.MektupID = okuyucu.GetInt32(1);
-                    yorum.KullaniciID = okuyucu.GetInt32(2);
-                    yorum.YorumIcerik = okuyucu.GetString(3);
-                    yorum.OlusturmaTarihi = okuyucu.GetDateTime(4);
-                    yorum.Durum = okuyucu.GetBoolean(5);
+                    Yorumlar yorum = new Yorumlar
+                    {
+                        YorumID = okuyucu.GetInt32(0),
+                        MektupID = okuyucu.GetInt32(1),
+                        KullaniciID = okuyucu.GetInt32(2),
+                        YorumIcerik = okuyucu.GetString(3),
+                        OlusturmaTarihi = okuyucu.GetDateTime(4),
+                        Onay = !okuyucu.IsDBNull(5) && okuyucu.GetBoolean(5),
+                        Durum = !okuyucu.IsDBNull(6) && okuyucu.GetBoolean(6)
+                    };
                     yorumlar.Add(yorum);
                 }
                 return yorumlar;
             }
-            catch
+            catch (Exception ex)
             {
+                
                 return null;
             }
             finally
@@ -320,31 +326,6 @@ namespace VeriErisimKatmani
                 komut.Parameters.AddWithValue("@id", id);
                 komut.Parameters.AddWithValue("@durum", !durum);
                 komut.ExecuteNonQuery();
-            }
-            finally
-            {
-                baglanti.Close();
-            }
-        }
-        public bool YorumDuzenle(Yorumlar yorum)
-        {
-            try
-            {
-                komut.CommandText = "UPDATE YorumlarTable SET MektupID=@mektupID, KullaniciID=@kullaniciID, YorumIcerik=@yorumIcerik, OlusturmaTarihi=@olusturmaTarihi, Durum=@durum WHERE ID=@id";
-                komut.Parameters.Clear();
-                komut.Parameters.AddWithValue("@id", yorum.YorumID);
-                komut.Parameters.AddWithValue("@makaleID", yorum.MektupID);
-                komut.Parameters.AddWithValue("@uyeID", yorum.KullaniciID);
-                komut.Parameters.AddWithValue("@icerik", yorum.YorumIcerik);
-                komut.Parameters.AddWithValue("@eklemetarihi", yorum.OlusturmaTarihi);
-                komut.Parameters.AddWithValue("@durum", yorum.Durum);
-                baglanti.Open();
-                komut.ExecuteNonQuery();
-                return true;
-            }
-            catch
-            {
-                return false;
             }
             finally
             {

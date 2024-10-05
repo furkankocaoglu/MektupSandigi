@@ -35,16 +35,12 @@
                 <div class="cizgi"></div>
                 <a href="UyeListele.aspx">Üye Kullanıcılar</a>
                 <div class="cizgi"></div>
-                <a href="YoneticiDefault.aspx">Yorumlar</a>
+                <a href="Yorumlar.aspx">Yorumlar</a>
                 <div class="cizgi"></div>
                 <a href="YoneticiDefault.aspx">Destek Talepleri</a>
             </div>
-            <div class="anaIcerik">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
         </div>
-        <div>
+        <div class="anaIcerik">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
