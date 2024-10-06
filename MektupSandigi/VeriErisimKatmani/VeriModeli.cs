@@ -399,5 +399,40 @@ namespace VeriErisimKatmani
 
 
         #endregion
+
+        #region mektup metodu
+
+        public bool MektupEkle(Mektup mektup)
+        {
+            try
+            {
+
+                komut.CommandText = "INSERT INTO MektuplarTable (KullaniciID, KategoriID, Baslik, Icerik, AliciMail, GonderimTarihi, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi)  VALUES (@kullaniciID, @kategoriID, @baslik, @icerik, @aliciMail, @gonderimTarihi, @acilisTarihi, @teslimEdildiMi, @olusturmaTarihi)";
+
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@kullaniciID", mektup.KullaniciID);
+                komut.Parameters.AddWithValue("@kategoriID", mektup.KategoriID);
+                komut.Parameters.AddWithValue("@baslik", mektup.Baslik);
+                komut.Parameters.AddWithValue("@icerik", mektup.Icerik);
+                komut.Parameters.AddWithValue("@aliciMail", mektup.AliciMail);
+                komut.Parameters.AddWithValue("@gonderimTarihi", mektup.GonderimTarihi);
+                komut.Parameters.AddWithValue("@acilisTarihi", mektup.AcilisTarihi);
+                komut.Parameters.AddWithValue("@teslimEdildiMi", mektup.TeslimEdildiMi);
+                komut.Parameters.AddWithValue("@olusturmaTarihi", mektup.OlusturmaTarihi);
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        #endregion
     }
 }

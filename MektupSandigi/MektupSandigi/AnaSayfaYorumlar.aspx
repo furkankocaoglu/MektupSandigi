@@ -7,6 +7,9 @@
             <div class="formBaslik">
                 <h3>Yorum Yaz</h3>
             </div>
+         <div>
+             <h5>Bu sayfada üyemiz olarak yeni yorum yazabilirsiniz.</h5>
+         </div>
             <asp:TextBox ID="txtYorumIcerik" runat="server" TextMode="MultiLine" Rows="4" Width="400px" Height="200px" Placeholder="Gönderdiğiniz mektuplar ile ilgili düşüncelerinizi buraya yazın..."></asp:TextBox>
          <div class="button-container">
             <asp:Button ID="btnYorumEkle" runat="server" Text="Yorum Ekle" OnClick="btnYorumEkle_Click" />

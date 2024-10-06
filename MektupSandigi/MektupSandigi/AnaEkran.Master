@@ -14,7 +14,7 @@
         <div class="uyePanel">
             <asp:Panel ID="pnl_girisyok" runat="server" class="uyePanel">
                 <a href="Default.aspx">Ana Sayfa </a>
-                <a href="Default.aspx">Mektup Yaz</a>
+                <a href="MektupYaz.aspx">Mektup Yaz</a>
                 <a href="AnaSayfaYorumlar.aspx">Yorumlar</a>
                 <a href="UyeOl.aspx">Üye Ol</a>
                 <a href="UyeGiris.aspx">Giriş yap</a>

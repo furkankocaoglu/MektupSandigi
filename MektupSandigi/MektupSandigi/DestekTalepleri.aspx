@@ -8,7 +8,8 @@
         <h3>Öneri, düşünce, destek..</h3>
     </div>
     <asp:TextBox ID="txtKonuIcerik" runat="server" TextMode="MultiLine" Rows="2" Width="400px" Placeholder="Konuyu girin..."></asp:TextBox>
-    <asp:TextBox ID="txtYorumIcerik" runat="server" TextMode="MultiLine" Rows="5" Width="400px" Placeholder="Yorumunuzu buraya yazın..."></asp:TextBox>
+         <br />
+    <asp:TextBox ID="txtYorumIcerik" runat="server" TextMode="MultiLine" Rows="5" Width="400px" Placeholder="Düşüncelerinizi buraya yazın..."></asp:TextBox>
     <div class="button-container">
         <asp:Button ID="btnTalepEkle" runat="server" Text="Talep İlet" OnClick="btnTalepEkle_Click"/>
     </div>
