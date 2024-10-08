@@ -85,7 +85,6 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-
         public List<Kategori> KategorileriListele()
         {
             List<Kategori> kategoriler = new List<Kategori>();
@@ -119,6 +118,7 @@ namespace VeriErisimKatmani
             return kategoriler;
         }
 
+
         public void KategoriSilHardDelete(int id)
         {
             try
@@ -136,9 +136,7 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-
-
-
+       
 
         #endregion
 
@@ -431,6 +429,48 @@ namespace VeriErisimKatmani
             {
                 baglanti.Close();
             }
+        }
+        public List<Mektup> MektupListele()
+        {
+            List<Mektup> mektuplar = new List<Mektup>();
+
+            try
+            {
+                komut.CommandText = "SELECT MektupID, KullaniciID, KategoriID, Baslik, Icerik, AliciMail, GonderimTarihi, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable";
+
+                baglanti.Open();
+                SqlDataReader reader = komut.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Mektup mektup = new Mektup
+                    {
+                        MektupID = (int)reader["MektupID"],
+                        KullaniciID = (int)reader["KullaniciID"],
+                        KategoriID = (int)reader["KategoriID"],
+                        Baslik = reader["Baslik"].ToString(),
+                        Icerik = reader["Icerik"].ToString(),
+                        AliciMail = reader["AliciMail"].ToString(),
+                        GonderimTarihi = (DateTime)reader["GonderimTarihi"],
+                        AcilisTarihi = (DateTime)reader["AcilisTarihi"],
+                        TeslimEdildiMi = (bool)reader["TeslimEdildiMi"],
+                        OlusturmaTarihi = (DateTime)reader["OlusturmaTarihi"]
+                    };
+                    mektuplar.Add(mektup);
+                }
+
+                reader.Close();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+
+            return mektuplar;
         }
 
         #endregion
