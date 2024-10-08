@@ -430,47 +430,45 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        public List<Mektup> MektupListele()
+        public List<Mektup> GetMektuplar()
         {
             List<Mektup> mektuplar = new List<Mektup>();
 
             try
             {
-                komut.CommandText = "SELECT MektupID, KullaniciID, KategoriID, Baslik, Icerik, AliciMail, GonderimTarihi, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable";
-
+                komut = new SqlCommand("SELECT MektupID, KullaniciID, KategoriID, Baslik, Icerik, AliciMail, GonderimTarihi, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable", baglanti);
+                komut.Parameters.Clear();
                 baglanti.Open();
-                SqlDataReader reader = komut.ExecuteReader();
 
-                while (reader.Read())
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                while (okuyucu.Read())
                 {
-                    Mektup mektup = new Mektup
+                    Mektup mktp = new Mektup
                     {
-                        MektupID = (int)reader["MektupID"],
-                        KullaniciID = (int)reader["KullaniciID"],
-                        KategoriID = (int)reader["KategoriID"],
-                        Baslik = reader["Baslik"].ToString(),
-                        Icerik = reader["Icerik"].ToString(),
-                        AliciMail = reader["AliciMail"].ToString(),
-                        GonderimTarihi = (DateTime)reader["GonderimTarihi"],
-                        AcilisTarihi = (DateTime)reader["AcilisTarihi"],
-                        TeslimEdildiMi = (bool)reader["TeslimEdildiMi"],
-                        OlusturmaTarihi = (DateTime)reader["OlusturmaTarihi"]
+                        MektupID = okuyucu.GetInt32(0),
+                        KullaniciID = okuyucu.GetInt32(1),
+                        KategoriID = okuyucu.GetInt32(2),
+                        Baslik = okuyucu.GetString(3),
+                        Icerik = okuyucu.GetString(4),
+                        AliciMail = okuyucu.GetString(5),
+                        GonderimTarihi = okuyucu.GetDateTime(6),
+                        AcilisTarihi = okuyucu.GetDateTime(7),
+                        TeslimEdildiMi = okuyucu.GetBoolean(8),
+                        OlusturmaTarihi = okuyucu.GetDateTime(9)
                     };
-                    mektuplar.Add(mektup);
+                    mektuplar.Add(mktp);
                 }
-
-                reader.Close();
+                return mektuplar;
             }
-            catch (Exception)
+            catch (Exception )
             {
+                // Hata yönetimi (loglama yapabilirsiniz)
                 return null;
             }
             finally
             {
                 baglanti.Close();
             }
-
-            return mektuplar;
         }
 
         #endregion

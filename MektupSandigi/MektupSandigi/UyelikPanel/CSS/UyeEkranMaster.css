@@ -1,0 +1,77 @@
+﻿body {
+    margin: 0; 
+    padding: 0; 
+    font-family: Arial, sans-serif; 
+    background-color: #f4f4f9; 
+}
+
+
+.ustMenu {
+    background-color: #3b3f51;
+    color: #fff;
+    padding: 15px;
+}
+.Ustmenu {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+    .Ustmenu h3 {
+        margin: 0; 
+        font-size: 24px; 
+    }
+
+.kullanici {
+    display: flex;
+    align-items: center; 
+    margin-left: auto; 
+}
+
+    .kullanici asp\:Label {
+        margin-right: 15px;
+        color: #cfcfcf; 
+    }
+
+
+    .kullanici a {
+        color: #cfcfcf; 
+        text-decoration: none; 
+        padding: 5px 10px;
+        border-radius: 5px; 
+    }
+
+        .kullanici a:hover {
+            background-color: #3b3f51; 
+        }
+
+
+.altMenu {
+    display: flex; 
+    justify-content: center; 
+    background-color: #2f323a; 
+    padding: 10px 0; 
+}
+
+    .altMenu a {
+        color: #ffffff; 
+        text-decoration: none; 
+        padding: 10px 20px; 
+        margin: 0 10px; 
+        font-size: 16px;
+    }
+
+        .altMenu a:hover {
+            background-color: #3b3f51;
+            border-radius: 5px; 
+        }
+
+
+.icerikTasiyici {
+    padding: 20px;
+    background-color: #fff; 
+    min-height: calc(100vh - 140px); 
+    overflow-x: auto; 
+}
+
+

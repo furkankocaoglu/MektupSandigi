@@ -418,6 +418,7 @@
     <Content Include="MektupYaz.aspx" />
     <Content Include="SSS.aspx" />
     <Content Include="UyeGiris.aspx" />
+    <Content Include="UyelikPanel\CSS\UyeEkranMaster.css" />
     <Content Include="UyelikPanel\Default.aspx" />
     <Content Include="UyelikPanel\Gonderiler.aspx" />
     <Content Include="UyelikPanel\Profil.aspx" />
@@ -427,6 +428,7 @@
     <Content Include="YoneticiPaneli\CSS\DestekTalepListele.css" />
     <Content Include="YoneticiPaneli\CSS\KategoriEkleme.css" />
     <Content Include="YoneticiPaneli\CSS\KategoriListele.css" />
+    <Content Include="YoneticiPaneli\CSS\MektupListele.css" />
     <Content Include="YoneticiPaneli\CSS\UyeListele.css" />
     <Content Include="YoneticiPaneli\CSS\YoneticiMaster.css" />
     <Content Include="YoneticiPaneli\CSS\Yorumlar.css" />
@@ -627,7 +629,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resim\" />
-    <Folder Include="UyelikPanel\CSS\" />
     <Folder Include="YoneticiPaneli\Resim\" />
   </ItemGroup>
   <ItemGroup>

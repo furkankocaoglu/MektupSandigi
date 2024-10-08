@@ -1,17 +1,9 @@
 ﻿body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-}
-
-form {
-    margin: 0;
-    padding: 0;
-}
-
-.clear {
-    clear: both;
+    background-color: #f4f4f9; 
 }
 
 
@@ -22,10 +14,13 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; 
 }
+
 
 .anaBaslik {
     text-align: left;
+    flex-grow: 1; 
 }
 
     .anaBaslik h2 {
@@ -39,9 +34,11 @@ form {
         color: #cfcfcf;
     }
 
+
 .kullaniciAlani {
     text-align: right;
-    margin-left:1050px;
+    flex-grow: 1;
+    text-align: right;
 }
 
 .kullanicieleman {
@@ -52,37 +49,31 @@ form {
 }
 
 
-.anaMenu {
+.ustMenuKategoriler {
+    display: flex;
+    justify-content: center; 
     background-color: #2f323a;
-    padding: 15px;
-    width: 200px;
-    min-height: 100vh;
-    float: left;
+    padding: 10px 0;
 }
 
-    .anaMenu a {
-        display: block;
+    .ustMenuKategoriler a {
         color: #ffffff;
         text-decoration: none;
-        padding: 10px 0;
+        padding: 10px 20px;
         font-size: 16px;
+        margin: 0 10px;
     }
 
-        .anaMenu a:hover {
+        .ustMenuKategoriler a:hover {
             background-color: #3b3f51;
+            border-radius: 5px; 
         }
-
-.cizgi {
-    height: 1px;
-    background-color: #444;
-    margin: 10px 0;
-}
 
 
 .anaIcerik {
-    margin-left: 220px;
     padding: 20px;
     background-color: #fff;
-    min-height: 100vh;
+    min-height: calc(100vh - 140px);
+    overflow-x: auto;
+    min-width: 0;
 }
-
