@@ -422,7 +422,7 @@ namespace VeriErisimKatmani
                 baglanti.Open();
                 komut.ExecuteNonQuery();
 
-               MailGonder(mektup.AliciMail.ToString(), mektup.Baslik.ToString(), mektup.Icerik.ToString());
+                MailGonder(mektup.AliciMail.ToString(), mektup.Baslik.ToString(), mektup.Icerik.ToString());
 
 
                 return true;
@@ -466,7 +466,7 @@ namespace VeriErisimKatmani
                 }
                 return mektuplar;
             }
-            catch (Exception)
+            catch
             {
 
                 return null;
@@ -480,31 +480,31 @@ namespace VeriErisimKatmani
         {
             try
             {
-                
-                string gondericiMail = "mektupsandigi@stafftrackportal.com";
-                string gondericiSifre = "T_2lH@vK==47rM7h"; 
 
-                
+                string gondericiMail = "mektupsandigi@stafftrackportal.com";
+                string gondericiSifre = "T_2lH@vK==47rM7h";
+
+
                 SmtpClient smtpClient = new SmtpClient("mail.stafftrackportal.com")
                 {
-                    Port = 587, 
+                    Port = 587,
                     Credentials = new NetworkCredential(gondericiMail, gondericiSifre),
-                    EnableSsl = false 
+                    EnableSsl = false
                 };
 
-                
+
                 MailMessage mail = new MailMessage
                 {
-                    From = new MailAddress(gondericiMail), 
-                    Subject = baslik, 
-                    Body = icerik, 
-                    IsBodyHtml = true 
+                    From = new MailAddress(gondericiMail),
+                    Subject = baslik,
+                    Body = icerik,
+                    IsBodyHtml = true
                 };
 
-                
+
                 mail.To.Add(aliciMail);
 
-                
+
                 smtpClient.Send(mail);
                 Console.WriteLine("Mail başarıyla gönderildi.");
             }
@@ -512,8 +512,122 @@ namespace VeriErisimKatmani
             {
                 Console.WriteLine("Mail gönderimi sırasında hata oluştu: " + ex.Message);
             }
-           
-        } 
+
+        }
+
+        #endregion
+
+        #region üyelik paneli metodu
+        public Uyeler UyeBilgisiGetir(int kullaniciID)
+        {
+            try
+            {
+                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum, Silinmis FROM KullanicilarTable WHERE KullaniciID = @kullaniciID"; 
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
+
+                baglanti.Open();
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                Uyeler uye = null;
+
+                if (okuyucu.Read())
+                {
+                    uye = new Uyeler
+                    {
+                        KullaniciID = okuyucu.GetInt32(0),
+                        KullaniciAdi = okuyucu.GetString(1),
+                        Mail = okuyucu.GetString(2),
+                        Sifre = okuyucu.GetString(3), 
+                        OlusturmaTarihi = okuyucu.GetDateTime(4),
+                        Durum = okuyucu.GetBoolean(5),
+                        Silinmis = okuyucu.IsDBNull(6) ? false : okuyucu.GetBoolean(6) 
+                    };
+                }
+                return uye;
+            }
+            catch 
+            {
+                
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public List<Yorumlar> KullaniciYorumlariniGetir(int KullaniciID)
+        {
+            List<Yorumlar> yorumlar = new List<Yorumlar>();
+
+            try
+            {
+                komut.CommandText = "SELECT YorumIcerik, OlusturmaTarihi FROM YorumlarTable WHERE KullaniciID = @kullaniciID";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@kullaniciID", KullaniciID);
+
+                baglanti.Open();
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                while (okuyucu.Read())
+                {
+                    Yorumlar yorum = new Yorumlar
+                    {
+                        YorumIcerik = okuyucu.GetString(0),
+                        OlusturmaTarihi = okuyucu.GetDateTime(1)
+                    };
+                    yorumlar.Add(yorum);
+                }
+                return yorumlar;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public List<Mektup> KullaniciMektuplariniGetir(int kullaniciID)
+        {
+            List<Mektup> mektuplar = new List<Mektup>();
+
+            try
+            {
+                komut.CommandText = "SELECT MektupID, KategoriID, Baslik, Icerik, AliciMail, GonderimTarihi, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable WHERE KullaniciID = @kullaniciID";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
+
+                baglanti.Open();
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                while (okuyucu.Read())
+                {
+                    Mektup mektup = new Mektup
+                    {
+                        MektupID = okuyucu.GetInt32(0),
+                        KategoriID = okuyucu.GetInt32(1),
+                        Baslik = okuyucu.GetString(2),
+                        Icerik = okuyucu.GetString(3),
+                        AliciMail = okuyucu.GetString(4),
+                        GonderimTarihi = okuyucu.GetDateTime(5),
+                        AcilisTarihi = okuyucu.GetDateTime(6),
+                        TeslimEdildiMi = okuyucu.GetBoolean(7),
+                        OlusturmaTarihi = okuyucu.GetDateTime(8)
+                    };
+                    mektuplar.Add(mektup);
+                }
+                return mektuplar;
+            }
+            catch 
+            {
+                
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        
 
         #endregion
     }

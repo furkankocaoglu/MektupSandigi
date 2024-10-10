@@ -2,4 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h1>Gönderdiğim Mektuplar</h1>
+<asp:GridView ID="gvMektuplar" runat="server" AutoGenerateColumns="False" CssClass="table">
+    <Columns>
+        <asp:BoundField DataField="MektupID" HeaderText="Mektup ID" />
+        <asp:BoundField DataField="Baslik" HeaderText="Başlık" />
+        <asp:BoundField DataField="Icerik" HeaderText="İçerik" />
+        <asp:BoundField DataField="AliciMail" HeaderText="Alıcı Mail" />
+        <asp:BoundField DataField="GonderimTarihi" HeaderText="Gönderim Tarihi" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
+        <asp:BoundField DataField="OlusturmaTarihi" HeaderText="Oluşturma Tarihi" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
+    </Columns>
+</asp:GridView>
 </asp:Content>

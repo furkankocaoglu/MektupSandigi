@@ -28,12 +28,14 @@ namespace MektupSandigi
                 lblSonuc.Text = "Üye girişi yapmanız gerekmektedir.";
                 lblSonuc.ForeColor = System.Drawing.Color.Red; 
                 lblSonuc.Visible = true;
+                linkGiris.Visible = true;
             }
             else
             {
                
                 txtYorumIcerik.Visible = true;
                 btnYorumEkle.Visible = true;
+                linkGiris.Visible = false;
             }
 
         }

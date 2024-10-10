@@ -423,11 +423,15 @@
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="SSS.aspx" />
     <Content Include="UyeGiris.aspx" />
+    <Content Include="UyelikPanel\CSS\mektupYaz.css" />
     <Content Include="UyelikPanel\CSS\UyeEkranMaster.css" />
     <Content Include="UyelikPanel\Default.aspx" />
     <Content Include="UyelikPanel\Gonderiler.aspx" />
+    <Content Include="UyelikPanel\mektupYaz.aspx" />
     <Content Include="UyelikPanel\Profil.aspx" />
     <Content Include="UyelikPanel\Talepler.aspx" />
+    <Content Include="UyelikPanel\UyeYorumlari.aspx" />
+    <Content Include="UyelikPanel\YorumYaz.aspx" />
     <Content Include="UyeOl.aspx" />
     <Content Include="Web.config" />
     <Content Include="YoneticiPaneli\CSS\DestekTalepListele.css" />
@@ -512,6 +516,13 @@
     <Compile Include="UyelikPanel\Gonderiler.aspx.designer.cs">
       <DependentUpon>Gonderiler.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UyelikPanel\mektupYaz.aspx.cs">
+      <DependentUpon>mektupYaz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\mektupYaz.aspx.designer.cs">
+      <DependentUpon>mektupYaz.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UyelikPanel\Profil.aspx.cs">
       <DependentUpon>Profil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -532,6 +543,20 @@
     </Compile>
     <Compile Include="UyelikPanel\UyeEkran.Master.designer.cs">
       <DependentUpon>UyeEkran.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\UyeYorumlari.aspx.cs">
+      <DependentUpon>UyeYorumlari.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\UyeYorumlari.aspx.designer.cs">
+      <DependentUpon>UyeYorumlari.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\YorumYaz.aspx.cs">
+      <DependentUpon>YorumYaz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\YorumYaz.aspx.designer.cs">
+      <DependentUpon>YorumYaz.aspx</DependentUpon>
     </Compile>
     <Compile Include="UyeOl.aspx.cs">
       <DependentUpon>UyeOl.aspx</DependentUpon>

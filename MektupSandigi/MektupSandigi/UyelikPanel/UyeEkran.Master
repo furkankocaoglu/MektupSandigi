@@ -23,11 +23,12 @@
             <div style="clear: both"></div>
         </div>
         <div class="altMenu">
-            <a href="Default.aspx">Üye Panel</a>
-            <a href="Yorumlar.aspx">Yorumlar</a>
             <a href="Profil.aspx">Profil</a>
+            <a href="mektupYaz.aspx">Yeni Mektup</a>
             <a href="Gonderiler.aspx">Mektuplar</a>
-
+            <a href="UyeYorumlari.aspx">Yorumlar</a>
+            <a href="YorumYaz.aspx">Yorum Yaz</a>
+            <a href="Talepler.aspx">Talep Görüntüle</a>
         </div>
         <div class="icerikTasiyici">
             <div class="icerik">

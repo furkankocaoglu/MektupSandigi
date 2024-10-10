@@ -11,115 +11,97 @@ namespace MektupSandigi.UyelikPanel
 {
 
 
-    public partial class Profil
+    public partial class mektupYaz
     {
 
         /// <summary>
-        /// lblKullaniciAdi control.
+        /// lblSonuc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblKullaniciAdi;
+        protected global::System.Web.UI.WebControls.Label lblSonuc;
 
         /// <summary>
-        /// lblKullaniciAdiValue control.
+        /// tb_baslik control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblKullaniciAdiValue;
+        protected global::System.Web.UI.WebControls.TextBox tb_baslik;
 
         /// <summary>
-        /// lblMail control.
+        /// ddl_kategoriler control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMail;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_kategoriler;
 
         /// <summary>
-        /// lblMailValue control.
+        /// tb_aliciMail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMailValue;
+        protected global::System.Web.UI.WebControls.TextBox tb_aliciMail;
 
         /// <summary>
-        /// lblSifre control.
+        /// rev_aliciMail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSifre;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_aliciMail;
 
         /// <summary>
-        /// lblSifreValue control.
+        /// tb_icerik control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSifreValue;
+        protected global::System.Web.UI.WebControls.TextBox tb_icerik;
 
         /// <summary>
-        /// lblOlusturmaTarihi control.
+        /// tb_gonderimTarihi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOlusturmaTarihi;
+        protected global::System.Web.UI.WebControls.TextBox tb_gonderimTarihi;
 
         /// <summary>
-        /// lblOlusturmaTarihiValue control.
+        /// calendarGonderimTarihi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOlusturmaTarihiValue;
+        protected global::System.Web.UI.WebControls.Calendar calendarGonderimTarihi;
 
         /// <summary>
-        /// lblDurum control.
+        /// btnTarihSec control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDurum;
+        protected global::System.Web.UI.WebControls.Button btnTarihSec;
 
         /// <summary>
-        /// lblDurumValue control.
+        /// lbtn_mektupEkle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDurumValue;
-
-        /// <summary>
-        /// lblSilinmis control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSilinmis;
-
-        /// <summary>
-        /// lblSilinmisValue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSilinmisValue;
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_mektupEkle;
     }
 }

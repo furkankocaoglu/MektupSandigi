@@ -17,6 +17,6 @@
             <asp:Label ID="lblSonuc" runat="server" ForeColor="Green" Visible="false"></asp:Label>
         </div>
          <br />
-         <a href="UyeGiris.aspx">Giriş yap</a>
+         <a id="linkGiris" runat="server" href="UyeGiris.aspx">Giriş yap</a>
          </div>
 </asp:Content>

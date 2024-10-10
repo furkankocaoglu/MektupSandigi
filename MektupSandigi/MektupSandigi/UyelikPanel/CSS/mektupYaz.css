@@ -38,9 +38,10 @@ body {
 .satir {
     padding: 15px 0;
 }
+
 .link a {
-    text-decoration: none; 
-    color: darkred; 
+    text-decoration: none;
+    color: darkred;
 }
 
 .metinKutu,
@@ -52,28 +53,31 @@ body {
     font-size: 1em;
     transition: border-color 0.3s;
 }
+
 .tarihKutu {
-    width: 200px; 
-    height:30px;
-}
-.islemButton {
-    background-color: #4CAF50; 
-    text-decoration: none;
-    color: white; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 1em; 
-    transition: background-color 0.3s, transform 0.2s; 
+    width: 200px;
+    height: 30px;
 }
 
-.islemButton:hover {
-        background-color: #45a049; 
-        transform: scale(1.05); 
+.islemButton {
+    background-color: #4CAF50;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
 }
+
+    .islemButton:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+    }
+
 .girisKontrol {
-    text-align: center; 
-    margin: 20px 0; 
-    font-weight: bold; 
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
 }

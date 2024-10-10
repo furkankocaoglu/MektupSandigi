@@ -15,6 +15,15 @@ namespace MektupSandigi
     {
 
         /// <summary>
+        /// linkUyeGirisi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl linkUyeGirisi;
+
+        /// <summary>
         /// lblSonuc control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace MektupSandigi
         protected global::System.Web.UI.WebControls.TextBox tb_aliciMail;
 
         /// <summary>
+        /// rev_aliciMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_aliciMail;
+
+        /// <summary>
         /// tb_icerik control.
         /// </summary>
         /// <remarks>
@@ -85,33 +103,6 @@ namespace MektupSandigi
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnTarihSec;
-
-        /// <summary>
-        /// tb_acilisTarihi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_acilisTarihi;
-
-        /// <summary>
-        /// calendarAcilisTarihi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendarAcilisTarihi;
-
-        /// <summary>
-        /// btnAcilisTarihSec control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAcilisTarihSec;
 
         /// <summary>
         /// lbtn_mektupEkle control.
