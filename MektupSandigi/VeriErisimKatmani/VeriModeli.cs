@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -136,7 +138,7 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-       
+
 
         #endregion
 
@@ -284,9 +286,9 @@ namespace VeriErisimKatmani
                 }
                 return yorumlar;
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
+
                 return null;
             }
             finally
@@ -365,7 +367,7 @@ namespace VeriErisimKatmani
 
             try
             {
-                komut.CommandText = "SELECT DestekID, KullaniciID, Baslik, Icerik FROM DesteklerTable"; 
+                komut.CommandText = "SELECT DestekID, KullaniciID, Baslik, Icerik FROM DesteklerTable";
                 komut.Parameters.Clear();
                 baglanti.Open();
 
@@ -376,9 +378,9 @@ namespace VeriErisimKatmani
                     {
                         DestekID = okuyucu.GetInt32(0),
                         KullaniciID = okuyucu.GetInt32(1),
-                        Baslik = okuyucu.GetString(2), 
-                        Icerik = okuyucu.GetString(3)  
-                                                          
+                        Baslik = okuyucu.GetString(2),
+                        Icerik = okuyucu.GetString(3)
+
                     };
                     talepler.Add(talep);
                 }
@@ -419,6 +421,10 @@ namespace VeriErisimKatmani
                 komut.Parameters.AddWithValue("@olusturmaTarihi", mektup.OlusturmaTarihi);
                 baglanti.Open();
                 komut.ExecuteNonQuery();
+
+               MailGonder(mektup.AliciMail.ToString(), mektup.Baslik.ToString(), mektup.Icerik.ToString());
+
+
                 return true;
             }
             catch
@@ -460,9 +466,9 @@ namespace VeriErisimKatmani
                 }
                 return mektuplar;
             }
-            catch (Exception )
+            catch (Exception)
             {
-                // Hata yönetimi (loglama yapabilirsiniz)
+
                 return null;
             }
             finally
@@ -470,6 +476,44 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
+        public void MailGonder(string aliciMail, string baslik, string icerik)
+        {
+            try
+            {
+                
+                string gondericiMail = "mektupsandigi@stafftrackportal.com";
+                string gondericiSifre = "T_2lH@vK==47rM7h"; 
+
+                
+                SmtpClient smtpClient = new SmtpClient("mail.stafftrackportal.com")
+                {
+                    Port = 587, 
+                    Credentials = new NetworkCredential(gondericiMail, gondericiSifre),
+                    EnableSsl = false 
+                };
+
+                
+                MailMessage mail = new MailMessage
+                {
+                    From = new MailAddress(gondericiMail), 
+                    Subject = baslik, 
+                    Body = icerik, 
+                    IsBodyHtml = true 
+                };
+
+                
+                mail.To.Add(aliciMail);
+
+                
+                smtpClient.Send(mail);
+                Console.WriteLine("Mail başarıyla gönderildi.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Mail gönderimi sırasında hata oluştu: " + ex.Message);
+            }
+           
+        } 
 
         #endregion
     }

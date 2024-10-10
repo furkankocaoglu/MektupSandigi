@@ -21,7 +21,7 @@
             <div class="satir">
                 <label>Kategori</label><br />
                 <br />
-                <asp:DropDownList ID="ddl_kategoriler" runat="server" CssClass="metinKutu" ></asp:DropDownList>
+                <asp:DropDownList ID="ddl_kategoriler" runat="server" CssClass="metinKutu"></asp:DropDownList>
             </div>
             <div class="satir">
                 <label>Alıcı Mail Adresi</label><br />
@@ -50,7 +50,6 @@
                 <br />
                 <asp:Calendar ID="calendarAcilisTarihi" runat="server" OnSelectionChanged="calendarAcilisTarihi_SelectionChanged" Visible="false"></asp:Calendar>
                 <asp:Button ID="btnAcilisTarihSec" runat="server" Text="Açılış Tarihini Seç" OnClick="btnAcilisTarihSec_Click" />
-
             </div>
             <div class="satir">
                 <asp:LinkButton ID="lbtn_mektupEkle" runat="server" CssClass="islemButton" OnClick="lbtn_mektupEkle_Click1">Mektup Gönder</asp:LinkButton>

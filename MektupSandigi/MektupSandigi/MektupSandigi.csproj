@@ -416,6 +416,11 @@
     <Content Include="Default.aspx" />
     <Content Include="DestekTalepleri.aspx" />
     <Content Include="MektupYaz.aspx" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="SSS.aspx" />
     <Content Include="UyeGiris.aspx" />
     <Content Include="UyelikPanel\CSS\UyeEkranMaster.css" />
@@ -619,6 +624,8 @@
     <Content Include="ckeditor\skins\moono-lisa\readme.md" />
     <None Include="packages.config" />
     <Content Include="UyelikPanel\UyeEkran.Master" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

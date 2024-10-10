@@ -18,8 +18,6 @@ namespace MektupSandigi
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             u = (Uyeler)Session["uye"];
             if (u == null)
             {
@@ -29,14 +27,12 @@ namespace MektupSandigi
                 return;
             }
 
-            ddl_kategoriler.DataSource = vm.KategorileriListele();
-            ddl_kategoriler.DataTextField = "KategoriIsim";
-            ddl_kategoriler.DataValueField = "KategoriID";
-            ddl_kategoriler.DataBind(); 
-
             if (!IsPostBack)
             {
-                vm.KategorileriListele();
+                ddl_kategoriler.DataSource = vm.KategorileriListele();
+                ddl_kategoriler.DataTextField = "KategoriIsim";
+                ddl_kategoriler.DataValueField = "KategoriID";
+                ddl_kategoriler.DataBind();
             }
 
 
@@ -53,41 +49,42 @@ namespace MektupSandigi
         }
         protected void lbtn_mektupEkle_Click1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tb_baslik.Text) && !string.IsNullOrEmpty(tb_icerik.Text))
-            {
-                Mektup mek = new Mektup
-                {
-                    Baslik = tb_baslik.Text.Trim(),
-                    KategoriID = Convert.ToInt32(ddl_kategoriler.SelectedValue),
-                    KullaniciID = u.KullaniciID,
-                    AliciMail = tb_aliciMail.Text.Trim(),
-                    Icerik = tb_icerik.Text.Trim(),
-                    OlusturmaTarihi = DateTime.Now,
-                    GonderimTarihi = DateTime.TryParse(tb_gonderimTarihi.Text, out DateTime gonderimTarihi) ? gonderimTarihi : DateTime.Now,
-                    AcilisTarihi = DateTime.TryParse(tb_acilisTarihi.Text, out DateTime acilisTarihi) ? acilisTarihi : DateTime.Now,
-                    TeslimEdildiMi = false
-                };
+             if (!string.IsNullOrEmpty(tb_baslik.Text) && !string.IsNullOrEmpty(tb_icerik.Text))
+              {
+                  Mektup mek = new Mektup
+                  {
+                      Baslik = tb_baslik.Text.Trim(),
+                      KategoriID = Convert.ToInt32(ddl_kategoriler.SelectedValue),
+                      KullaniciID = u.KullaniciID,
+                      AliciMail = tb_aliciMail.Text.Trim(),
+                      Icerik = tb_icerik.Text.Trim(),
+                      OlusturmaTarihi = DateTime.Now,
+                      GonderimTarihi = DateTime.TryParse(tb_gonderimTarihi.Text, out DateTime gonderimTarihi) ? gonderimTarihi : DateTime.Now,
+                      AcilisTarihi = DateTime.TryParse(tb_acilisTarihi.Text, out DateTime acilisTarihi) ? acilisTarihi : DateTime.Now,
+                      TeslimEdildiMi = false
+                  };
 
-               
-                if (vm.MektupEkle(mek))
-                {
-                    lblSonuc.Text = "Mektup başarıyla gönderildi!";
-                    lblSonuc.ForeColor = System.Drawing.Color.Green;
-                    lblSonuc.Visible = true;
-                }
-                else
-                {
-                    lblSonuc.Text = "Mektup eklenirken bir hata oluştu.";
-                    lblSonuc.ForeColor = System.Drawing.Color.Red;
-                    lblSonuc.Visible = true;
-                }
-            }
-            else
-            {
-                lblSonuc.Text = "Başlık ve içerik boş olamaz.";
-                lblSonuc.ForeColor = System.Drawing.Color.Red;
-                lblSonuc.Visible = true;
-            }
+
+                  if (vm.MektupEkle(mek))
+                  {
+                      lblSonuc.Text = "Mektup başarıyla gönderildi!";
+                      lblSonuc.ForeColor = System.Drawing.Color.Green;
+                      lblSonuc.Visible = true;
+                  }
+                  else
+                  {
+                      lblSonuc.Text = "Mektup eklenirken bir hata oluştu.";
+                      lblSonuc.ForeColor = System.Drawing.Color.Red;
+                      lblSonuc.Visible = true;
+                  }
+              }
+              else
+              {
+                  lblSonuc.Text = "Başlık ve içerik boş olamaz.";
+                  lblSonuc.ForeColor = System.Drawing.Color.Red;
+                  lblSonuc.Visible = true;
+              }
+    
 
         }
         protected void calendarAcilisTarihi_SelectionChanged(object sender, EventArgs e)
