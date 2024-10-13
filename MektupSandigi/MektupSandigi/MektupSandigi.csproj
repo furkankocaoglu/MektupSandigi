@@ -415,6 +415,7 @@
     <Content Include="CSS\UyeOl.css" />
     <Content Include="Default.aspx" />
     <Content Include="DestekTalepleri.aspx" />
+    <Content Include="MektupGoruntule.aspx" />
     <Content Include="MektupYaz.aspx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -479,6 +480,13 @@
     </Compile>
     <Compile Include="DestekTalepleri.aspx.designer.cs">
       <DependentUpon>DestekTalepleri.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MektupGoruntule.aspx.cs">
+      <DependentUpon>MektupGoruntule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MektupGoruntule.aspx.designer.cs">
+      <DependentUpon>MektupGoruntule.aspx</DependentUpon>
     </Compile>
     <Compile Include="MektupYaz.aspx.cs">
       <DependentUpon>MektupYaz.aspx</DependentUpon>
@@ -651,6 +659,7 @@
     <Content Include="UyelikPanel\UyeEkran.Master" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
+    <None Include="UyelikPanel\.editorconfig" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

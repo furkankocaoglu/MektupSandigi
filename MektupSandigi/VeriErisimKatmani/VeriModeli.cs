@@ -423,7 +423,7 @@ namespace VeriErisimKatmani
                 komut.ExecuteNonQuery();
 
                 MailGonder(mektup.AliciMail.ToString(), mektup.Baslik.ToString(), mektup.Icerik.ToString());
-
+                
 
                 return true;
             }
@@ -627,7 +627,34 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        
+        public bool UyeYorumEkle(int kullaniciID, string yorumIcerik)
+        {
+            try
+            {
+                using (SqlConnection baglanti = new SqlConnection("YourConnectionStringHere"))
+                {
+                    using (SqlCommand komut = new SqlCommand())
+                    {
+                        komut.Connection = baglanti;
+                        komut.CommandText = "INSERT INTO YorumlarTable (KullaniciID, YorumIcerik, OlusturmaTarihi) VALUES (@kullaniciID, @yorumIcerik, GETDATE())";
+
+                        komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
+                        komut.Parameters.AddWithValue("@yorumIcerik", yorumIcerik);
+
+                        baglanti.Open();
+                        komut.ExecuteNonQuery();
+                    }
+                }
+                return true; 
+            }
+            catch (Exception ex)
+            {
+               
+                Console.WriteLine("Yorum eklenirken hata oluştu: " + ex.Message);
+                return false; 
+            }
+        }
+
 
         #endregion
     }

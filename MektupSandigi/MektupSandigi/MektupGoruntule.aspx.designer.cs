@@ -7,47 +7,56 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MektupSandigi.UyelikPanel
+namespace MektupSandigi
 {
 
 
-    public partial class YorumYaz
+    public partial class MektupGoruntule
     {
 
         /// <summary>
-        /// lblDurum control.
+        /// lblUyari control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDurum;
+        protected global::System.Web.UI.WebControls.Label lblUyari;
 
         /// <summary>
-        /// txtYorumIcerik control.
+        /// lblBaslik control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYorumIcerik;
+        protected global::System.Web.UI.WebControls.Label lblBaslik;
 
         /// <summary>
-        /// btnYorumEkle control.
+        /// lblIcerik control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnYorumEkle;
+        protected global::System.Web.UI.WebControls.Label lblIcerik;
 
         /// <summary>
-        /// lblSonuc control.
+        /// pnlMektup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSonuc;
+        protected global::System.Web.UI.WebControls.Panel pnlMektup;
+
+        /// <summary>
+        /// lblMektupIcerigi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMektupIcerigi;
     }
 }

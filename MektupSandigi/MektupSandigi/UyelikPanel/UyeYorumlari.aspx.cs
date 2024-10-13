@@ -18,12 +18,12 @@ namespace MektupSandigi.UyelikPanel
             {
                 if (Session["uye"] != null)
                 {
-                    int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID; // Kullanıcı ID'sini oturumdan alıyoruz.
-                    YorumlariGoster(kullaniciID); // Yorumları gösteren metodu çağırıyoruz.
+                    int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID; 
+                    YorumlariGoster(kullaniciID); 
                 }
                 else
                 {
-                    Response.Redirect("UyeGiris.aspx"); // Kullanıcı girişi yoksa giriş sayfasına yönlendir.
+                    Response.Redirect("UyeGiris.aspx"); 
                 }
             }
 
