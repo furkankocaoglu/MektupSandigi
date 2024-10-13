@@ -29,36 +29,44 @@ namespace MektupSandigi.UyelikPanel
             {
                 try
                 {
-                    
-                    Uyeler u = (Uyeler)Session["uye"]; 
-                    int kullaniciID = u.KullaniciID; 
+                    Uyeler u = (Uyeler)Session["uye"];
+                    int kullaniciID = u.KullaniciID;
 
-                    
-                    if (!string.IsNullOrEmpty(tb_baslik.Text) && !string.IsNullOrEmpty(tb_icerik.Text) && ddl_kategoriler.SelectedIndex != -1)
+                    if (!string.IsNullOrEmpty(tb_baslik.Text) &&
+                        !string.IsNullOrEmpty(tb_icerik.Text) &&
+                        ddl_kategoriler.SelectedIndex != -1)
                     {
-                        Mektup mek = new Mektup
+                        DateTime acilisTarihi;
+                        if (DateTime.TryParse(tb_gonderimTarihi.Text, out acilisTarihi)) 
                         {
-                            Baslik = tb_baslik.Text.Trim(),
-                            KategoriID = Convert.ToInt32(ddl_kategoriler.SelectedValue),
-                            KullaniciID = kullaniciID, 
-                            AliciMail = tb_aliciMail.Text.Trim(),
-                            Icerik = tb_icerik.Text.Trim(),
-                            OlusturmaTarihi = DateTime.Now,
-                            GonderimTarihi = DateTime.Now, 
-                            AcilisTarihi = DateTime.Now,
-                            TeslimEdildiMi = false
-                        };
+                            Mektup mek = new Mektup
+                            {
+                                Baslik = tb_baslik.Text.Trim(),
+                                KategoriID = Convert.ToInt32(ddl_kategoriler.SelectedValue),
+                                KullaniciID = kullaniciID,
+                                AliciMail = tb_aliciMail.Text.Trim(),
+                                Icerik = tb_icerik.Text.Trim(),
+                                OlusturmaTarihi = DateTime.Now,
+                                AcilisTarihi = acilisTarihi, 
+                                TeslimEdildiMi = false
+                            };
 
-                        
-                        if (vm.MektupEkle(mek))
-                        {
-                            lblSonuc.Text = "Mektup başarıyla gönderildi!";
-                            lblSonuc.ForeColor = System.Drawing.Color.Green;
-                            lblSonuc.Visible = true;
+                            if (vm.MektupEkle(mek))
+                            {
+                                lblSonuc.Text = "Mektup başarıyla gönderildi!";
+                                lblSonuc.ForeColor = System.Drawing.Color.Green;
+                                lblSonuc.Visible = true;
+                            }
+                            else
+                            {
+                                lblSonuc.Text = "Mektup eklenirken bir hata oluştu.";
+                                lblSonuc.ForeColor = System.Drawing.Color.Red;
+                                lblSonuc.Visible = true;
+                            }
                         }
                         else
                         {
-                            lblSonuc.Text = "Mektup eklenirken bir hata oluştu.";
+                            lblSonuc.Text = "Geçersiz açılış tarihi.";
                             lblSonuc.ForeColor = System.Drawing.Color.Red;
                             lblSonuc.Visible = true;
                         }
@@ -78,7 +86,6 @@ namespace MektupSandigi.UyelikPanel
                 }
                 catch (Exception ex)
                 {
-                    
                     lblSonuc.Text = "Bir hata oluştu: " + ex.Message;
                     lblSonuc.ForeColor = System.Drawing.Color.Red;
                     lblSonuc.Visible = true;
@@ -86,7 +93,6 @@ namespace MektupSandigi.UyelikPanel
             }
             else
             {
-                
                 lblSonuc.Text = "Öncelikle giriş yapmalısınız.";
                 lblSonuc.ForeColor = System.Drawing.Color.Red;
                 lblSonuc.Visible = true;

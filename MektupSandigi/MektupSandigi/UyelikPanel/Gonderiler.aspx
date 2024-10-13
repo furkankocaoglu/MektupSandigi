@@ -9,7 +9,7 @@
         <asp:BoundField DataField="Baslik" HeaderText="Başlık" />
         <asp:BoundField DataField="Icerik" HeaderText="İçerik" />
         <asp:BoundField DataField="AliciMail" HeaderText="Alıcı Mail" />
-        <asp:BoundField DataField="GonderimTarihi" HeaderText="Gönderim Tarihi" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
+        <asp:BoundField DataField="AcilisTarihi" HeaderText="Açılış Tarihi" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
         <asp:BoundField DataField="OlusturmaTarihi" HeaderText="Oluşturma Tarihi" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
     </Columns>
 </asp:GridView>

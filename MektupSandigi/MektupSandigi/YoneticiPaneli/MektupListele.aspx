@@ -16,7 +16,6 @@
                 <asp:BoundField DataField="Baslik" HeaderText="Başlık" />
                 <asp:BoundField DataField="Icerik" HeaderText="İçerik" />
                 <asp:BoundField DataField="AliciMail" HeaderText="Alıcı Mail" />
-                <asp:BoundField DataField="GonderimTarihi" HeaderText="Gönderim Tarihi" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="AcilisTarihi" HeaderText="Açılış Tarihi" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="TeslimEdildiMi" HeaderText="Teslim Edildi Mi?" DataFormatString="{0}" />
                 <asp:BoundField DataField="OlusturmaTarihi" HeaderText="Oluşturma Tarihi" DataFormatString="{0:yyyy-MM-dd}" />

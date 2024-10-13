@@ -39,13 +39,13 @@
             <asp:TextBox ID="tb_icerik" runat="server" TextMode="MultiLine" CssClass="metinKutu" Rows="20"></asp:TextBox>
         </div>
         <div class="satir">
-            <label>Gönderim Tarihi</label><br />
+            <label>Açılış Tarihi</label><br />
             <br />
             <asp:TextBox ID="tb_gonderimTarihi" runat="server" CssClass="tarihKutu" ReadOnly="true"></asp:TextBox>
             <br />
             <br />
             <asp:Calendar ID="calendarGonderimTarihi" runat="server" OnSelectionChanged="calendarGonderimTarihi_SelectionChanged" Visible="false"></asp:Calendar>
-            <asp:Button ID="btnTarihSec" runat="server" Text="Gönderim Tarihi Seç" OnClick="btnTarihSec_Click"/>
+            <asp:Button ID="btnTarihSec" runat="server" Text="Açılış Tarihi Seç" OnClick="btnTarihSec_Click"/>
         </div>
         <div class="satir">
             <asp:LinkButton ID="lbtn_mektupEkle" runat="server" CssClass="islemButton" OnClick="lbtn_mektupEkle_Click">Mektup Gönder</asp:LinkButton>

@@ -3,39 +3,33 @@
     margin: 0;
     padding: 0;
     background-color: white;
-   
 }
-
 
 .uyePanel {
-    background-color: #b5b4b4; 
-    padding: 20px; 
-    border-radius: 5px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-    margin: 20px; 
+    background-color: #b5b4b4;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
 }
 
- 
-    .uyePanel a {
-        display: inline-block; 
-        padding: 10px 15px; 
-        color: #333; 
-        text-decoration: none; 
-        margin: 5px; 
-        transition: background-color 0.3s; 
+.uyePanel a {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+    .uyePanel a:hover {
+        background-color: #007bff;
+        color: white;
     }
-
-        
-        .uyepanel a:hover {
-            background-color: #007bff; 
-            color: white; 
-        }
-
 
 #ContentPlaceHolder1 {
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 20px;
 }

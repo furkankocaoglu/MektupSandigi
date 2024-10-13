@@ -11,7 +11,7 @@ namespace MektupSandigi.UyelikPanel
 {
 
 
-    public partial class Talepler
+    public partial class OkunanMektuplar
     {
     }
 }

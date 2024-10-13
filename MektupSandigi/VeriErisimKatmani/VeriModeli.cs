@@ -406,8 +406,7 @@ namespace VeriErisimKatmani
         {
             try
             {
-
-                komut.CommandText = "INSERT INTO MektuplarTable (KullaniciID, KategoriID, Baslik, Icerik, AliciMail, GonderimTarihi, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi)  VALUES (@kullaniciID, @kategoriID, @baslik, @icerik, @aliciMail, @gonderimTarihi, @acilisTarihi, @teslimEdildiMi, @olusturmaTarihi)";
+                komut.CommandText = "INSERT INTO MektuplarTable (KullaniciID, KategoriID, Baslik, Icerik, AliciMail, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi) VALUES (@kullaniciID, @kategoriID, @baslik, @icerik, @aliciMail, @acilisTarihi, @teslimEdildiMi, @olusturmaTarihi)";
 
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@kullaniciID", mektup.KullaniciID);
@@ -415,20 +414,21 @@ namespace VeriErisimKatmani
                 komut.Parameters.AddWithValue("@baslik", mektup.Baslik);
                 komut.Parameters.AddWithValue("@icerik", mektup.Icerik);
                 komut.Parameters.AddWithValue("@aliciMail", mektup.AliciMail);
-                komut.Parameters.AddWithValue("@gonderimTarihi", mektup.GonderimTarihi);
                 komut.Parameters.AddWithValue("@acilisTarihi", mektup.AcilisTarihi);
                 komut.Parameters.AddWithValue("@teslimEdildiMi", mektup.TeslimEdildiMi);
-                komut.Parameters.AddWithValue("@olusturmaTarihi", mektup.OlusturmaTarihi);
+                komut.Parameters.AddWithValue("@olusturmaTarihi", DateTime.Now); // Şu anki tarih
+
                 baglanti.Open();
                 komut.ExecuteNonQuery();
 
-                MailGonder(mektup.AliciMail.ToString(), mektup.Baslik.ToString(), mektup.Icerik.ToString());
-                
+                int mektupID = GetLastInsertedMektupID();
+                MailGonder(mektup.AliciMail, mektup.Baslik, mektup.Icerik, mektupID);
 
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine("Mektup eklenirken bir hata oluştu: " + ex.Message);
                 return false;
             }
             finally
@@ -436,13 +436,24 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
+        private int GetLastInsertedMektupID()
+        {
+            int mektupID = 0;
+            string query = "SELECT SCOPE_IDENTITY()";
+            using (SqlCommand cmd = new SqlCommand(query, baglanti))
+            {
+                mektupID = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            return mektupID;
+        }
+
         public List<Mektup> GetMektuplar()
         {
             List<Mektup> mektuplar = new List<Mektup>();
 
             try
             {
-                komut = new SqlCommand("SELECT MektupID, KullaniciID, KategoriID, Baslik, Icerik, AliciMail, GonderimTarihi, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable", baglanti);
+                komut = new SqlCommand("SELECT MektupID, KullaniciID, KategoriID, Baslik, Icerik, AliciMail, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable", baglanti);
                 komut.Parameters.Clear();
                 baglanti.Open();
 
@@ -457,10 +468,9 @@ namespace VeriErisimKatmani
                         Baslik = okuyucu.GetString(3),
                         Icerik = okuyucu.GetString(4),
                         AliciMail = okuyucu.GetString(5),
-                        GonderimTarihi = okuyucu.GetDateTime(6),
-                        AcilisTarihi = okuyucu.GetDateTime(7),
-                        TeslimEdildiMi = okuyucu.GetBoolean(8),
-                        OlusturmaTarihi = okuyucu.GetDateTime(9)
+                        AcilisTarihi = okuyucu.GetDateTime(6),
+                        TeslimEdildiMi = okuyucu.GetBoolean(7),
+                        OlusturmaTarihi = okuyucu.GetDateTime(8)
                     };
                     mektuplar.Add(mktp);
                 }
@@ -476,7 +486,7 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        public void MailGonder(string aliciMail, string baslik, string icerik)
+        public void MailGonder(string aliciMail, string baslik, string icerik, int mektupID)
         {
             try
             {
@@ -491,20 +501,19 @@ namespace VeriErisimKatmani
                     Credentials = new NetworkCredential(gondericiMail, gondericiSifre),
                     EnableSsl = false
                 };
+                string link = $"https://localhost:44396/MektupGoruntule.aspx?mektupID={mektupID}";
+                string htmlIcerik = $"<html><body><h2>{baslik}</h2><p>{icerik}</p><p><a href='{link}'>Mektubu görüntülemek için buraya tıklayın</a></p></body></html>";
+                
 
 
                 MailMessage mail = new MailMessage
                 {
                     From = new MailAddress(gondericiMail),
                     Subject = baslik,
-                    Body = icerik,
+                    Body = htmlIcerik,
                     IsBodyHtml = true
                 };
-
-
                 mail.To.Add(aliciMail);
-
-
                 smtpClient.Send(mail);
                 Console.WriteLine("Mail başarıyla gönderildi.");
             }
@@ -593,7 +602,7 @@ namespace VeriErisimKatmani
 
             try
             {
-                komut.CommandText = "SELECT MektupID, KategoriID, Baslik, Icerik, AliciMail, GonderimTarihi, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable WHERE KullaniciID = @kullaniciID";
+                komut.CommandText = "SELECT MektupID, KategoriID, Baslik, Icerik, AliciMail,  AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable WHERE KullaniciID = @kullaniciID";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
 
@@ -608,10 +617,9 @@ namespace VeriErisimKatmani
                         Baslik = okuyucu.GetString(2),
                         Icerik = okuyucu.GetString(3),
                         AliciMail = okuyucu.GetString(4),
-                        GonderimTarihi = okuyucu.GetDateTime(5),
-                        AcilisTarihi = okuyucu.GetDateTime(6),
-                        TeslimEdildiMi = okuyucu.GetBoolean(7),
-                        OlusturmaTarihi = okuyucu.GetDateTime(8)
+                        AcilisTarihi = okuyucu.GetDateTime(5),
+                        TeslimEdildiMi = okuyucu.GetBoolean(6),
+                        OlusturmaTarihi = okuyucu.GetDateTime(7)
                     };
                     mektuplar.Add(mektup);
                 }
@@ -627,7 +635,7 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        public bool UyeYorumEkle(int kullaniciID, string yorumIcerik)
+        public bool UyeYorumEkle(int kullaniciID, string yorumIcerik, DateTime olusturmaTarihi)
         {
             try
             {
@@ -636,22 +644,22 @@ namespace VeriErisimKatmani
                     using (SqlCommand komut = new SqlCommand())
                     {
                         komut.Connection = baglanti;
-                        komut.CommandText = "INSERT INTO YorumlarTable (KullaniciID, YorumIcerik, OlusturmaTarihi) VALUES (@kullaniciID, @yorumIcerik, GETDATE())";
+                        komut.CommandText = "INSERT INTO YorumlarTable (KullaniciID, YorumIcerik, OlusturmaTarihi) VALUES (@kullaniciID, @yorumIcerik, @olusturmaTarihi)";
 
-                        komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
-                        komut.Parameters.AddWithValue("@yorumIcerik", yorumIcerik);
+                        komut.Parameters.Add("@kullaniciID", SqlDbType.Int).Value = kullaniciID;
+                        komut.Parameters.Add("@yorumIcerik", SqlDbType.NVarChar).Value = yorumIcerik;
+                        komut.Parameters.Add("@olusturmaTarihi", SqlDbType.DateTime).Value = olusturmaTarihi;
 
                         baglanti.Open();
                         komut.ExecuteNonQuery();
+                        return true;
                     }
                 }
-                return true; 
             }
             catch (Exception ex)
             {
-               
                 Console.WriteLine("Yorum eklenirken hata oluştu: " + ex.Message);
-                return false; 
+                return false;
             }
         }
 

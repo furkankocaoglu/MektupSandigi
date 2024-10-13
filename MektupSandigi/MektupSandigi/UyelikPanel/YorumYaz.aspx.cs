@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,55 +11,70 @@ namespace MektupSandigi.UyelikPanel
 {
     public partial class YorumYaz : System.Web.UI.Page
     {
+        VeriModeli vm = new VeriModeli();
         protected void Page_Load(object sender, EventArgs e)
         {
             
-
         }
+       
 
-        protected void btnYorumEkle_Click(object sender, EventArgs e)
+        protected void btnYorumEkle_Click1(object sender, EventArgs e)
         {
-
-           
-            if (Session["KullaniciID"] != null)
+            if (Session["uye"] != null)
             {
-                lblSonuc.Text = "Önce giriş yapmalısınız.";
-                lblSonuc.ForeColor = System.Drawing.Color.Red;
-                lblSonuc.Visible = true;
-                return; 
-            }
+                try
+                {
+                    Uyeler u = (Uyeler)Session["uye"];
+                    int kullaniciID = u.KullaniciID;
 
-            
-            int kullaniciID = Convert.ToInt32(Session["KullaniciID"]);
-            string yorumIcerik = txtYorumIcerik.Text.Trim();
+                    string yorumIcerik = tb_yorumIcerik.Text.Trim();
+                    DateTime olusturmaTarihi = DateTime.Now;
 
-            
-            if (string.IsNullOrEmpty(yorumIcerik))
-            {
-                lblSonuc.Text = "Yorum içeriği boş olamaz.";
-                lblSonuc.ForeColor = System.Drawing.Color.Red;
-                lblSonuc.Visible = true;
-                return;
-            }
+                    if (!string.IsNullOrEmpty(yorumIcerik))
+                    {
+                        using (SqlConnection baglanti = new SqlConnection("YourConnectionStringHere"))
+                        {
+                            using (SqlCommand komut = new SqlCommand())
+                            {
+                                komut.Connection = baglanti;
+                                komut.CommandText = "INSERT INTO YorumlarTable (KullaniciID, YorumIcerik, OlusturmaTarihi) VALUES (@kullaniciID, @yorumIcerik, @olusturmaTarihi)";
 
-            
-            VeriModeli vm = new VeriModeli();
-            bool sonuc = vm.UyeYorumEkle(kullaniciID, yorumIcerik);
+                                komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
+                                komut.Parameters.AddWithValue("@yorumIcerik", yorumIcerik);
+                                komut.Parameters.AddWithValue("@olusturmaTarihi", olusturmaTarihi);
 
-            
-            if (sonuc)
-            {
-                lblSonuc.Text = "Yorumunuz başarıyla eklendi.";
-                lblSonuc.ForeColor = System.Drawing.Color.Green;
-                txtYorumIcerik.Text = ""; 
+                                baglanti.Open();
+                                komut.ExecuteNonQuery();
+                            }
+                        }
+
+                        lblSonuc.Text = "Yorum başarıyla eklendi!";
+                        lblSonuc.ForeColor = System.Drawing.Color.Green;
+                    }
+                    else
+                    {
+                        lblSonuc.Text = "Yorum içeriği boş olamaz.";
+                        lblSonuc.ForeColor = System.Drawing.Color.Red;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblSonuc.Text = "Bir hata oluştu: " + ex.ToString();
+                    lblSonuc.ForeColor = System.Drawing.Color.Red;
+                }
             }
             else
             {
-                lblSonuc.Text = "Yorum eklenirken bir hata oluştu.";
+                lblSonuc.Text = "Öncelikle giriş yapmalısınız.";
                 lblSonuc.ForeColor = System.Drawing.Color.Red;
             }
-            lblSonuc.Visible = true; 
         }
     }
     
+
+    
+    
+
 }
+    
+    

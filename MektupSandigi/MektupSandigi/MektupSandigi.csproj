@@ -429,8 +429,8 @@
     <Content Include="UyelikPanel\Default.aspx" />
     <Content Include="UyelikPanel\Gonderiler.aspx" />
     <Content Include="UyelikPanel\mektupYaz.aspx" />
+    <Content Include="UyelikPanel\OkunanMektuplar.aspx" />
     <Content Include="UyelikPanel\Profil.aspx" />
-    <Content Include="UyelikPanel\Talepler.aspx" />
     <Content Include="UyelikPanel\UyeYorumlari.aspx" />
     <Content Include="UyelikPanel\YorumYaz.aspx" />
     <Content Include="UyeOl.aspx" />
@@ -531,19 +531,19 @@
     <Compile Include="UyelikPanel\mektupYaz.aspx.designer.cs">
       <DependentUpon>mektupYaz.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UyelikPanel\OkunanMektuplar.aspx.cs">
+      <DependentUpon>OkunanMektuplar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\OkunanMektuplar.aspx.designer.cs">
+      <DependentUpon>OkunanMektuplar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UyelikPanel\Profil.aspx.cs">
       <DependentUpon>Profil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UyelikPanel\Profil.aspx.designer.cs">
       <DependentUpon>Profil.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UyelikPanel\Talepler.aspx.cs">
-      <DependentUpon>Talepler.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UyelikPanel\Talepler.aspx.designer.cs">
-      <DependentUpon>Talepler.aspx</DependentUpon>
     </Compile>
     <Compile Include="UyelikPanel\UyeEkran.Master.cs">
       <DependentUpon>UyeEkran.Master</DependentUpon>

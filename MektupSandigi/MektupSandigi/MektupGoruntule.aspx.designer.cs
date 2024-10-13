@@ -15,13 +15,13 @@ namespace MektupSandigi
     {
 
         /// <summary>
-        /// lblUyari control.
+        /// mektupContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUyari;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mektupContainer;
 
         /// <summary>
         /// lblBaslik control.
@@ -40,23 +40,5 @@ namespace MektupSandigi
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIcerik;
-
-        /// <summary>
-        /// pnlMektup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMektup;
-
-        /// <summary>
-        /// lblMektupIcerigi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMektupIcerigi;
     }
 }

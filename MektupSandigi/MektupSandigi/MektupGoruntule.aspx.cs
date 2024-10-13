@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VeriErisimKatmani;
 
 namespace MektupSandigi
 {
@@ -15,62 +16,62 @@ namespace MektupSandigi
 
             if (!IsPostBack)
             {
-               
                 int mektupID;
                 if (int.TryParse(Request.QueryString["mektupID"], out mektupID))
                 {
-                    
-                    MektupGoster(mektupID);
-                }
-                else
-                {
-                    
-                    Response.Write("Geçersiz mektup ID.");
-                }
-            }
+                    Mektup mektup = GetMektupByID(mektupID); // Mektubu veritabanından al
 
-        }
-        private void MektupGoster(int mektupID)
-        {
-            string connectionString = "your_connection_string_here"; 
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string query = "SELECT Baslik, Icerik, GonderimTarihi FROM MektuplarTable WHERE MektupID = @MektupID";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@MektupID", mektupID);
-
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    string baslik = reader["Baslik"].ToString();
-                    string icerik = reader["Icerik"].ToString();
-                    DateTime gonderimTarihi = Convert.ToDateTime(reader["GonderimTarihi"]);
-
-                    
-                    if (DateTime.Now < gonderimTarihi)
+                    if (mektup != null)
                     {
-                        lblUyari.Text = "Bu mektup henüz açılmadı. Mektubun açılma tarihi: " + gonderimTarihi.ToString("dd MMMM yyyy HH:mm");
-                        lblUyari.Visible = true;
+                        if (mektup.AcilisTarihi <= DateTime.Now) // Açılış tarihi geçmişse
+                        {
+                            lblBaslik.Text = mektup.Baslik;
+                            lblIcerik.Text = mektup.Icerik;
+                        }
+                        else
+                        {
+                            lblBaslik.Text = "Bu mektup henüz açılamaz.";
+                            lblIcerik.Text = $"Açılış tarihi: {mektup.AcilisTarihi.ToString("g")}";
+                        }
                     }
                     else
                     {
-                        
-                        lblBaslik.Text = baslik;
-                        lblIcerik.Text = icerik;
-                        pnlMektup.Visible = true;
+                        lblBaslik.Text = "Mektup bulunamadı.";
                     }
                 }
-                else
-                {
-                    lblUyari.Text = "Mektup bulunamadı.";
-                    lblUyari.Visible = true;
-                }
-
-                reader.Close();
             }
+
+        }
+        private Mektup GetMektupByID(int mektupID)
+        {
+            // Veritabanından mektubu alacak kod burada olacak
+            // Örneğin:
+            using (SqlConnection baglanti = new SqlConnection("YourConnectionStringHere"))
+            {
+                SqlCommand komut = new SqlCommand("SELECT * FROM MektuplarTable WHERE MektupID = @mektupID", baglanti);
+                komut.Parameters.AddWithValue("@mektupID", mektupID);
+
+                baglanti.Open();
+                SqlDataReader reader = komut.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new Mektup
+                    {
+                        MektupID = (int)reader["MektupID"],
+                        KullaniciID = (int)reader["KullaniciID"],
+                        KategoriID = (int)reader["KategoriID"],
+                        Baslik = reader["Baslik"].ToString(),
+                        Icerik = reader["Icerik"].ToString(),
+                        AliciMail = reader["AliciMail"].ToString(),
+                        AcilisTarihi = (DateTime)reader["AcilisTarihi"],
+                        OlusturmaTarihi = (DateTime)reader["OlusturmaTarihi"],
+                        TeslimEdildiMi = (bool)reader["TeslimEdildiMi"]
+                    };
+                }
+            }
+            return null;
         }
     }
+    
 }
 

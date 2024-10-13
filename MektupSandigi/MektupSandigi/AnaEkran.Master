@@ -16,16 +16,18 @@
                 <a href="Default.aspx">Ana Sayfa </a>
                 <a href="MektupYaz.aspx">Mektup Yaz</a>
                 <a href="AnaSayfaYorumlar.aspx">Yorumlar</a>
-                <a href="UyeOl.aspx">Üye Ol</a>
-                <a href="UyeGiris.aspx">Giriş yap</a>
                 <a href="SSS.aspx">Sıkça Sorulan Sorular</a>
                 <a href="DestekTalepleri.aspx">Geliştirmemize Yardımcı Olun</a>
+                <div style="float: right;">
+                    <a href="UyeOl.aspx">Üye Ol</a>
+                    <a href="UyeGiris.aspx">Giriş yap</a>
+                </div>
             </asp:Panel>
-            </div>
-            <div>
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </form>
 </body>
 </html>

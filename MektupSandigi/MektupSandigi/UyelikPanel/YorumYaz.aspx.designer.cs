@@ -15,22 +15,22 @@ namespace MektupSandigi.UyelikPanel
     {
 
         /// <summary>
-        /// lblDurum control.
+        /// lblSonuc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDurum;
+        protected global::System.Web.UI.WebControls.Label lblSonuc;
 
         /// <summary>
-        /// txtYorumIcerik control.
+        /// tb_yorumIcerik control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYorumIcerik;
+        protected global::System.Web.UI.WebControls.TextBox tb_yorumIcerik;
 
         /// <summary>
         /// btnYorumEkle control.
@@ -40,14 +40,5 @@ namespace MektupSandigi.UyelikPanel
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnYorumEkle;
-
-        /// <summary>
-        /// lblSonuc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSonuc;
     }
 }

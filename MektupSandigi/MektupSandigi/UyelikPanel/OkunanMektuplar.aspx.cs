@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace MektupSandigi.UyelikPanel
 {
-    public partial class Talepler : System.Web.UI.Page
+    public partial class OkunanMektuplar : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -53,37 +53,43 @@ namespace MektupSandigi
         protected void calendarGonderimTarihi_SelectionChanged(object sender, EventArgs e)
         {
             tb_gonderimTarihi.Text = calendarGonderimTarihi.SelectedDate.ToString("yyyy-MM-dd");
-            calendarGonderimTarihi.Visible = false;
+            calendarGonderimTarihi.Visible = false; 
         }
         protected void lbtn_mektupEkle_Click1(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(tb_baslik.Text) && !string.IsNullOrEmpty(tb_icerik.Text) && !string.IsNullOrEmpty(ddl_kategoriler.Text))
             {
-               
-
-                Mektup mek = new Mektup
+                DateTime acilisTarihi;
+                if (DateTime.TryParse(tb_gonderimTarihi.Text, out acilisTarihi)) // TextBox'tan tarihi al
                 {
-                    Baslik = tb_baslik.Text.Trim(),
-                    KategoriID = Convert.ToInt32(ddl_kategoriler.SelectedValue),
-                    KullaniciID = u.KullaniciID,
-                    AliciMail = tb_aliciMail.Text.Trim(),
-                    Icerik = tb_icerik.Text.Trim(),
-                    OlusturmaTarihi = DateTime.Now,
-                    GonderimTarihi = DateTime.Now, // Seçilen tarih
-                    AcilisTarihi= DateTime.Now,
-                    TeslimEdildiMi = false
-                };
+                    Mektup mek = new Mektup
+                    {
+                        Baslik = tb_baslik.Text.Trim(),
+                        KategoriID = Convert.ToInt32(ddl_kategoriler.SelectedValue),
+                        KullaniciID = u.KullaniciID,
+                        AliciMail = tb_aliciMail.Text.Trim(),
+                        Icerik = tb_icerik.Text.Trim(),
+                        OlusturmaTarihi = DateTime.Now,
+                        AcilisTarihi = acilisTarihi, // Seçilen tarihi atama
+                        TeslimEdildiMi = false
+                    };
 
-               
-                if (vm.MektupEkle(mek))
-                {
-                    lblSonuc.Text = "Mektup başarıyla gönderildi!";
-                    lblSonuc.ForeColor = System.Drawing.Color.Green;
-                    lblSonuc.Visible = true;
+                    if (vm.MektupEkle(mek))
+                    {
+                        lblSonuc.Text = "Mektup başarıyla gönderildi!";
+                        lblSonuc.ForeColor = System.Drawing.Color.Green;
+                        lblSonuc.Visible = true;
+                    }
+                    else
+                    {
+                        lblSonuc.Text = "Mektup eklenirken bir hata oluştu.";
+                        lblSonuc.ForeColor = System.Drawing.Color.Red;
+                        lblSonuc.Visible = true;
+                    }
                 }
                 else
                 {
-                    lblSonuc.Text = "Mektup eklenirken bir hata oluştu.";
+                    lblSonuc.Text = "Geçersiz açılış tarihi.";
                     lblSonuc.ForeColor = System.Drawing.Color.Red;
                     lblSonuc.Visible = true;
                 }
@@ -96,6 +102,7 @@ namespace MektupSandigi
             }
 
         }
+
         
     }
 }

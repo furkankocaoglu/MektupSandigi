@@ -2,14 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div>
-            <h2>Mektup Detayları</h2>
-            <asp:Label ID="lblUyari" runat="server" ForeColor="Red" Visible="false"></asp:Label>
-            <asp:Label ID="lblBaslik" runat="server" Font-Bold="true"></asp:Label><br />
-            <asp:Label ID="lblIcerik" runat="server" TextMode="MultiLine" Width="600px" Height="400px" BackColor="#f9f9f9" BorderColor="#ccc" BorderStyle="Solid" BorderWidth="1px"></asp:Label><br />
-            <asp:Panel ID="pnlMektup" runat="server" Visible="false">
-                <h3>Mektup İçeriği:</h3>
-                <asp:Label ID="lblMektupIcerigi" runat="server"></asp:Label>
-            </asp:Panel>
-        </div>
+     < <div id="mektupContainer" runat="server">
+        <h2>Mektup Başlığı: <asp:Label ID="lblBaslik" runat="server"></asp:Label></h2>
+        <p><strong>İçerik:</strong></p>
+        <p><asp:Label ID="lblIcerik" runat="server"></asp:Label></p>
+    </div>
 </asp:Content>

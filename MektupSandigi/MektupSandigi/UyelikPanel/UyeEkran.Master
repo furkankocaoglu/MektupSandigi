@@ -24,11 +24,11 @@
         </div>
         <div class="altMenu">
             <a href="Profil.aspx">Profil</a>
-            <a href="mektupYaz.aspx">Yeni Mektup</a>
-            <a href="Gonderiler.aspx">Mektuplar</a>
-            <a href="UyeYorumlari.aspx">Yorumlar</a>
+            <a href="mektupYaz.aspx">Yeni Mektup Oluştur</a>
+            <a href="Gonderiler.aspx">Gönderilen Mektuplarım</a>
+            <a href="UyeYorumlari.aspx">Yorumlarım</a>
             <a href="YorumYaz.aspx">Yorum Yaz</a>
-            <a href="Talepler.aspx">Talep Görüntüle</a>
+            <a href="OkunanMektuplar.aspx">Görüntülenen Mektuplarım</a>
         </div>
         <div class="icerikTasiyici">
             <div class="icerik">
