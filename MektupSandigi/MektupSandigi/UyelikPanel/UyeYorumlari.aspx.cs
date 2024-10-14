@@ -43,5 +43,29 @@ namespace MektupSandigi.UyelikPanel
                 gvYorumlar.DataBind();
             }
         }
+        protected void gvYorumlar_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Sil")
+            {
+                int yorumID = Convert.ToInt32(e.CommandArgument);
+
+                // Yorum silme işlemi
+                try
+                {
+                    vm.YorumSilme(yorumID);
+                    lblHataMesaji.Text = "Yorum başarıyla silindi."; // Başarılı mesaj
+                }
+                catch
+                {
+                    lblHataMesaji.Text = "Yorum silme işlemi başarısız oldu."; // Hata mesajı
+                }
+
+                // Yorumları tekrar göster
+                int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID;
+                YorumlariGoster(kullaniciID);
+            }
+        }
     }
+    
+    
 }

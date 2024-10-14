@@ -635,33 +635,81 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        public bool UyeYorumEkle(int kullaniciID, string yorumIcerik, DateTime olusturmaTarihi)
+        public void YorumEkle(int kullaniciID, int mektupID, string yorumIcerik)
         {
             try
             {
-                using (SqlConnection baglanti = new SqlConnection("YourConnectionStringHere"))
-                {
-                    using (SqlCommand komut = new SqlCommand())
-                    {
-                        komut.Connection = baglanti;
-                        komut.CommandText = "INSERT INTO YorumlarTable (KullaniciID, YorumIcerik, OlusturmaTarihi) VALUES (@kullaniciID, @yorumIcerik, @olusturmaTarihi)";
+                komut.CommandText = "INSERT INTO YorumlarTable (KullaniciID, MektupID, YorumIcerik, OlusturmaTarihi) VALUES (@kullaniciID, @mektupID, @yorumIcerik, @olusturmaTarihi)";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
+                komut.Parameters.AddWithValue("@mektupID", mektupID);
+                komut.Parameters.AddWithValue("@yorumIcerik", yorumIcerik);
+                komut.Parameters.AddWithValue("@olusturmaTarihi", DateTime.Now);
 
-                        komut.Parameters.Add("@kullaniciID", SqlDbType.Int).Value = kullaniciID;
-                        komut.Parameters.Add("@yorumIcerik", SqlDbType.NVarChar).Value = yorumIcerik;
-                        komut.Parameters.Add("@olusturmaTarihi", SqlDbType.DateTime).Value = olusturmaTarihi;
-
-                        baglanti.Open();
-                        komut.ExecuteNonQuery();
-                        return true;
-                    }
-                }
+                baglanti.Open();
+                komut.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Yorum eklenirken hata oluştu: " + ex.Message);
-                return false;
+                
+                System.IO.File.AppendAllText("C:\\path_to_log\\HataLog.txt",
+                    DateTime.Now + ": " + ex.Message + Environment.NewLine);
+                throw;
+            }
+            finally
+            {
+                baglanti.Close(); 
             }
         }
+        public void YorumSilme(int id)
+        {
+            try
+            {
+                komut.CommandText = "DELETE FROM YorumlarTable WHERE YorumID = @id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                
+                System.IO.File.AppendAllText("C:\\path_to_log\\HataLog.txt",
+                    DateTime.Now + ": " + ex.Message + Environment.NewLine);
+                throw;
+            }
+            finally
+            {
+                baglanti.Close(); 
+            }
+        }
+        public void YorumDuzenle(int id, string yeniIcerik)
+        {
+            try
+            {
+                komut.CommandText = "UPDATE YorumlarTable SET YorumIcerik = @yeniIcerik WHERE YorumID = @id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@yeniIcerik", yeniIcerik);
+                komut.Parameters.AddWithValue("@id", id);
+
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                
+                System.IO.File.AppendAllText("C:\\path_to_log\\HataLog.txt",
+                    DateTime.Now + ": " + ex.Message + Environment.NewLine);
+                throw;
+            }
+            finally
+            {
+                baglanti.Close(); 
+            }
+        }
+
+
 
 
         #endregion

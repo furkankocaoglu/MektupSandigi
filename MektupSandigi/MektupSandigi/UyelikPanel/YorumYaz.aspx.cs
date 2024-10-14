@@ -14,62 +14,42 @@ namespace MektupSandigi.UyelikPanel
         VeriModeli vm = new VeriModeli();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["uye"] == null)
+            {
+                Response.Redirect("UyeGiris.aspx");
+            }
+
         }
        
 
-        protected void btnYorumEkle_Click1(object sender, EventArgs e)
+        protected void btnYorumEkle_Click(object sender, EventArgs e)
         {
-            if (Session["uye"] != null)
+            int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID;
+            int mektupID = 1; 
+
+            string yorumIcerik = txtYorumIcerik.Text.Trim();
+
+            if (!string.IsNullOrEmpty(yorumIcerik))
             {
                 try
                 {
-                    Uyeler u = (Uyeler)Session["uye"];
-                    int kullaniciID = u.KullaniciID;
-
-                    string yorumIcerik = tb_yorumIcerik.Text.Trim();
-                    DateTime olusturmaTarihi = DateTime.Now;
-
-                    if (!string.IsNullOrEmpty(yorumIcerik))
-                    {
-                        using (SqlConnection baglanti = new SqlConnection("YourConnectionStringHere"))
-                        {
-                            using (SqlCommand komut = new SqlCommand())
-                            {
-                                komut.Connection = baglanti;
-                                komut.CommandText = "INSERT INTO YorumlarTable (KullaniciID, YorumIcerik, OlusturmaTarihi) VALUES (@kullaniciID, @yorumIcerik, @olusturmaTarihi)";
-
-                                komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
-                                komut.Parameters.AddWithValue("@yorumIcerik", yorumIcerik);
-                                komut.Parameters.AddWithValue("@olusturmaTarihi", olusturmaTarihi);
-
-                                baglanti.Open();
-                                komut.ExecuteNonQuery();
-                            }
-                        }
-
-                        lblSonuc.Text = "Yorum başarıyla eklendi!";
-                        lblSonuc.ForeColor = System.Drawing.Color.Green;
-                    }
-                    else
-                    {
-                        lblSonuc.Text = "Yorum içeriği boş olamaz.";
-                        lblSonuc.ForeColor = System.Drawing.Color.Red;
-                    }
+                    vm.YorumEkle(kullaniciID, mektupID, yorumIcerik);
+                    lblSonuc.Text = "Yorum başarıyla eklendi!";
+                    txtYorumIcerik.Text = ""; 
                 }
-                catch (Exception ex)
+                catch
                 {
-                    lblSonuc.Text = "Bir hata oluştu: " + ex.ToString();
-                    lblSonuc.ForeColor = System.Drawing.Color.Red;
+                    lblSonuc.Text = "Yorum ekleme işlemi başarısız oldu.";
                 }
             }
             else
             {
-                lblSonuc.Text = "Öncelikle giriş yapmalısınız.";
-                lblSonuc.ForeColor = System.Drawing.Color.Red;
+                lblSonuc.Text = "Lütfen bir yorum girin.";
             }
         }
+
     }
+    
     
 
     
