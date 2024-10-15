@@ -19,40 +19,50 @@ namespace MektupSandigi
                 int mektupID;
                 if (int.TryParse(Request.QueryString["mektupID"], out mektupID))
                 {
-                    Mektup mektup = GetMektupByID(mektupID); // Mektubu veritabanından al
+                    Mektup mektup = GetMektupByID(mektupID); 
 
                     if (mektup != null)
                     {
-                        if (mektup.AcilisTarihi <= DateTime.Now) // Açılış tarihi geçmişse
+                       
+                        if (mektup.AcilisTarihi > DateTime.Now)
                         {
-                            lblBaslik.Text = mektup.Baslik;
-                            lblIcerik.Text = mektup.Icerik;
+                            lblBaslik.Text = "Mektup henüz açılamadı.";
+                            lblIcerik.Text = $"Mektup {mektup.AcilisTarihi.ToString("dd/MM/yyyy HH:mm")} tarihinde açılacaktır.";
                         }
                         else
                         {
-                            lblBaslik.Text = "Bu mektup henüz açılamaz.";
-                            lblIcerik.Text = $"Açılış tarihi: {mektup.AcilisTarihi.ToString("g")}";
+                           
+                            lblBaslik.Text = mektup.Baslik;
+                            lblIcerik.Text = mektup.Icerik;
                         }
                     }
                     else
                     {
                         lblBaslik.Text = "Mektup bulunamadı.";
+                        lblIcerik.Text = string.Empty;
                     }
+                }
+                else
+                {
+                    lblBaslik.Text = "Geçersiz mektup ID.";
+                    lblIcerik.Text = string.Empty;
                 }
             }
 
         }
         private Mektup GetMektupByID(int mektupID)
         {
-            // Veritabanından mektubu alacak kod burada olacak
-            // Örneğin:
-            using (SqlConnection baglanti = new SqlConnection("YourConnectionStringHere"))
+            string connectionString = "Server=localhost\\SQLEXPRESS;Database=MektupSandigi_DB;Integrated Security=True;";
+            
+
+            using (SqlConnection baglanti = new SqlConnection(connectionString))
             {
                 SqlCommand komut = new SqlCommand("SELECT * FROM MektuplarTable WHERE MektupID = @mektupID", baglanti);
                 komut.Parameters.AddWithValue("@mektupID", mektupID);
 
                 baglanti.Open();
                 SqlDataReader reader = komut.ExecuteReader();
+
                 if (reader.Read())
                 {
                     return new Mektup
@@ -69,7 +79,7 @@ namespace MektupSandigi
                     };
                 }
             }
-            return null;
+            return null; 
         }
     }
     

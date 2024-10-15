@@ -60,7 +60,7 @@ namespace MektupSandigi
             if (!string.IsNullOrEmpty(tb_baslik.Text) && !string.IsNullOrEmpty(tb_icerik.Text) && !string.IsNullOrEmpty(ddl_kategoriler.Text))
             {
                 DateTime acilisTarihi;
-                if (DateTime.TryParse(tb_gonderimTarihi.Text, out acilisTarihi)) // TextBox'tan tarihi al
+                if (DateTime.TryParse(tb_gonderimTarihi.Text, out acilisTarihi)) 
                 {
                     Mektup mek = new Mektup
                     {
@@ -70,7 +70,7 @@ namespace MektupSandigi
                         AliciMail = tb_aliciMail.Text.Trim(),
                         Icerik = tb_icerik.Text.Trim(),
                         OlusturmaTarihi = DateTime.Now,
-                        AcilisTarihi = acilisTarihi, // Seçilen tarihi atama
+                        AcilisTarihi = acilisTarihi, 
                         TeslimEdildiMi = false
                     };
 

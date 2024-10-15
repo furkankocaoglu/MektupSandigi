@@ -29,28 +29,28 @@ namespace MektupSandigi.UyelikPanel
             {
                 try
                 {
-                    Uyeler u = (Uyeler)Session["uye"];
-                    int kullaniciID = u.KullaniciID;
-
+                    Uyeler u = (Uyeler)Session["uye"]; 
                     if (!string.IsNullOrEmpty(tb_baslik.Text) &&
                         !string.IsNullOrEmpty(tb_icerik.Text) &&
-                        ddl_kategoriler.SelectedIndex != -1)
+                        ddl_kategoriler.SelectedIndex != -1) 
                     {
                         DateTime acilisTarihi;
-                        if (DateTime.TryParse(tb_gonderimTarihi.Text, out acilisTarihi)) 
+                        
+                        if (DateTime.TryParse(tb_gonderimTarihi.Text, out acilisTarihi))
                         {
                             Mektup mek = new Mektup
                             {
                                 Baslik = tb_baslik.Text.Trim(),
                                 KategoriID = Convert.ToInt32(ddl_kategoriler.SelectedValue),
-                                KullaniciID = kullaniciID,
+                                KullaniciID = u.KullaniciID, // Kullanıcı ID'si
                                 AliciMail = tb_aliciMail.Text.Trim(),
                                 Icerik = tb_icerik.Text.Trim(),
                                 OlusturmaTarihi = DateTime.Now,
-                                AcilisTarihi = acilisTarihi, 
+                                AcilisTarihi = acilisTarihi,
                                 TeslimEdildiMi = false
                             };
 
+                            
                             if (vm.MektupEkle(mek))
                             {
                                 lblSonuc.Text = "Mektup başarıyla gönderildi!";

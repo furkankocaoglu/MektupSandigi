@@ -406,7 +406,10 @@ namespace VeriErisimKatmani
         {
             try
             {
-                komut.CommandText = "INSERT INTO MektuplarTable (KullaniciID, KategoriID, Baslik, Icerik, AliciMail, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi) VALUES (@kullaniciID, @kategoriID, @baslik, @icerik, @aliciMail, @acilisTarihi, @teslimEdildiMi, @olusturmaTarihi)";
+                komut.CommandText = @"
+            INSERT INTO MektuplarTable (KullaniciID, KategoriID, Baslik, Icerik, AliciMail, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi) 
+            OUTPUT INSERTED.MektupID 
+            VALUES (@kullaniciID, @kategoriID, @baslik, @icerik, @aliciMail, @acilisTarihi, @teslimEdildiMi, @olusturmaTarihi)";
 
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@kullaniciID", mektup.KullaniciID);
@@ -416,13 +419,12 @@ namespace VeriErisimKatmani
                 komut.Parameters.AddWithValue("@aliciMail", mektup.AliciMail);
                 komut.Parameters.AddWithValue("@acilisTarihi", mektup.AcilisTarihi);
                 komut.Parameters.AddWithValue("@teslimEdildiMi", mektup.TeslimEdildiMi);
-                komut.Parameters.AddWithValue("@olusturmaTarihi", DateTime.Now); // Şu anki tarih
+                komut.Parameters.AddWithValue("@olusturmaTarihi", DateTime.Now); 
 
                 baglanti.Open();
-                komut.ExecuteNonQuery();
+                int mektupID = (int)komut.ExecuteScalar(); 
 
-                int mektupID = GetLastInsertedMektupID();
-                MailGonder(mektup.AliciMail, mektup.Baslik, mektup.Icerik, mektupID);
+                MailGonder(mektup.AliciMail, mektup.Baslik, mektup.Icerik, mektupID, mektup.AcilisTarihi);
 
                 return true;
             }
@@ -436,16 +438,47 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        private int GetLastInsertedMektupID()
+        private Mektup GetMektupByID(int mektupID)
         {
-            int mektupID = 0;
-            string query = "SELECT SCOPE_IDENTITY()";
-            using (SqlCommand cmd = new SqlCommand(query, baglanti))
+            Mektup mektup = null;
+            string connectionString = "Server=localhost;Database=MektupSandigi_DB;Integrated Security=True;"; 
+
+            using (SqlConnection baglanti = new SqlConnection(connectionString))
             {
-                mektupID = Convert.ToInt32(cmd.ExecuteScalar());
+                SqlCommand komut = new SqlCommand("SELECT * FROM MektuplarTable WHERE MektupID = @mektupID", baglanti);
+                komut.Parameters.AddWithValue("@mektupID", mektupID);
+
+                try
+                {
+                    baglanti.Open();
+                    using (SqlDataReader reader = komut.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            mektup = new Mektup
+                            {
+                                MektupID = (int)reader["MektupID"],
+                                KullaniciID = (int)reader["KullaniciID"],
+                                KategoriID = (int)reader["KategoriID"],
+                                Baslik = reader["Baslik"].ToString(),
+                                Icerik = reader["Icerik"].ToString(),
+                                AliciMail = reader["AliciMail"].ToString(),
+                                AcilisTarihi = (DateTime)reader["AcilisTarihi"],
+                                OlusturmaTarihi = (DateTime)reader["OlusturmaTarihi"],
+                                TeslimEdildiMi = (bool)reader["TeslimEdildiMi"]
+                            };
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Mektup alınırken bir hata oluştu: " + ex.Message);
+                }
             }
-            return mektupID;
+
+            return mektup;
         }
+
 
         public List<Mektup> GetMektuplar()
         {
@@ -486,7 +519,7 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        public void MailGonder(string aliciMail, string baslik, string icerik, int mektupID)
+        public void MailGonder(string aliciMail, string baslik, string icerik, int mektupID, DateTime acilisTarihi)
         {
             try
             {
@@ -502,9 +535,15 @@ namespace VeriErisimKatmani
                     EnableSsl = false
                 };
                 string link = $"https://localhost:44396/MektupGoruntule.aspx?mektupID={mektupID}";
-                string htmlIcerik = $"<html><body><h2>{baslik}</h2><p>{icerik}</p><p><a href='{link}'>Mektubu görüntülemek için buraya tıklayın</a></p></body></html>";
-                
-
+                string htmlIcerik;
+                if (acilisTarihi > DateTime.Now)
+                {
+                    htmlIcerik = $"<html><body><h2>{baslik}</h2><p>Mektup {acilisTarihi.ToString("dd/MM/yyyy HH:mm")} tarihinde açılacaktır.</p><p><a href='{link}'>Mektubu görüntülemek için buraya tıklayın</a></p></body></html>";
+                }
+                else
+                {
+                    htmlIcerik = $"<html><body><h2>{baslik}</h2><p>{icerik}</p><p><a href='{link}'>Mektubu görüntülemek için buraya tıklayın</a></p></body></html>";
+                }
 
                 MailMessage mail = new MailMessage
                 {
