@@ -121,18 +121,175 @@ namespace VeriErisimKatmani
         }
 
 
+        public List<Kategori> KategoriListele(bool silinmis)
+        {
+            List<Kategori> kategoriler = new List<Kategori>();
+
+            try
+            {
+                komut.CommandText = "SELECT KategoriID, KategoriIsim, Durum, Silinmis FROM KategorilerTable WHERE Silinmis=@silinmis";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@silinmis", silinmis);
+                baglanti.Open();
+                SqlDataReader reader = komut.ExecuteReader();
+                while (reader.Read())
+                {
+                    Kategori kat = new Kategori();
+                    kat.KategoriID = reader.GetInt32(0);
+                    kat.KategoriIsim = reader.GetString(1);
+                    kat.Durum = reader.GetBoolean(2);
+                    kat.Silinmis = reader.GetBoolean(3);
+                    kategoriler.Add(kat);
+                }
+                return kategoriler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public List<Kategori> KategoriListele(bool silinmis, bool durum)
+        {
+            List<Kategori> kategoriler = new List<Kategori>();
+
+            try
+            {
+                komut.CommandText = "SELECT KategoriID, KategoriIsim, Durum, Silinmis FROM KategorilerTable WHERE Silinmis=@silinmis AND Durum =@durum";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@silinmis", silinmis);
+                komut.Parameters.AddWithValue("@durum", durum);
+                baglanti.Open();
+                SqlDataReader reader = komut.ExecuteReader();
+                while (reader.Read())
+                {
+                    Kategori kat = new Kategori();
+                    kat.KategoriID = reader.GetInt32(0);
+                    kat.KategoriIsim = reader.GetString(1);
+                    kat.Durum = reader.GetBoolean(2);
+                    kat.Silinmis = reader.GetBoolean(3);
+                    kategoriler.Add(kat);
+                }
+                return kategoriler;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
         public void KategoriSilHardDelete(int id)
         {
             try
             {
-
-                komut.CommandText = "DELETE FROM KategorilerTable WHERE KategoriID = @id";
+                komut.CommandText = "DELETE FROM KategorilerTable WHERE KategoriID=@id";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", id);
                 baglanti.Open();
                 komut.ExecuteNonQuery();
             }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
 
+        public void KategoriSil(int id)
+        {
+            try
+            {
+                komut.CommandText = "UPDATE KategorilerTable SET Silinmis = 1 WHERE KategoriID=@id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Hata: {ex.Message}");
+                
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public void KategoriDurumDegistir(int id)
+        {
+            try
+            {
+                komut.CommandText = "SELECT Durum FROM KategorilerTable WHERE KategoriID = @id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+                baglanti.Open();
+                bool durum = Convert.ToBoolean(komut.ExecuteScalar());
+                komut.CommandText = "UPDATE KategorilerTable SET Durum=@durum WHERE KategoriID = @id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@durum", !durum);
+                komut.Parameters.AddWithValue("@id", id);
+                komut.ExecuteNonQuery();
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public Kategori KategoriGetir(int id)
+        {
+            try
+            {
+                komut.CommandText = "SELECT KategoriID, KategoriIsim, Durum, Silinmis FROM KategorilerTable WHERE KategoriID=@id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+                baglanti.Open();
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                Kategori kat = new Kategori();
+
+                while (okuyucu.Read())
+                {
+                    kat.KategoriID = okuyucu.GetInt32(0);
+                    kat.KategoriIsim = okuyucu.GetString(1);
+                    kat.Durum = okuyucu.GetBoolean(2);
+                    kat.Silinmis = okuyucu.GetBoolean(3);
+                }
+                return kat;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public bool KategoriGuncelle(Kategori k)
+        {
+            try
+            {
+                komut.CommandText = "UPDATE KategorilerTable SET KategoriIsim=@isim, Durum=@durum WHERE KategoriID=@id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", k.KategoriID);
+                komut.Parameters.AddWithValue("@isim", k.KategoriIsim);
+                komut.Parameters.AddWithValue("@durum", k.Durum);
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
             finally
             {
                 baglanti.Close();
@@ -437,46 +594,6 @@ namespace VeriErisimKatmani
             {
                 baglanti.Close();
             }
-        }
-        private Mektup GetMektupByID(int mektupID)
-        {
-            Mektup mektup = null;
-            string connectionString = "Server=localhost;Database=MektupSandigi_DB;Integrated Security=True;"; 
-
-            using (SqlConnection baglanti = new SqlConnection(connectionString))
-            {
-                SqlCommand komut = new SqlCommand("SELECT * FROM MektuplarTable WHERE MektupID = @mektupID", baglanti);
-                komut.Parameters.AddWithValue("@mektupID", mektupID);
-
-                try
-                {
-                    baglanti.Open();
-                    using (SqlDataReader reader = komut.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            mektup = new Mektup
-                            {
-                                MektupID = (int)reader["MektupID"],
-                                KullaniciID = (int)reader["KullaniciID"],
-                                KategoriID = (int)reader["KategoriID"],
-                                Baslik = reader["Baslik"].ToString(),
-                                Icerik = reader["Icerik"].ToString(),
-                                AliciMail = reader["AliciMail"].ToString(),
-                                AcilisTarihi = (DateTime)reader["AcilisTarihi"],
-                                OlusturmaTarihi = (DateTime)reader["OlusturmaTarihi"],
-                                TeslimEdildiMi = (bool)reader["TeslimEdildiMi"]
-                            };
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Mektup alınırken bir hata oluştu: " + ex.Message);
-                }
-            }
-
-            return mektup;
         }
 
 

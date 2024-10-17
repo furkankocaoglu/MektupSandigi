@@ -42,7 +42,7 @@ namespace MektupSandigi.UyelikPanel
                             {
                                 Baslik = tb_baslik.Text.Trim(),
                                 KategoriID = Convert.ToInt32(ddl_kategoriler.SelectedValue),
-                                KullaniciID = u.KullaniciID, // Kullanıcı ID'si
+                                KullaniciID = u.KullaniciID, 
                                 AliciMail = tb_aliciMail.Text.Trim(),
                                 Icerik = tb_icerik.Text.Trim(),
                                 OlusturmaTarihi = DateTime.Now,

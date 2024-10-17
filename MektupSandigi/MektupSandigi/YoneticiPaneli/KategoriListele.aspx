@@ -9,14 +9,20 @@
     </div>
     <div class="tabloTasiyici">
         <div>
-            <asp:GridView ID="gv_Kategoriler" runat="server" CssClass="gv-style" AutoGenerateColumns="False" OnRowCommand="gv_Kategoriler_RowCommand">
-                <Columns>
-                    <asp:BoundField DataField="KategoriID" HeaderText="Kategori No " />
-                    <asp:BoundField DataField="KategoriIsim" HeaderText="Kategori İsim" />
-                    <asp:ButtonField CommandName="Sil" Text="Sil" ButtonType="Button" />
-                </Columns>
-            </asp:GridView>
-        </div>
+        <asp:GridView ID="gv_Kategoriler" runat="server" CssClass="gv-style" AutoGenerateColumns="True" OnRowCommand="gv_Kategoriler_RowCommand1">
+            <Columns>
+                <asp:BoundField DataField="KategoriID" HeaderText="Kategori No" />
+                <asp:BoundField DataField="KategoriIsim" HeaderText="Kategori İsim" />
+                <asp:TemplateField HeaderText="İşlemler">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnSil" runat="server" CommandName="Sil" CommandArgument='<%# Eval("KategoriID") %>' Text="Sil" />
+                        <asp:LinkButton ID="btnDurum" runat="server" CommandName="Durum" CommandArgument='<%# Eval("KategoriID") %>' Text="Değiştir" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <AlternatingRowStyle CssClass="alternate" />
+        </asp:GridView>
     </div>
+</div>
 </asp:Content>
 

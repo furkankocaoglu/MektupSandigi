@@ -14,28 +14,34 @@ namespace MektupSandigi.YoneticiPaneli
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                KategorileriListele(); 
-            }
+            gv_Kategoriler.DataSource = vm.KategoriListele(false);
+            gv_Kategoriler.DataBind();
 
         }
-        private void KategorileriListele()
-        {
-            gv_Kategoriler.DataSource = vm.KategorileriListele(); 
-            gv_Kategoriler.DataBind(); 
-        }
 
-        protected void gv_Kategoriler_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gv_Kategoriler_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "sil")
+            if (e.CommandArgument != null && e.CommandArgument is string)
             {
-                int kategoriId = Convert.ToInt32(e.CommandArgument);
-                vm.KategoriSilHardDelete(kategoriId); 
-                KategorileriListele(); 
+                int id;
+                if (int.TryParse(e.CommandArgument.ToString(), out id))
+                {
+                    if (e.CommandName == "Sil")
+                    {
+                        vm.KategoriSil(id);
+                    }
+                    else if (e.CommandName == "Durum")
+                    {
+                        vm.KategoriDurumDegistir(id);
+                    }
+
+                    // Listeyi güncelle
+                    vm.KategorileriListele();
+                }
             }
         }
     }
+    
 
 }
 
