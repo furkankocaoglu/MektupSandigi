@@ -16,10 +16,14 @@ namespace MektupSandigi.YoneticiPaneli
         {
             if (!IsPostBack) 
             {
-                gv_Uyeler.DataSource = vm.UyeListele(false);
-                gv_Uyeler.DataBind();
+                BindData();
             }
 
+        }
+        private void BindData()
+        {
+            gv_Uyeler.DataSource = vm.UyeListele(); 
+            gv_Uyeler.DataBind(); 
         }
 
         protected void gv_Uyeler_RowCommand1(object sender, GridViewCommandEventArgs e)
@@ -31,18 +35,19 @@ namespace MektupSandigi.YoneticiPaneli
                 {
                     if (e.CommandName == "Sil")
                     {
-                        vm.UyeSil(id);
+                        vm.UyeSil(id); 
                     }
                     else if (e.CommandName == "Durum")
                     {
-                        vm.UyeDurumDegistir(id);
+                        vm.UyeDurumDegistir(id); 
                     }
 
-                    gv_Uyeler.DataSource = vm.UyeListele(false);
-                    gv_Uyeler.DataBind();
+                    
+                    BindData(); 
                 }
             }
-
         }
+
     }
+    
 }

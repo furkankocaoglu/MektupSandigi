@@ -14,11 +14,17 @@ namespace MektupSandigi.YoneticiPaneli
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            gv_Kategoriler.DataSource = vm.KategoriListele(false);
-            gv_Kategoriler.DataBind();
+            if (!IsPostBack) 
+            {
+                BindData();
+            }
 
         }
-
+        private void BindData()
+        {
+            gv_Kategoriler.DataSource = vm.KategoriListele(false);
+            gv_Kategoriler.DataBind();
+        }
         protected void gv_Kategoriler_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandArgument != null && e.CommandArgument is string)
@@ -35,11 +41,12 @@ namespace MektupSandigi.YoneticiPaneli
                         vm.KategoriDurumDegistir(id);
                     }
 
-                    // Listeyi güncelle
-                    vm.KategorileriListele();
+                    
+                    BindData(); 
                 }
             }
         }
+        
     }
     
 
