@@ -300,24 +300,26 @@ namespace VeriErisimKatmani
         #endregion
 
         #region üyeler metodu
-        public List<Uyeler> TumUyeleriGetir()
+        public List<Uyeler> UyeListele()
         {
             List<Uyeler> uyeler = new List<Uyeler>();
+
             try
             {
-                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum FROM KullanicilarTable";
+                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum, Silinmis FROM KullanicilarTable ";
                 komut.Parameters.Clear();
                 baglanti.Open();
-                SqlDataReader okuyucu = komut.ExecuteReader();
-                while (okuyucu.Read())
+                SqlDataReader reader = komut.ExecuteReader();
+                while (reader.Read())
                 {
                     Uyeler u = new Uyeler();
-                    u.KullaniciID = okuyucu.GetInt32(0);
-                    u.KullaniciAdi = okuyucu.GetString(1);
-                    u.Mail = okuyucu.GetString(2);
-                    u.Sifre = okuyucu.GetString(3);
-                    u.OlusturmaTarihi = okuyucu.GetDateTime(4);
-                    u.Durum = okuyucu.GetBoolean(5);
+                    u.KullaniciID = reader.GetInt32(0);
+                    u.KullaniciAdi = reader.GetString(1);
+                    u.Mail = reader.GetString(2);
+                    u.Sifre = reader.GetString(3);
+                    u.OlusturmaTarihi = reader.GetDateTime(4);
+                    u.Durum = reader.GetBoolean(5);
+                    u.Silinmis = reader.GetBoolean(6);
                     uyeler.Add(u);
                 }
                 return uyeler;
@@ -380,6 +382,186 @@ namespace VeriErisimKatmani
             catch
             {
                 return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public List<Uyeler> UyeListele(bool silinmis)
+        {
+            List<Uyeler> Kullanicilar = new List<Uyeler>();
+
+            try
+            {
+                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum, Silinmis FROM KullanicilarTable WHERE Silinmis=@silinmis";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@silinmis", silinmis);
+                baglanti.Open();
+                SqlDataReader reader = komut.ExecuteReader();
+                while (reader.Read())
+                {
+                    Uyeler uye = new Uyeler();
+                    uye.KullaniciID = reader.GetInt32(0);
+                    uye.KullaniciAdi = reader.GetString(1);
+                    uye.Mail = reader.GetString(2);
+                    uye.Sifre = reader.GetString(3);
+                    uye.OlusturmaTarihi = reader.GetDateTime(4);
+                    uye.Durum = reader.GetBoolean(5);
+                    uye.Silinmis = reader.GetBoolean(6);
+                    Kullanicilar.Add(uye);
+                }
+                return Kullanicilar;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public List<Uyeler> UyeListele(bool silinmis, bool durum)
+        {
+            List<Uyeler> Kullanicilar = new List<Uyeler>();
+
+            try
+            {
+                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum, Silinmis FROM KullanicilarTable WHERE Silinmis=@silinmis AND Durum =@durum";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@silinmis", silinmis);
+                komut.Parameters.AddWithValue("@durum", durum);
+                baglanti.Open();
+                SqlDataReader reader = komut.ExecuteReader();
+                while (reader.Read())
+                {
+                    Uyeler uye = new Uyeler();
+                    uye.KullaniciID = reader.GetInt32(0);
+                    uye.KullaniciAdi = reader.GetString(1);
+                    uye.Mail = reader.GetString(2);
+                    uye.Sifre = reader.GetString(3);
+                    uye.OlusturmaTarihi = reader.GetDateTime(4);
+                    uye.Durum = reader.GetBoolean(5);
+                    uye.Silinmis = reader.GetBoolean(6);
+                    Kullanicilar.Add(uye);
+                }
+                return Kullanicilar;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public void UyeSilHardDelete(int id)
+        {
+            try
+            {
+                komut.CommandText = "DELETE FROM KullanicilarTable WHERE KullaniciID=@id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public void UyeSil(int id)
+        {
+            try
+            {
+                komut.CommandText = "UPDATE KullanicilarTable SET Silinmis = 1 WHERE KullaniciID=@id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Hata: {ex.Message}");
+
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public void UyeDurumDegistir(int id)
+        {
+            try
+            {
+                komut.CommandText = "SELECT Durum FROM KullanicilarTable WHERE KullaniciID = @id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+                baglanti.Open();
+                bool durum = Convert.ToBoolean(komut.ExecuteScalar());
+                komut.CommandText = "UPDATE KullanicilarTable SET Durum=@durum WHERE KullaniciID = @id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@durum", !durum);
+                komut.Parameters.AddWithValue("@id", id);
+                komut.ExecuteNonQuery();
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public Uyeler UyeGetir(int id)
+        {
+            try
+            {
+                komut.CommandText = "SELECT KullaniciID, KullaniciAdi, Durum, Silinmis FROM KullanicilarTable WHERE KullaniciID=@id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+                baglanti.Open();
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                Uyeler uye = new Uyeler();
+
+                while (okuyucu.Read())
+                {
+                    uye.KullaniciID = okuyucu.GetInt32(0);
+                    uye.KullaniciAdi = okuyucu.GetString(1);
+                    uye.Durum = okuyucu.GetBoolean(2);
+                    uye.Silinmis = okuyucu.GetBoolean(3);
+                }
+                return uye;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public bool UyeGuncelle(Uyeler u)
+        {
+            try
+            {
+                komut.CommandText = "UPDATE KullanicilarTable SET KullaniciAdi=@isim, Durum=@durum WHERE KullaniciID=@id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", u.KullaniciID);
+                komut.Parameters.AddWithValue("@isim", u.KullaniciAdi);
+                komut.Parameters.AddWithValue("@durum", u.Durum);
+                baglanti.Open();
+                komut.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
             }
             finally
             {

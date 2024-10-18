@@ -14,21 +14,35 @@ namespace MektupSandigi.YoneticiPaneli
         VeriModeli vm = new VeriModeli();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!IsPostBack) 
             {
-                TumUyeleriGetir();
+                gv_Uyeler.DataSource = vm.UyeListele(false);
+                gv_Uyeler.DataBind();
             }
 
         }
-        private void TumUyeleriGetir()
-        {
-            gv_Uyeler.DataSource = vm.TumUyeleriGetir();
-            gv_Uyeler.DataBind();
-        }
-        protected void gv_Uyeler_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            
-        }
 
+        protected void gv_Uyeler_RowCommand1(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandArgument != null && e.CommandArgument is string)
+            {
+                int id;
+                if (int.TryParse(e.CommandArgument.ToString(), out id))
+                {
+                    if (e.CommandName == "Sil")
+                    {
+                        vm.UyeSil(id);
+                    }
+                    else if (e.CommandName == "Durum")
+                    {
+                        vm.UyeDurumDegistir(id);
+                    }
+
+                    gv_Uyeler.DataSource = vm.UyeListele(false);
+                    gv_Uyeler.DataBind();
+                }
+            }
+
+        }
     }
 }
