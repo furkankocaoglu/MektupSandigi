@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <h1>Sıkça Sorulan Sorular (SSS)</h1>
+        <h1>Sıkça Sorulan Sorular</h1>
         <ul>
             <li><strong>Mektup Sandığı nedir?</strong><br />
                 Mektup Sandığı, kullanıcıların kendilerine veya başkalarına gelecekte gönderilecek mektuplar yazabilmelerini sağlayan bir platformdur. Mektuplar, belirlenen tarihte otomatik olarak açılır ve kullanıcıya teslim edilir.</li>

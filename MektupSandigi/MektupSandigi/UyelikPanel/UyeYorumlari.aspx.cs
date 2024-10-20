@@ -18,12 +18,12 @@ namespace MektupSandigi.UyelikPanel
             {
                 if (Session["uye"] != null)
                 {
-                    int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID; 
-                    YorumlariGoster(kullaniciID); 
+                    int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID;
+                    YorumlariGoster(kullaniciID);
                 }
                 else
                 {
-                    Response.Redirect("UyeGiris.aspx"); 
+                    Response.Redirect("UyeGiris.aspx");
                 }
             }
 
@@ -43,26 +43,27 @@ namespace MektupSandigi.UyelikPanel
                 gvYorumlar.DataBind();
             }
         }
-        protected void gvYorumlar_RowCommand(object sender, GridViewCommandEventArgs e)
+
+        protected void gvYorumlar_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Sil")
             {
                 int yorumID = Convert.ToInt32(e.CommandArgument);
 
-                // Yorum silme işlemi
                 try
                 {
-                    vm.YorumSilme(yorumID);
-                    lblHataMesaji.Text = "Yorum başarıyla silindi."; // Başarılı mesaj
+                    vm.YorumSil(yorumID);
+                    lblHataMesaji.Text = "Yorum başarıyla silindi.";
+
+                    
+                    int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID;
+                    YorumlariGoster(kullaniciID);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    lblHataMesaji.Text = "Yorum silme işlemi başarısız oldu."; // Hata mesajı
+                    lblHataMesaji.Text = "Yorum silme işlemi sırasında bir hata oluştu: " + ex.Message;
                 }
 
-                // Yorumları tekrar göster
-                int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID;
-                YorumlariGoster(kullaniciID);
             }
         }
     }

@@ -15,13 +15,13 @@ namespace MektupSandigi.YoneticiPaneli
         {
             if (!IsPostBack)
             {
-                TumYorumlariGetir();
+                YorumListele();
             }
         }
 
-        private void TumYorumlariGetir()
+        private void YorumListele()
         {
-            gv_yorumlar.DataSource = vm.TumYorumlariGetir();
+            gv_yorumlar.DataSource = vm.YorumListele();
             gv_yorumlar.DataBind();
         }
 
@@ -30,14 +30,14 @@ namespace MektupSandigi.YoneticiPaneli
             if (e.CommandName == "sil")
             {
                 int yorumID = Convert.ToInt32(e.CommandArgument);
-                vm.YorumSil(yorumID); 
-                TumYorumlariGetir();
+                vm.YorumSil(yorumID);
+                YorumListele();
             }
             if (e.CommandName == "durum")
             {
                 int yorumID = Convert.ToInt32(e.CommandArgument);
-                vm.YorumDurumDegistir(yorumID); 
-                TumYorumlariGetir();
+                vm.YorumDurumDegistir(yorumID);
+                YorumListele();
             }
         }
 

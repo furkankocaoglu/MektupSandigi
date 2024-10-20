@@ -11,7 +11,6 @@
         <asp:GridView ID="gv_yorumlar" runat="server" CssClass="gv-style" AutoGenerateColumns="False" OnRowCommand="gv_yorumlar_RowCommand">
             <Columns>
                 <asp:BoundField DataField="YorumID" HeaderText="Yorum ID" />
-                <asp:BoundField DataField="MektupID" HeaderText="Mektup ID" />
                 <asp:BoundField DataField="KullaniciID" HeaderText="Kullanıcı ID" />
                 <asp:BoundField DataField="YorumIcerik" HeaderText="Yorum İçeriği" />
                 <asp:BoundField DataField="OlusturmaTarihi" HeaderText="Oluşturma Tarihi" />

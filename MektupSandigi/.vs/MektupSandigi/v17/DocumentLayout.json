@@ -3,32 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\yoneticipaneli\\kategorilistele.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\yoneticipaneli\\kategorilistele.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\uyelikpanel\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\uyelikpanel\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\yoneticipaneli\\uyelistele.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\yoneticipaneli\\uyelistele.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\yoneticipaneli\\uyelistele.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\yoneticipaneli\\uyelistele.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\yoneticipaneli\\kategorilistele.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\yoneticipaneli\\kategorilistele.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\yoneticipaneli\\mektuplistele.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\yoneticipaneli\\mektuplistele.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\yoneticipaneli\\giris.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\yoneticipaneli\\giris.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0578527-D12E-4A91-95AF-0600DC7BDBC2}|VeriErisimKatmani\\VeriErisimKatmani.csproj|C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\verierisimkatmani\\verimodeli.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D0578527-D12E-4A91-95AF-0600DC7BDBC2}|VeriErisimKatmani\\VeriErisimKatmani.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\verierisimkatmani\\verimodeli.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0578527-D12E-4A91-95AF-0600DC7BDBC2}|VeriErisimKatmani\\VeriErisimKatmani.csproj|solutionrelative:verierisimkatmani\\verimodeli.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\uyelikpanel\\yorumduzenle.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\uyelikpanel\\yorumduzenle.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\uyelikpanel\\yorumduzenle.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\uyelikpanel\\yorumduzenle.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\uyelikpanel\\uyeyorumlari.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\uyelikpanel\\uyeyorumlari.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|c:\\users\\user\\documents\\github\\mektupsandigi\\mektupsandigi\\mektupsandigi\\uyelikpanel\\uyeyorumlari.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B02BC630-3D47-469A-887F-43F01CE70864}|MektupSandigi\\MektupSandigi.csproj|solutionrelative:mektupsandigi\\uyelikpanel\\uyeyorumlari.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,97 +34,85 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UyeListele.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\UyeListele.aspx.cs",
-              "RelativeDocumentMoniker": "MektupSandigi\\YoneticiPaneli\\UyeListele.aspx.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\UyeListele.aspx.cs",
-              "RelativeToolTip": "MektupSandigi\\YoneticiPaneli\\UyeListele.aspx.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAwwBwAAAA2AAAA",
+              "DocumentIndex": 2,
+              "Title": "YorumDuzenle.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\YorumDuzenle.aspx.cs",
+              "RelativeDocumentMoniker": "MektupSandigi\\UyelikPanel\\YorumDuzenle.aspx.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\YorumDuzenle.aspx.cs",
+              "RelativeToolTip": "MektupSandigi\\UyelikPanel\\YorumDuzenle.aspx.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T15:41:26.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "KategoriListele.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\KategoriListele.aspx.cs",
-              "RelativeDocumentMoniker": "MektupSandigi\\YoneticiPaneli\\KategoriListele.aspx.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\KategoriListele.aspx.cs",
-              "RelativeToolTip": "MektupSandigi\\YoneticiPaneli\\KategoriListele.aspx.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAwwCoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T15:30:26.832Z",
+              "WhenOpened": "2024-10-20T00:35:33.032Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "KategoriListele.aspx",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\KategoriListele.aspx",
-              "RelativeDocumentMoniker": "MektupSandigi\\YoneticiPaneli\\KategoriListele.aspx",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\KategoriListele.aspx",
-              "RelativeToolTip": "MektupSandigi\\YoneticiPaneli\\KategoriListele.aspx",
+              "Title": "YorumDuzenle.aspx",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\YorumDuzenle.aspx",
+              "RelativeDocumentMoniker": "MektupSandigi\\UyelikPanel\\YorumDuzenle.aspx",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\YorumDuzenle.aspx",
+              "RelativeToolTip": "MektupSandigi\\UyelikPanel\\YorumDuzenle.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-18T15:21:37.521Z",
+              "WhenOpened": "2024-10-20T00:35:29.307Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UyeListele.aspx",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\UyeListele.aspx",
-              "RelativeDocumentMoniker": "MektupSandigi\\YoneticiPaneli\\UyeListele.aspx",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\UyeListele.aspx",
-              "RelativeToolTip": "MektupSandigi\\YoneticiPaneli\\UyeListele.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-18T15:21:15.862Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MektupListele.aspx",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\MektupListele.aspx",
-              "RelativeDocumentMoniker": "MektupSandigi\\YoneticiPaneli\\MektupListele.aspx",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\MektupListele.aspx",
-              "RelativeToolTip": "MektupSandigi\\YoneticiPaneli\\MektupListele.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-18T15:21:05.671Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Giris.aspx",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\Giris.aspx",
-              "RelativeDocumentMoniker": "MektupSandigi\\YoneticiPaneli\\Giris.aspx",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\YoneticiPaneli\\Giris.aspx",
-              "RelativeToolTip": "MektupSandigi\\YoneticiPaneli\\Giris.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-18T00:18:45.555Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "VeriModeli.cs",
               "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\VeriErisimKatmani\\VeriModeli.cs",
               "RelativeDocumentMoniker": "VeriErisimKatmani\\VeriModeli.cs",
               "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\VeriErisimKatmani\\VeriModeli.cs",
               "RelativeToolTip": "VeriErisimKatmani\\VeriModeli.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "ViewState": "AQIAAK4CAAAAAAAAAAAQwMICAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T23:22:36.188Z"
+              "WhenOpened": "2024-10-20T00:27:40.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Default.aspx",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\Default.aspx",
+              "RelativeDocumentMoniker": "MektupSandigi\\UyelikPanel\\Default.aspx",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\Default.aspx",
+              "RelativeToolTip": "MektupSandigi\\UyelikPanel\\Default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-10-20T00:23:49.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UyeYorumlari.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\UyeYorumlari.aspx.cs",
+              "RelativeDocumentMoniker": "MektupSandigi\\UyelikPanel\\UyeYorumlari.aspx.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\UyeYorumlari.aspx.cs",
+              "RelativeToolTip": "MektupSandigi\\UyelikPanel\\UyeYorumlari.aspx.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowDkAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T00:23:04.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UyeYorumlari.aspx",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\UyeYorumlari.aspx",
+              "RelativeDocumentMoniker": "MektupSandigi\\UyelikPanel\\UyeYorumlari.aspx",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\MektupSandigi\\MektupSandigi\\MektupSandigi\\UyelikPanel\\UyeYorumlari.aspx",
+              "RelativeToolTip": "MektupSandigi\\UyelikPanel\\UyeYorumlari.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-10-20T00:22:56.278Z",
+              "EditorCaption": ""
             }
           ]
         }

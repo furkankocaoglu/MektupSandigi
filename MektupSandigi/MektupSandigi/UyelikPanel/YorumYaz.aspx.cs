@@ -25,7 +25,6 @@ namespace MektupSandigi.UyelikPanel
         protected void btnYorumEkle_Click(object sender, EventArgs e)
         {
             int kullaniciID = ((Uyeler)Session["uye"]).KullaniciID;
-            int mektupID = 1; 
 
             string yorumIcerik = txtYorumIcerik.Text.Trim();
 
@@ -33,9 +32,20 @@ namespace MektupSandigi.UyelikPanel
             {
                 try
                 {
-                    vm.YorumEkle(kullaniciID, mektupID, yorumIcerik);
+                    
+                    Yorumlar yeniYorum = new Yorumlar
+                    {
+                        KullaniciID = kullaniciID,
+                        YorumIcerik = yorumIcerik,
+                        OlusturmaTarihi = DateTime.Now, 
+                        Durum = true, 
+                        Onay = false, 
+                        Silinmis = false 
+                    };
+
+                    vm.YorumEkle(yeniYorum); 
                     lblSonuc.Text = "Yorum başarıyla eklendi!";
-                    txtYorumIcerik.Text = ""; 
+                    txtYorumIcerik.Text = "";
                 }
                 catch
                 {

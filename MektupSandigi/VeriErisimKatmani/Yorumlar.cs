@@ -9,12 +9,13 @@ namespace VeriErisimKatmani
     public class Yorumlar
     {
         public int YorumID { get; set; }
-        public int MektupID { get; set; }
         public int KullaniciID { get; set; }
         public string YorumIcerik { get; set; }
         public DateTime OlusturmaTarihi { get; set; }
         public bool Onay { get; set; }
         public bool Durum { get; set; }
+        public bool Silinmis { get; set; }
+
 
     }
 }

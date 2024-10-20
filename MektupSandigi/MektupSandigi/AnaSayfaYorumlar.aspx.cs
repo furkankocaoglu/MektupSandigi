@@ -54,7 +54,6 @@ namespace MektupSandigi
 
             Yorumlar yeniYorum = new Yorumlar
             {
-                MektupID = 1,
                 KullaniciID = u.KullaniciID, 
                 YorumIcerik = txtYorumIcerik.Text,
                 OlusturmaTarihi = DateTime.Now,
