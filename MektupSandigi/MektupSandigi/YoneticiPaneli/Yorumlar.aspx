@@ -4,7 +4,7 @@
     <link href="CSS/Yorumlar.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="formTasiyici">    
+    <div class="formTasiyici">
         <div class="formBaslik">
             <h3>YORUMLAR</h3>
         </div>
@@ -18,6 +18,8 @@
                 <asp:BoundField DataField="Durum" HeaderText="Durum" />
                 <asp:TemplateField HeaderText="Seçenekler">
                     <ItemTemplate>
+                        <asp:LinkButton ID="lbtn_onayla" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="onayla">Onayla</asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_red" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="red">Red</asp:LinkButton>
                         <asp:LinkButton ID="lbtn_sil" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="sil">Sil</asp:LinkButton>
                         <asp:LinkButton ID="lbtn_durum" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="durum">Durum Değiştir</asp:LinkButton>
                     </ItemTemplate>

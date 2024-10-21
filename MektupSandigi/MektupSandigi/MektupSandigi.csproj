@@ -104,6 +104,7 @@
     <Content Include="CSS\UyeOl.css" />
     <Content Include="Default.aspx" />
     <Content Include="DestekTalepleri.aspx" />
+    <Content Include="KullaniciYorumlari.aspx" />
     <Content Include="MektupGoruntule.aspx" />
     <Content Include="MektupYaz.aspx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
@@ -170,6 +171,13 @@
     </Compile>
     <Compile Include="DestekTalepleri.aspx.designer.cs">
       <DependentUpon>DestekTalepleri.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KullaniciYorumlari.aspx.cs">
+      <DependentUpon>KullaniciYorumlari.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KullaniciYorumlari.aspx.designer.cs">
+      <DependentUpon>KullaniciYorumlari.aspx</DependentUpon>
     </Compile>
     <Compile Include="MektupGoruntule.aspx.cs">
       <DependentUpon>MektupGoruntule.aspx</DependentUpon>

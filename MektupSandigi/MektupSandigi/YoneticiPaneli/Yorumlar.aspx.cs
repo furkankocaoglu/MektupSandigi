@@ -25,25 +25,67 @@ namespace MektupSandigi.YoneticiPaneli
             gv_yorumlar.DataBind();
         }
 
+
+   
+
         protected void gv_yorumlar_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "sil")
+            int yorumID = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "onayla")
             {
-                int yorumID = Convert.ToInt32(e.CommandArgument);
-                vm.YorumSil(yorumID);
-                YorumListele();
+                Onayla(yorumID);
             }
-            if (e.CommandName == "durum")
+            else if (e.CommandName == "red")
             {
-                int yorumID = Convert.ToInt32(e.CommandArgument);
-                vm.YorumDurumDegistir(yorumID);
-                YorumListele();
+                Red(yorumID);
+            }
+            else if (e.CommandName == "sil")
+            {
+                Sil(yorumID);
+            }
+            else if (e.CommandName == "durum")
+            {
+                DurumDegistir(yorumID);
+            }
+
+            YorumListele(); 
+
+        }
+        private void Onayla(int yorumID)
+        {
+            var yorum = vm.YorumGetir(yorumID);
+            if (yorum != null)
+            {
+                yorum.Onay = true; 
+                bool guncelleSonuc = vm.YorumGuncelleme(yorum);
+
+                if (!guncelleSonuc)
+                {
+                    
+                }
             }
         }
 
+        private void Red(int yorumID)
+        {
+            var yorum = vm.YorumGetir(yorumID);
+            if (yorum != null)
+            {
+                yorum.Onay = false; 
+                vm.YorumGuncelleme(yorum);
+            }
+        }
 
+        private void Sil(int yorumID)
+        {
+            vm.YorumSilHardDelete(yorumID); 
+        }
 
-
-
+        private void DurumDegistir(int yorumID)
+        {
+            vm.YorumDurumDegistir(yorumID); 
+        }
     }
 }
+
+

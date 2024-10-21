@@ -710,7 +710,7 @@ namespace VeriErisimKatmani
         {
             try
             {
-                komut.CommandText = "DELETE FROM YorumlarTable WHERE ID=@id";
+                komut.CommandText = "DELETE FROM YorumlarTable WHERE YorumID=@id";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", id);
                 baglanti.Open();
@@ -729,8 +729,18 @@ namespace VeriErisimKatmani
                 komut.CommandText = "UPDATE YorumlarTable SET Silinmis = 1 WHERE YorumID=@id";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", id);
-                baglanti.Open();
+
+                
+                if (baglanti.State == ConnectionState.Closed)
+                {
+                    baglanti.Open();
+                }
+
                 komut.ExecuteNonQuery();
+            }
+            catch (Exception )
+            {
+                
             }
             finally
             {
@@ -746,12 +756,25 @@ namespace VeriErisimKatmani
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", id);
                 baglanti.Open();
-                bool durum = Convert.ToBoolean(komut.ExecuteScalar());
-                komut.CommandText = "UPDATE YorumlarTable SET Durum=@durum WHERE YorumID = @id";
-                komut.Parameters.Clear();
-                komut.Parameters.AddWithValue("@durum", !durum);
-                komut.Parameters.AddWithValue("@id", id);
-                komut.ExecuteNonQuery();
+
+                object result = komut.ExecuteScalar(); 
+                if (result != null && result is bool) 
+                {
+                    bool durum = (bool)result; 
+                    komut.CommandText = "UPDATE YorumlarTable SET Durum=@durum WHERE YorumID = @id";
+                    komut.Parameters.Clear();
+                    komut.Parameters.AddWithValue("@durum", !durum);
+                    komut.Parameters.AddWithValue("@id", id);
+                    komut.ExecuteNonQuery();
+                }
+                else
+                {
+                    
+                }
+            }
+            catch (Exception)
+            {
+                
             }
             finally
             {
@@ -804,6 +827,97 @@ namespace VeriErisimKatmani
                 }
 
                 return komut.ExecuteNonQuery() > 0; 
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public bool YorumGuncelleme(Yorumlar yorum)
+        {
+            try
+            {
+                komut.CommandText = "UPDATE YorumlarTable SET Onay = @onay WHERE YorumID = @id AND Silinmis = 0";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", yorum.YorumID);
+                komut.Parameters.AddWithValue("@onay", yorum.Onay);
+
+                if (baglanti.State == ConnectionState.Closed)
+                {
+                    baglanti.Open();
+                }
+
+                int result = komut.ExecuteNonQuery(); 
+                return result > 0; 
+            }
+            catch 
+            {
+               
+                return false; 
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public void YorumOnayla(int id)
+        {
+            try
+            {
+                komut.CommandText = "UPDATE YorumlarTable SET Onay = 1 WHERE YorumID=@id";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@id", id);
+
+                if (baglanti.State == ConnectionState.Closed)
+                {
+                    baglanti.Open();
+                }
+
+                komut.ExecuteNonQuery();
+            }
+            catch (Exception )
+            {
+                
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public List<Yorumlar> UyeYorumListele(bool sadeceOnayli)
+        {
+            List<Yorumlar> yorumlar = new List<Yorumlar>();
+
+            string sorgu = "SELECT YorumID, KullaniciID, YorumIcerik, OlusturmaTarihi, Onay, Durum, Silinmis FROM YorumlarTable";
+            if (sadeceOnayli)
+            {
+                sorgu += " WHERE Onay = 1 AND Silinmis = 0"; 
+            }
+
+            try
+            {
+                komut.CommandText = sorgu;
+                baglanti.Open();
+                SqlDataReader reader = komut.ExecuteReader();
+                while (reader.Read())
+                {
+                    Yorumlar yorum = new Yorumlar
+                    {
+                        YorumID = reader.GetInt32(0),
+                        KullaniciID = reader.GetInt32(1),
+                        YorumIcerik = reader.GetString(2),
+                        OlusturmaTarihi = reader.GetDateTime(3),
+                        Onay = reader.GetBoolean(4),
+                        Durum = reader.GetBoolean(5),
+                        Silinmis = reader.GetBoolean(6)
+                    };
+                    yorumlar.Add(yorum);
+                }
+                return yorumlar;
+            }
+            catch
+            {
+                return null;
             }
             finally
             {

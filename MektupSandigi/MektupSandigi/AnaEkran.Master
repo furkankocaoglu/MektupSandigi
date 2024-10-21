@@ -15,7 +15,8 @@
             <asp:Panel ID="pnl_girisyok" runat="server" class="uyePanel">
                 <a href="Default.aspx">Ana Sayfa </a>
                 <a href="MektupYaz.aspx">Mektup Yaz</a>
-                <a href="AnaSayfaYorumlar.aspx">Yorumlar</a>
+                <a href="AnaSayfaYorumlar.aspx">Yorum Yap</a>
+                <a href="KullaniciYorumlari.aspx">Kullanıcı Yorumları</a>
                 <a href="SSS.aspx">Sıkça Sorulan Sorular</a>
                 <a href="DestekTalepleri.aspx">Geliştirmemize Yardımcı Olun</a>
                 <div style="float: right;">
