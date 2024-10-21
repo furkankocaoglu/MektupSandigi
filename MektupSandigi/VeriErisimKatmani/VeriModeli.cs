@@ -730,7 +730,7 @@ namespace VeriErisimKatmani
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", id);
 
-                
+
                 if (baglanti.State == ConnectionState.Closed)
                 {
                     baglanti.Open();
@@ -738,9 +738,9 @@ namespace VeriErisimKatmani
 
                 komut.ExecuteNonQuery();
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
+
             }
             finally
             {
@@ -757,10 +757,10 @@ namespace VeriErisimKatmani
                 komut.Parameters.AddWithValue("@id", id);
                 baglanti.Open();
 
-                object result = komut.ExecuteScalar(); 
-                if (result != null && result is bool) 
+                object result = komut.ExecuteScalar();
+                if (result != null && result is bool)
                 {
-                    bool durum = (bool)result; 
+                    bool durum = (bool)result;
                     komut.CommandText = "UPDATE YorumlarTable SET Durum=@durum WHERE YorumID = @id";
                     komut.Parameters.Clear();
                     komut.Parameters.AddWithValue("@durum", !durum);
@@ -769,12 +769,12 @@ namespace VeriErisimKatmani
                 }
                 else
                 {
-                    
+
                 }
             }
             catch (Exception)
             {
-                
+
             }
             finally
             {
@@ -803,7 +803,7 @@ namespace VeriErisimKatmani
                         {
                             YorumID = Convert.ToInt32(reader["YorumID"]),
                             YorumIcerik = reader["YorumIcerik"].ToString(),
-                            
+
                         };
                     }
                 }
@@ -826,7 +826,7 @@ namespace VeriErisimKatmani
                     baglanti.Open();
                 }
 
-                return komut.ExecuteNonQuery() > 0; 
+                return komut.ExecuteNonQuery() > 0;
             }
             finally
             {
@@ -847,13 +847,13 @@ namespace VeriErisimKatmani
                     baglanti.Open();
                 }
 
-                int result = komut.ExecuteNonQuery(); 
-                return result > 0; 
+                int result = komut.ExecuteNonQuery();
+                return result > 0;
             }
-            catch 
+            catch
             {
-               
-                return false; 
+
+                return false;
             }
             finally
             {
@@ -875,9 +875,9 @@ namespace VeriErisimKatmani
 
                 komut.ExecuteNonQuery();
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
+
             }
             finally
             {
@@ -891,7 +891,7 @@ namespace VeriErisimKatmani
             string sorgu = "SELECT YorumID, KullaniciID, YorumIcerik, OlusturmaTarihi, Onay, Durum, Silinmis FROM YorumlarTable";
             if (sadeceOnayli)
             {
-                sorgu += " WHERE Onay = 1 AND Silinmis = 0"; 
+                sorgu += " WHERE Onay = 1 AND Silinmis = 0";
             }
 
             try
@@ -998,25 +998,49 @@ namespace VeriErisimKatmani
         {
             try
             {
+                
+                DateTime today = DateTime.Today;
+
+                
+                if (string.IsNullOrWhiteSpace(mektup.AliciMail))
+                {
+                    Console.WriteLine("Alici mail adresi boş olamaz.");
+                    return false;
+                }
+
+                
+                if (mektup.AcilisTarihi < today)
+                {
+                    Console.WriteLine("Hata: Açılış tarihi geçmiş bir tarih olamaz.");
+                    return false;
+                }
+
+               
                 komut.CommandText = @"
             INSERT INTO MektuplarTable (KullaniciID, KategoriID, Baslik, Icerik, AliciMail, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi) 
             OUTPUT INSERTED.MektupID 
-            VALUES (@kullaniciID, @kategoriID, @baslik, @icerik, @aliciMail, @acilisTarihi, @teslimEdildiMi, @olusturmaTarihi)";
+            VALUES (@kullaniciID, @kategoriID, @baslik, @icerik, @aliciMail, @acilisTarihi, 0, @olusturmaTarihi)";
 
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@kullaniciID", mektup.KullaniciID);
                 komut.Parameters.AddWithValue("@kategoriID", mektup.KategoriID);
                 komut.Parameters.AddWithValue("@baslik", mektup.Baslik);
-                komut.Parameters.AddWithValue("@icerik", mektup.Icerik);
+                komut.Parameters.AddWithValue("@icerik", mektup.Icerik); 
                 komut.Parameters.AddWithValue("@aliciMail", mektup.AliciMail);
                 komut.Parameters.AddWithValue("@acilisTarihi", mektup.AcilisTarihi);
-                komut.Parameters.AddWithValue("@teslimEdildiMi", mektup.TeslimEdildiMi);
                 komut.Parameters.AddWithValue("@olusturmaTarihi", DateTime.Now);
 
                 baglanti.Open();
                 int mektupID = (int)komut.ExecuteScalar();
 
-                MailGonder(mektup.AliciMail, mektup.Baslik, mektup.Icerik, mektupID, mektup.AcilisTarihi);
+                
+                string mailIcerik = mektup.AcilisTarihi.Date == today
+                    ? " " +
+                      $"<a href='https://localhost:44396/MektupGoruntule.aspx?mektupID={mektupID}'>Link</a>"
+                    : mektup.Icerik;
+
+                
+                MailGonder(mektup.AliciMail, mektup.Baslik, mailIcerik, mektupID, mektup.AcilisTarihi);
 
                 return true;
             }
@@ -1088,6 +1112,17 @@ namespace VeriErisimKatmani
                 };
                 string link = $"https://localhost:44396/MektupGoruntule.aspx?mektupID={mektupID}";
                 string htmlIcerik;
+                if (acilisTarihi.Date == DateTime.Today)
+                {
+                    
+                    htmlIcerik = $"<html><body><h2>{baslik}</h2><p><a href='{link}'>Mektubu görüntülemek için buraya tıklayın</a></p></body></html>";
+
+                }
+                else
+                {
+                    
+                    htmlIcerik = $"<html><body><h2>{baslik}</h2><p>{icerik}</p><p><a href='{link}'>Mektubu görüntülemek için buraya tıklayın</a></p></body></html>";
+                }
                 if (acilisTarihi > DateTime.Now)
                 {
                     htmlIcerik = $"<html><body><h2>{baslik}</h2><p>Mektup {acilisTarihi.ToString("dd/MM/yyyy HH:mm")} tarihinde açılacaktır.</p><p><a href='{link}'>Mektubu görüntülemek için buraya tıklayın</a></p></body></html>";
@@ -1114,7 +1149,109 @@ namespace VeriErisimKatmani
             }
 
         }
+        public void UpdateTeslimEdildi(int mektupID)
+        {
+            try
+            {
+                komut.CommandText = "UPDATE MektuplarTable SET TeslimEdildiMi = 1 WHERE MektupID = @mektupID";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@mektupID", mektupID);
 
+                baglanti.Open();
+                int rowsAffected = komut.ExecuteNonQuery(); 
+
+                if (rowsAffected == 0)
+                {
+                    Console.WriteLine("Güncellenen kayıt yok."); 
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Güncelleme sırasında hata oluştu: " + ex.Message);
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public Mektup GetMektupByID(int mektupID)
+        {
+            Mektup mektup = null;
+
+            try
+            {
+                komut.CommandText = "SELECT MektupID, KullaniciID, KategoriID, Baslik, Icerik, AliciMail, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable WHERE MektupID = @mektupID";
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@mektupID", mektupID);
+
+                baglanti.Open();
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                if (okuyucu.Read())
+                {
+                    mektup = new Mektup
+                    {
+                        MektupID = okuyucu.GetInt32(0),
+                        KullaniciID = okuyucu.GetInt32(1),
+                        KategoriID = okuyucu.GetInt32(2),
+                        Baslik = okuyucu.GetString(3),
+                        Icerik = okuyucu.GetString(4),
+                        AliciMail = okuyucu.GetString(5),
+                        AcilisTarihi = okuyucu.GetDateTime(6),
+                        TeslimEdildiMi = okuyucu.GetBoolean(7),
+                        OlusturmaTarihi = okuyucu.GetDateTime(8)
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Mektup bilgileri alınırken hata oluştu: " + ex.Message);
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+
+            return mektup;
+        }
+        public List<Mektup> GetOkunanMektuplar(int kullaniciID)
+        {
+            List<Mektup> mektuplar = new List<Mektup>();
+
+            try
+            {
+                komut = new SqlCommand("SELECT * FROM MektuplarTable WHERE KullaniciID = @kullaniciID AND TeslimEdildiMi = 1", baglanti);
+                komut.Parameters.Clear();
+                komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
+                baglanti.Open();
+
+                SqlDataReader okuyucu = komut.ExecuteReader();
+                while (okuyucu.Read())
+                {
+                    Mektup mktp = new Mektup
+                    {
+                        MektupID = okuyucu.GetInt32(0),
+                        KullaniciID = okuyucu.GetInt32(1),
+                        KategoriID = okuyucu.GetInt32(2),
+                        Baslik = okuyucu.GetString(3),
+                        Icerik = okuyucu.GetString(4),
+                        AliciMail = okuyucu.GetString(5),
+                        AcilisTarihi = okuyucu.GetDateTime(6),
+                        TeslimEdildiMi = okuyucu.GetBoolean(7),
+                        OlusturmaTarihi = okuyucu.GetDateTime(8)
+                    };
+                    mektuplar.Add(mktp);
+                }
+                return mektuplar;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
         #endregion
 
         #region üyelik paneli metodu
