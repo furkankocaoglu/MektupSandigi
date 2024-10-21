@@ -99,6 +99,7 @@
     <Content Include="CSS\AnaEkran.css" />
     <Content Include="CSS\AnSayfaYorumlar.css" />
     <Content Include="CSS\DestekTalepleri.css" />
+    <Content Include="CSS\KullaniciYorumlari.css" />
     <Content Include="CSS\MektupEkle.css" />
     <Content Include="CSS\UyeGiris.css" />
     <Content Include="CSS\UyeOl.css" />
@@ -107,11 +108,6 @@
     <Content Include="KullaniciYorumlari.aspx" />
     <Content Include="MektupGoruntule.aspx" />
     <Content Include="MektupYaz.aspx" />
-    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.7.1.js" />
-    <Content Include="Scripts\jquery-3.7.1.min.js" />
-    <Content Include="Scripts\jquery-3.7.1.slim.js" />
-    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="SSS.aspx" />
     <Content Include="UyeGiris.aspx" />
     <Content Include="UyelikPanel\CSS\mektupYaz.css" />
@@ -346,8 +342,6 @@
     <Content Include="AnaEkran.Master" />
     <None Include="packages.config" />
     <Content Include="UyelikPanel\UyeEkran.Master" />
-    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.7.1.min.map" />
     <None Include="UyelikPanel\.editorconfig" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

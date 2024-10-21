@@ -26,8 +26,8 @@ namespace MektupSandigi
                        
                         if (mektup.AcilisTarihi > DateTime.Now)
                         {
-                            lblBaslik.Text = "Mektup henüz açılamadı.";
-                            lblIcerik.Text = $"Size teslim edilmesi istenen mektubunuz {mektup.AcilisTarihi.ToString("dd/MM/yyyy HH:mm")} tarihinde açılacaktır.";
+                            lblBaslik.Text = "Mektup henüz açılmadı.";
+                            lblIcerik.Text = $"Size teslim edilmesi istenen özel mektubunuz {mektup.AcilisTarihi.ToString("dd/MM/yyyy HH:mm")} tarihinde açılacaktır. İlgili tarihe kadar beklemenizi rica ederiz.";
                         }
                         else
                         {
