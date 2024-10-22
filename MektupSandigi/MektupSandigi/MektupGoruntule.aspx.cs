@@ -11,6 +11,7 @@ namespace MektupSandigi
 {
     public partial class MektupGoruntule : System.Web.UI.Page
     {
+        VeriModeli vm = new VeriModeli();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -28,12 +29,14 @@ namespace MektupSandigi
                         {
                             lblBaslik.Text = "Mektup henüz açılmadı.";
                             lblIcerik.Text = $"Size teslim edilmesi istenen özel mektubunuz {mektup.AcilisTarihi.ToString("dd/MM/yyyy HH:mm")} tarihinde açılacaktır. İlgili tarihe kadar beklemenizi rica ederiz.";
+                            vm.UpdateTeslimEdildi(mektupID);
                         }
                         else
                         {
                            
                             lblBaslik.Text = mektup.Baslik;
                             lblIcerik.Text = mektup.Icerik;
+                            vm.UpdateTeslimEdildi(mektupID);
                         }
                     }
                     else

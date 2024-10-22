@@ -20,46 +20,39 @@ namespace MektupSandigi
 
         protected void btn_tikla_Click1(object sender, EventArgs e)
         {
-            Uyeler u = new Uyeler();
-            u.KullaniciAdi = tb_kullanici.Text;
-            u.Mail = tb_mail.Text;
-            u.Sifre = tb_sifre.Text;
-            u.Durum = cb_durum.Checked;
-            u.OlusturmaTarihi = DateTime.Now;
-
-            if (string.IsNullOrEmpty(tb_mail.Text))
+            // Girdi değerlerini kontrol et
+            if (string.IsNullOrEmpty(tb_kullanici.Text) || string.IsNullOrEmpty(tb_mail.Text) || string.IsNullOrEmpty(tb_sifre.Text))
             {
+                // Hata mesajı göster
                 pnl_basarisiz.Visible = true;
-                lbl_mesaj.Text = "Lütfen e-posta adresinizi girin";
+                lbl_mesaj.Text = "Kullanıcı adı, E-mail ve Şifre alanları boş bırakılamaz.";
+                pnl_basarili.Visible = false;
                 return;
             }
 
-            if (!tb_mail.Text.Contains("@") || !tb_mail.Text.EndsWith(".com"))
+            // Yeni üye nesnesi oluştur
+            Uyeler yeniUye = new Uyeler
             {
-                pnl_basarisiz.Visible = true;
-                lbl_mesaj.Text = "Geçersiz e-posta adresi";
-                return;
-            }
+                KullaniciAdi = tb_kullanici.Text,
+                Mail = tb_mail.Text,
+                Sifre = tb_sifre.Text,
+                OlusturmaTarihi = DateTime.Now,
+                Durum = true, // Varsayılan olarak aktif
+                Silinmis = false // Varsayılan olarak silinmemiş
+            };
 
-            if (
-                string.IsNullOrEmpty(tb_kullanici.Text) ||
-                string.IsNullOrEmpty(tb_sifre.Text))
-            {
-                pnl_basarisiz.Visible = true;
-                lbl_mesaj.Text = "Boş alan bırakılamaz ";
-                return;
-            }
-
-            if (vm.UyeOl(u))
+            // Üye oluşturma işlemi
+            bool sonuc = vm.UyeOl(yeniUye);
+            if (sonuc)
             {
                 pnl_basarili.Visible = true;
                 pnl_basarisiz.Visible = false;
             }
             else
             {
-                pnl_basarili.Visible = false;
                 pnl_basarisiz.Visible = true;
-                lbl_mesaj.Text = "Üye eklenirken bir hata oluştu";
+                lbl_mesaj.Text = "Üyelik oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.";
+                pnl_basarili.Visible = false;
             }
 
         }

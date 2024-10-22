@@ -18,26 +18,17 @@ namespace MektupSandigi.YoneticiPaneli
                 YorumListele();
             }
         }
-
         private void YorumListele()
         {
             gv_yorumlar.DataSource = vm.YorumListele();
             gv_yorumlar.DataBind();
         }
-
-
-   
-
         protected void gv_yorumlar_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int yorumID = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "onayla")
             {
                 Onayla(yorumID);
-            }
-            else if (e.CommandName == "red")
-            {
-                Red(yorumID);
             }
             else if (e.CommandName == "sil")
             {
@@ -65,22 +56,10 @@ namespace MektupSandigi.YoneticiPaneli
                 }
             }
         }
-
-        private void Red(int yorumID)
-        {
-            var yorum = vm.YorumGetir(yorumID);
-            if (yorum != null)
-            {
-                yorum.Onay = false; 
-                vm.YorumGuncelleme(yorum);
-            }
-        }
-
         private void Sil(int yorumID)
         {
             vm.YorumSilHardDelete(yorumID); 
         }
-
         private void DurumDegistir(int yorumID)
         {
             vm.YorumDurumDegistir(yorumID); 

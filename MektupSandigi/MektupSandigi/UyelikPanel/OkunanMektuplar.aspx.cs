@@ -24,8 +24,8 @@ namespace MektupSandigi.UyelikPanel
         }
         private void BindGrid()
         {
-            List<Mektup> mektuplar = vm.GetMektuplar(); // Mektupları alın
-            gvMektuplar.DataSource = mektuplar; // GridView'a bağla
+            List<Mektup> mektuplar = vm.GetMektuplar(); 
+            gvMektuplar.DataSource = mektuplar; 
             gvMektuplar.DataBind();
         }
     }

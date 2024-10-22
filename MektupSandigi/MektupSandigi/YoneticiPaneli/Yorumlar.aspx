@@ -19,7 +19,6 @@
                 <asp:TemplateField HeaderText="Seçenekler">
                     <ItemTemplate>
                         <asp:LinkButton ID="lbtn_onayla" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="onayla">Onayla</asp:LinkButton>
-                        <asp:LinkButton ID="lbtn_red" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="red">Red</asp:LinkButton>
                         <asp:LinkButton ID="lbtn_sil" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="sil">Sil</asp:LinkButton>
                         <asp:LinkButton ID="lbtn_durum" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="durum">Durum Değiştir</asp:LinkButton>
                     </ItemTemplate>

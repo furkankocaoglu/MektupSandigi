@@ -30,7 +30,6 @@
                 <label class="UyeFormetiket">Şifre</label>
                 <asp:TextBox ID="tb_sifre" runat="server" CssClass="metinkutu" placeholder="Şifreniz" TextMode="Password"></asp:TextBox>
             </div>
-            <asp:CheckBox ID="cb_durum" runat="server" /><small style="color:white">(Eğer işaretli ise üyelik aktif olur)</small>
             <asp:Button ID="btn_tikla" runat="server" Text="Üyelik Oluştur" CssClass="tiklabutton" OnClick="btn_tikla_Click1" />
         </div>
     </div>

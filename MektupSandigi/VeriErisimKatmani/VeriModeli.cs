@@ -337,13 +337,14 @@ namespace VeriErisimKatmani
         {
             try
             {
-                komut.CommandText = "INSERT INTO KullanicilarTable(KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum) VALUES(@kullaniciAdi, @mail, @sifre, @olusturmatarihi, @durum)";
+                komut.CommandText = "INSERT INTO KullanicilarTable(KullaniciAdi, Mail, Sifre, OlusturmaTarihi, Durum, Silinmis) VALUES(@kullaniciAdi, @mail, @sifre, @olusturmatarihi, @durum, @silinmis)";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@kullaniciadi", u.KullaniciAdi);
                 komut.Parameters.AddWithValue("@mail", u.Mail);
                 komut.Parameters.AddWithValue("@sifre", u.Sifre);
                 komut.Parameters.AddWithValue("@olusturmatarihi", u.OlusturmaTarihi);
                 komut.Parameters.AddWithValue("@durum", u.Durum);
+                komut.Parameters.AddWithValue("@silinmis", u.Silinmis);
                 baglanti.Open();
                 komut.ExecuteNonQuery();
                 return true;
@@ -816,7 +817,8 @@ namespace VeriErisimKatmani
         {
             try
             {
-                komut.CommandText = "UPDATE YorumlarTable SET YorumIcerik = @yorumIcerik WHERE YorumID = @id AND Silinmis = 0";
+                
+                komut.CommandText = "UPDATE YorumlarTable SET YorumIcerik = @yorumIcerik, Onay = 0 WHERE YorumID = @id AND Silinmis = 0";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", yorum.YorumID);
                 komut.Parameters.AddWithValue("@yorumIcerik", yorum.YorumIcerik);
@@ -924,9 +926,6 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-
-
-
 
         #endregion
 
