@@ -16,11 +16,14 @@
                 <asp:BoundField DataField="OlusturmaTarihi" HeaderText="Oluşturma Tarihi" />
                 <asp:BoundField DataField="Onay" HeaderText="Onay" />
                 <asp:BoundField DataField="Durum" HeaderText="Durum" />
-                <asp:TemplateField HeaderText="Seçenekler">
+                <asp:BoundField DataField="Silinmis" HeaderText="Silinmis" />
+                <asp:TemplateField HeaderText="İşlemler">
                     <ItemTemplate>
                         <asp:LinkButton ID="lbtn_onayla" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="onayla">Onayla</asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_durum" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="durum">DurumGüncelle</asp:LinkButton>
                         <asp:LinkButton ID="lbtn_sil" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="sil">Sil</asp:LinkButton>
-                        <asp:LinkButton ID="lbtn_durum" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="durum">Durum Değiştir</asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_sill" runat="server" CommandArgument='<%# Eval("YorumID") %>' CommandName="sill">Hard Delete</asp:LinkButton>
+                        
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

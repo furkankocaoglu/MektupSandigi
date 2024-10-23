@@ -34,6 +34,10 @@ namespace MektupSandigi.YoneticiPaneli
             {
                 Sil(yorumID);
             }
+            else if (e.CommandName == "sill")
+            {
+                Sill(yorumID);
+            }
             else if (e.CommandName == "durum")
             {
                 DurumDegistir(yorumID);
@@ -58,7 +62,11 @@ namespace MektupSandigi.YoneticiPaneli
         }
         private void Sil(int yorumID)
         {
-            vm.YorumSilHardDelete(yorumID); 
+            vm.YorumSil(yorumID); 
+        }
+        private void Sill(int yorumID)
+        {
+            vm.YorumSilHardDelete(yorumID);
         }
         private void DurumDegistir(int yorumID)
         {

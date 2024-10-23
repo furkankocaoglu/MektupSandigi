@@ -20,28 +20,28 @@ namespace MektupSandigi
 
         protected void btn_tikla_Click1(object sender, EventArgs e)
         {
-            // Girdi değerlerini kontrol et
+            
             if (string.IsNullOrEmpty(tb_kullanici.Text) || string.IsNullOrEmpty(tb_mail.Text) || string.IsNullOrEmpty(tb_sifre.Text))
             {
-                // Hata mesajı göster
+                
                 pnl_basarisiz.Visible = true;
                 lbl_mesaj.Text = "Kullanıcı adı, E-mail ve Şifre alanları boş bırakılamaz.";
                 pnl_basarili.Visible = false;
                 return;
             }
 
-            // Yeni üye nesnesi oluştur
+            
             Uyeler yeniUye = new Uyeler
             {
                 KullaniciAdi = tb_kullanici.Text,
                 Mail = tb_mail.Text,
                 Sifre = tb_sifre.Text,
                 OlusturmaTarihi = DateTime.Now,
-                Durum = true, // Varsayılan olarak aktif
-                Silinmis = false // Varsayılan olarak silinmemiş
+                Durum = true, 
+                Silinmis = false 
             };
 
-            // Üye oluşturma işlemi
+            
             bool sonuc = vm.UyeOl(yeniUye);
             if (sonuc)
             {

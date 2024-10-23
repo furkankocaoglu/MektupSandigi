@@ -43,18 +43,25 @@ namespace MektupSandigi.UyelikPanel
                         Silinmis = false 
                     };
 
-                    vm.YorumEkle(yeniYorum); 
-                    lblSonuc.Text = "Yorum başarıyla eklendi!";
+                    vm.YorumEkle(yeniYorum);
+                    lblSonucc.Text = "Yorum başarıyla eklendi!";
+                    lblSonucc.ForeColor = System.Drawing.Color.Green; 
+                    lblSonucc.Visible = true; 
+                    lblSonuc.Visible = false; 
                     txtYorumIcerik.Text = "";
                 }
                 catch
                 {
                     lblSonuc.Text = "Yorum ekleme işlemi başarısız oldu.";
+                    lblSonuc.Visible = true; 
+                    lblSonucc.Visible = false; 
                 }
             }
             else
             {
                 lblSonuc.Text = "Lütfen bir yorum girin.";
+                lblSonuc.Visible = true; 
+                lblSonucc.Visible = false; 
             }
         }
 

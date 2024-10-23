@@ -17,6 +17,7 @@
                 <div class="kullanici">
                     <asp:Label ID="lbl_kullanici" runat="server"></asp:Label>
                     <asp:LinkButton ID="lbtn_cikis" runat="server" OnClick="lbtn_cikis_Click">Güvenli Çıkış</asp:LinkButton>
+                    <asp:LinkButton ID="lbtn_AnaSayfa" runat="server" OnClick="lbtn_AnaSayfa_Click">Anasayfaya Dön</asp:LinkButton>
                 </div>
             </div>
 
@@ -29,6 +30,8 @@
             <a href="UyeYorumlari.aspx">Yorumlarım</a>
             <a href="YorumYaz.aspx">Yorum Yaz</a>
             <a href="OkunanMektuplar.aspx">Görüntülenen Mektuplarım</a>
+            <a href="Taleplerim.aspx">Geliştirme/Öneri Ekle</a>
+            
         </div>
         <div class="icerikTasiyici">
             <div class="icerik">

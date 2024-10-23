@@ -7,5 +7,6 @@
     <asp:TextBox ID="txtYorumIcerik" runat="server" TextMode="MultiLine" Rows="5" Columns="50" placeholder="Yorumunuzu buraya yazın..."></asp:TextBox>
     <br />
     <asp:Button ID="btnYorumEkle" runat="server" Text="Yorum Ekle" OnClick="btnYorumEkle_Click" />
-    <asp:Label ID="lblSonuc" runat="server" ForeColor="Green"></asp:Label>
+    <asp:Label ID="lblSonuc" runat="server" ForeColor="Red"></asp:Label>
+    <asp:Label ID="lblSonucc" runat="server" ForeColor="Green"></asp:Label>
 </asp:Content>

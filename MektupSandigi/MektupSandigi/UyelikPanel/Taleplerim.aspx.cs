@@ -6,30 +6,19 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VeriErisimKatmani;
 
-namespace MektupSandigi
+namespace MektupSandigi.UyelikPanel
 {
-    public partial class DestekTalepleri : System.Web.UI.Page
+    public partial class Taleplerim : System.Web.UI.Page
     {
         VeriModeli vm = new VeriModeli();
-        Uyeler u = new Uyeler();
+        Uyeler u = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             u = (Uyeler)Session["uye"];
             if (u == null)
             {
-                lblSonuc.Text = "Üye girişi yapmanız gerekmektedir.";
-                lblSonuc.ForeColor = System.Drawing.Color.Red;
-                lblSonuc.Visible = true;
-                linkGiris.Visible = true;
-                
-                return;
+                Response.Redirect("UyeGiris.aspx"); 
             }
-            else
-            {
-                linkGiris.Visible = false;
-            }
-            
-
         }
 
         protected void btnTalepEkle_Click(object sender, EventArgs e)
@@ -42,17 +31,10 @@ namespace MektupSandigi
                 return;
             }
 
-            if (u == null)
-            {
-                lblSonuc.Text = "Üye girişi yapmanız gerekmektedir.";
-                lblSonuc.ForeColor = System.Drawing.Color.Red;
-                lblSonuc.Visible = true;
-                return;
-            }
-
+            
             DestekTalep yeniTalep = new DestekTalep
             {
-                KullaniciID = u.KullaniciID,
+                KullaniciID = u.KullaniciID, 
                 Baslik = txtKonuIcerik.Text,
                 Icerik = txtYorumIcerik.Text,
             };
@@ -60,7 +42,7 @@ namespace MektupSandigi
             
             if (vm.TalepEkle(yeniTalep))
             {
-                lblSonuc.Text = "Talebiniz başarıyla gönderildi.";
+                lblSonuc.Text = "Talebiniz başarıyla gönderildi. Yönetici tarafında değerlendirilecektir.";
                 lblSonuc.ForeColor = System.Drawing.Color.Green;
                 lblSonuc.Visible = true;
                 txtKonuIcerik.Text = string.Empty;
@@ -72,7 +54,8 @@ namespace MektupSandigi
                 lblSonuc.ForeColor = System.Drawing.Color.Red;
                 lblSonuc.Visible = true;
             }
-            
         }
+
     }
+    
 }

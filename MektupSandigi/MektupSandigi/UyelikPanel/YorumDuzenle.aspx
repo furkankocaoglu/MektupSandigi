@@ -9,4 +9,5 @@
     <asp:Button ID="btnYorumDuzenle" runat="server" Text="Yorumu Güncelle" OnClick="btnYorumDuzenle_Click" />
     <br />
     <asp:Label ID="lblSonuc" runat="server" ForeColor="Red"></asp:Label>
+    <asp:Label ID="lblSonucc" runat="server" ForeColor="Green"></asp:Label>
 </asp:Content>

@@ -63,7 +63,7 @@ namespace MektupSandigi
 
            
             Session["uye"] = u;
-            Response.Redirect("Default.aspx");
+            Response.Redirect("~/UyelikPanel/Default.aspx");
 
         }
     }

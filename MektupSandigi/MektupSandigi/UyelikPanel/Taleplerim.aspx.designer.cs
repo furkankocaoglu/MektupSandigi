@@ -11,8 +11,17 @@ namespace MektupSandigi.UyelikPanel
 {
 
 
-    public partial class YorumDuzenle
+    public partial class Taleplerim
     {
+
+        /// <summary>
+        /// txtKonuIcerik control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtKonuIcerik;
 
         /// <summary>
         /// txtYorumIcerik control.
@@ -24,13 +33,13 @@ namespace MektupSandigi.UyelikPanel
         protected global::System.Web.UI.WebControls.TextBox txtYorumIcerik;
 
         /// <summary>
-        /// btnYorumDuzenle control.
+        /// btnTalepEkle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnYorumDuzenle;
+        protected global::System.Web.UI.WebControls.Button btnTalepEkle;
 
         /// <summary>
         /// lblSonuc control.
@@ -40,14 +49,5 @@ namespace MektupSandigi.UyelikPanel
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSonuc;
-
-        /// <summary>
-        /// lblSonucc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSonucc;
     }
 }

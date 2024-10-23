@@ -5,7 +5,6 @@
     <h1>Gönderdiğim Mektuplar</h1>
 <asp:GridView ID="gvMektuplar" runat="server" AutoGenerateColumns="False" CssClass="table">
     <Columns>
-        <asp:BoundField DataField="MektupID" HeaderText="Mektup ID" />
         <asp:BoundField DataField="Baslik" HeaderText="Başlık" />
         <asp:BoundField DataField="Icerik" HeaderText="İçerik" />
         <asp:BoundField DataField="AliciMail" HeaderText="Alıcı Mail" />

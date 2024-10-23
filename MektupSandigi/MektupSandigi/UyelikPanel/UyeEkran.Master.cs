@@ -30,5 +30,19 @@ namespace MektupSandigi.UyelikPanel
             Session["Uye"] = null;
             Response.Redirect("Default.aspx");
         }
+
+        protected void lbtn_AnaSayfa_Click(object sender, EventArgs e)
+        {
+            if (Session["Uye"] != null)
+            {
+                
+                Response.Redirect("~/Default.aspx");
+            }
+            else
+            {
+                
+                Response.Redirect("~/UyeGiris.aspx");
+            }
+        }
     }
 }

@@ -75,5 +75,7 @@ namespace MektupSandigi
                 lblSonuc.Visible = true;
             }
         }
+
+        
     }
 }

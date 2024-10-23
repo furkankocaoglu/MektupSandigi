@@ -117,6 +117,7 @@
     <Content Include="UyelikPanel\mektupYaz.aspx" />
     <Content Include="UyelikPanel\OkunanMektuplar.aspx" />
     <Content Include="UyelikPanel\Profil.aspx" />
+    <Content Include="UyelikPanel\Taleplerim.aspx" />
     <Content Include="UyelikPanel\UyeYorumlari.aspx" />
     <Content Include="UyelikPanel\YorumDuzenle.aspx" />
     <Content Include="UyelikPanel\YorumYaz.aspx" />
@@ -238,6 +239,13 @@
     </Compile>
     <Compile Include="UyelikPanel\Profil.aspx.designer.cs">
       <DependentUpon>Profil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UyelikPanel\Taleplerim.aspx.cs">
+      <DependentUpon>Taleplerim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UyelikPanel\Taleplerim.aspx.designer.cs">
+      <DependentUpon>Taleplerim.aspx</DependentUpon>
     </Compile>
     <Compile Include="UyelikPanel\UyeEkran.Master.cs">
       <DependentUpon>UyeEkran.Master</DependentUpon>

@@ -19,6 +19,8 @@ namespace MektupSandigi.UyelikPanel
                 if (string.IsNullOrEmpty(yorumIdStr))
                 {
                     lblSonuc.Text = "Yorum ID'si sağlanmadı.";
+                    lblSonuc.ForeColor = System.Drawing.Color.Red;
+                    lblSonuc.Visible = true;
                     return;
                 }
 
@@ -33,11 +35,15 @@ namespace MektupSandigi.UyelikPanel
                     else
                     {
                         lblSonuc.Text = "Yorum bulunamadı.";
+                        lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                        lblSonuc.Visible = true;
                     }
                 }
                 else
                 {
                     lblSonuc.Text = "Geçersiz yorum ID: " + yorumIdStr;
+                    lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                    lblSonuc.Visible = true;
                 }
             }
         }
@@ -60,16 +66,30 @@ namespace MektupSandigi.UyelikPanel
                         };
 
                         bool sonuc = vm.YorumGuncelle(guncelYorum);
-                        lblSonuc.Text = sonuc ? "Yorum başarıyla güncellendi!" : "Güncelleme işlemi başarısız oldu.";
+                        if (sonuc)
+                        {
+                            lblSonuc.Text = "Yorum başarıyla güncellendi!";
+                            lblSonuc.ForeColor = System.Drawing.Color.Green; 
+                        }
+                        else
+                        {
+                            lblSonuc.Text = "Güncelleme işlemi başarısız oldu.";
+                            lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                        }
+                        lblSonuc.Visible = true;
                     }
                     catch (Exception ex)
                     {
                         lblSonuc.Text = "Bir hata oluştu: " + ex.Message;
+                        lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                        lblSonuc.Visible = true;
                     }
                 }
                 else
                 {
                     lblSonuc.Text = "Lütfen bir yorum girin.";
+                    lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                    lblSonuc.Visible = true;
                 }
             }
 
