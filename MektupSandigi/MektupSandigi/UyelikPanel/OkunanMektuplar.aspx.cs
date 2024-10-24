@@ -24,9 +24,32 @@ namespace MektupSandigi.UyelikPanel
         }
         private void BindGrid()
         {
-            List<Mektup> mektuplar = vm.GetMektuplar(); 
-            gvMektuplar.DataSource = mektuplar; 
-            gvMektuplar.DataBind();
+
+            if (Session["uye"] != null)
+            {
+                
+                Uyeler mevcutUye = (Uyeler)Session["uye"];
+                int kullaniciId = mevcutUye.KullaniciID;
+
+                
+                List<Mektup> mektuplar = vm.KullaniciMektuplariniGetir(kullaniciId);
+
+               
+                if (mektuplar != null && mektuplar.Count > 0)
+                {
+                    gvMektuplar.DataSource = mektuplar;
+                    gvMektuplar.DataBind();
+                }
+                else
+                {
+                    
+                }
+            }
+            else
+            {
+                
+                Response.Redirect("UyeGiris.aspx");
+            }
         }
     }
 }
