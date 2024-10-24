@@ -15,15 +15,6 @@ namespace MektupSandigi.UyelikPanel
     {
 
         /// <summary>
-        /// lblKullaniciAdi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblKullaniciAdi;
-
-        /// <summary>
         /// lblKullaniciAdiValue control.
         /// </summary>
         /// <remarks>
@@ -31,15 +22,6 @@ namespace MektupSandigi.UyelikPanel
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblKullaniciAdiValue;
-
-        /// <summary>
-        /// lblMail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMail;
 
         /// <summary>
         /// lblMailValue control.
@@ -51,15 +33,6 @@ namespace MektupSandigi.UyelikPanel
         protected global::System.Web.UI.WebControls.Label lblMailValue;
 
         /// <summary>
-        /// lblSifre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSifre;
-
-        /// <summary>
         /// lblSifreValue control.
         /// </summary>
         /// <remarks>
@@ -67,15 +40,6 @@ namespace MektupSandigi.UyelikPanel
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSifreValue;
-
-        /// <summary>
-        /// lblOlusturmaTarihi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOlusturmaTarihi;
 
         /// <summary>
         /// lblOlusturmaTarihiValue control.
@@ -87,15 +51,6 @@ namespace MektupSandigi.UyelikPanel
         protected global::System.Web.UI.WebControls.Label lblOlusturmaTarihiValue;
 
         /// <summary>
-        /// lblDurum control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDurum;
-
-        /// <summary>
         /// lblDurumValue control.
         /// </summary>
         /// <remarks>
@@ -103,15 +58,6 @@ namespace MektupSandigi.UyelikPanel
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDurumValue;
-
-        /// <summary>
-        /// lblSilinmis control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSilinmis;
 
         /// <summary>
         /// lblSilinmisValue control.

@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <h2>Okunan Mektuplar</h2>
+        <h2>Okunan Mektuplarım</h2>
         <p>Bu sayfada mektubunuzu gönderdiğiniz kişinin mektup yazan linki giriş yapıp yapmadığını görebilirsiniz.</p>
         <asp:GridView ID="gvMektuplar" runat="server" AutoGenerateColumns="False">
             <Columns>

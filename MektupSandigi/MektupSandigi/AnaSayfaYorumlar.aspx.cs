@@ -25,7 +25,7 @@ namespace MektupSandigi
                 btnYorumEkle.Visible = false;
 
                 
-                lblSonuc.Text = "Üye girişi yapmanız gerekmektedir.";
+                lblSonuc.Text = "Üye girişi yapmanız gerekmektedir. Giriş yaparak üye ekranından ya da anasayfaya dön seçeneğinden yorum gönderebilirsiniz.";
                 lblSonuc.ForeColor = System.Drawing.Color.Red; 
                 lblSonuc.Visible = true;
                 linkGiris.Visible = true;

@@ -98,6 +98,7 @@
     <Content Include="AnaSayfaYorumlar.aspx" />
     <Content Include="CSS\AnaEkran.css" />
     <Content Include="CSS\AnSayfaYorumlar.css" />
+    <Content Include="CSS\Default.css" />
     <Content Include="CSS\DestekTalepleri.css" />
     <Content Include="CSS\KullaniciYorumlari.css" />
     <Content Include="CSS\MektupEkle.css" />
@@ -108,9 +109,11 @@
     <Content Include="KullaniciYorumlari.aspx" />
     <Content Include="MektupGoruntule.aspx" />
     <Content Include="MektupYaz.aspx" />
+    <Content Include="Resim\100-adet-karisik-10-farkli-renk-hediye-dogum-gunu-dilekleri-dugun-para-davetiye-mektup-zarfi-kcm58455185-1-d6a0f9b8796b41be85a0b177da88b51f.jpg" />
     <Content Include="SSS.aspx" />
     <Content Include="UyeGiris.aspx" />
     <Content Include="UyelikPanel\CSS\mektupYaz.css" />
+    <Content Include="UyelikPanel\CSS\Profil.css" />
     <Content Include="UyelikPanel\CSS\UyeEkranMaster.css" />
     <Content Include="UyelikPanel\Default.aspx" />
     <Content Include="UyelikPanel\Gonderiler.aspx" />
@@ -123,6 +126,7 @@
     <Content Include="UyelikPanel\YorumYaz.aspx" />
     <Content Include="UyeOl.aspx" />
     <Content Include="Web.config" />
+    <Content Include="YoneticiPaneli\CSS\Defaultcs.css" />
     <Content Include="YoneticiPaneli\CSS\DestekTalepListele.css" />
     <Content Include="YoneticiPaneli\CSS\KategoriEkleme.css" />
     <Content Include="YoneticiPaneli\CSS\KategoriListele.css" />
@@ -360,7 +364,6 @@
     <Content Include="YoneticiPaneli\YoneticiMaster.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resim\" />
     <Folder Include="YoneticiPaneli\Resim\" />
   </ItemGroup>
   <ItemGroup>

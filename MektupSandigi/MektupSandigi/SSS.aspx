@@ -10,7 +10,7 @@
                 Mektup Sandığı, kullanıcıların kendilerine veya başkalarına gelecekte gönderilecek mektuplar yazabilmelerini sağlayan bir platformdur. Mektuplar, belirlenen tarihte otomatik olarak açılır ve kullanıcıya teslim edilir.</li>
 
             <li><strong>Nasıl mektup yazabilirim?</strong><br />
-                Kullanıcılar, platformda bulunan "Mektup Yaz" bölümüne giderek metin alanına istedikleri mesajı yazabilir, tarih belirleyebilir ve isteğe bağlı olarak fotoğraf veya video ekleyebilirler.</li>
+                Kullanıcılar, platformda bulunan "Mektup Yaz" bölümüne giderek metin alanına istedikleri mesajı yazabilir, tarih belirleyebilirsiniz.</li>
 
             <li><strong>Mektubun açılma tarihini nasıl belirleyebilirim?</strong><br />
                 Mektup yazarken,  takvim arayüzü üzerinden açılmasını istediğiniz tarihi seçebilirsiniz. Tarih, mektubu açma zamanını belirleyecektir.</li>

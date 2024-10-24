@@ -9,7 +9,7 @@
     </div>
     <div class="tabloTasiyici">
         <div>
-            <asp:GridView ID="gv_Kategoriler" runat="server" CssClass="gv-style" AutoGenerateColumns="True" OnRowCommand="gv_Kategoriler_RowCommand1">
+            <asp:GridView ID="gv_Kategoriler" runat="server" CssClass="gv-style" AutoGenerateColumns="False" OnRowCommand="gv_Kategoriler_RowCommand1">
                 <Columns>
                     <asp:BoundField DataField="KategoriID" HeaderText="Kategori No" />
                     <asp:BoundField DataField="KategoriIsim" HeaderText="Kategori İsim" />

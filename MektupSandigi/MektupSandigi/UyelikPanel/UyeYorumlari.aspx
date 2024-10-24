@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Yorumlarım</h1>
+    <h2>Yorumlarım</h2>
     <asp:GridView ID="gvYorumlar" runat="server" AutoGenerateColumns="False" CssClass="table" OnRowCommand="gvYorumlar_RowCommand1">
         <Columns>
             <asp:BoundField DataField="YorumIcerik" HeaderText="Yorum İçeriği" />

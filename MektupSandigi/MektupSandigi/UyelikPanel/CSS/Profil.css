@@ -1,0 +1,40 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.welcome-header {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-header {
+    color: #555;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.user-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.info-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.info-value {
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 15px;
+}

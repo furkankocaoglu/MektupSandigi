@@ -1439,5 +1439,143 @@ namespace VeriErisimKatmani
 
 
         #endregion
+
+        #region yönetici default metodları
+        public int KullaniciSayisiniGetir()
+        {
+           
+            komut.CommandText = "SELECT COUNT(*) FROM KullanicilarTable WHERE Silinmis = 0";
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed)
+                    baglanti.Open();
+
+                return (int)komut.ExecuteScalar();
+            }
+            finally
+            {
+                if (baglanti.State == ConnectionState.Open)
+                    baglanti.Close();
+            }
+        }
+
+        public int MektupSayisiniGetir()
+        {
+            try
+            {
+                
+                komut.CommandText = "SELECT COUNT(*) FROM MektuplarTable";
+                baglanti.Open();
+                return (int)komut.ExecuteScalar();
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public int YorumSayisiniGetir()
+        {
+            try
+            {
+                
+                komut.CommandText = "SELECT COUNT(*) FROM YorumlarTable WHERE Silinmis = 0";
+                baglanti.Open();
+                return (int)komut.ExecuteScalar();
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+
+        public int DestekTalepSayisiniGetir()
+        {
+            try
+            {
+                
+                komut.CommandText = "SELECT COUNT(*) FROM DesteklerTable";
+                baglanti.Open();
+                return (int)komut.ExecuteScalar();
+            }
+            finally
+            {
+                baglanti.Close();
+            }
+        }
+        public int OkunanMektupSayisiniGetir()
+        {
+            
+            komut.CommandText = "SELECT COUNT(*) FROM MektuplarTable WHERE TeslimEdildiMi = 1";
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed)
+                    baglanti.Open();
+
+                return (int)komut.ExecuteScalar();
+            }
+            finally
+            {
+                if (baglanti.State == ConnectionState.Open)
+                    baglanti.Close();
+            }
+        }
+
+        public int OkunmayanMektupSayisiniGetir()
+        {
+            
+            komut.CommandText = "SELECT COUNT(*) FROM MektuplarTable WHERE TeslimEdildiMi = 0";
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed)
+                    baglanti.Open();
+
+                return (int)komut.ExecuteScalar();
+            }
+            finally
+            {
+                if (baglanti.State == ConnectionState.Open)
+                    baglanti.Close();
+            }
+        }
+        public int OnayBekleyenYorumSayisiniGetir()
+        {
+            
+            komut.CommandText = "SELECT COUNT(*) FROM YorumlarTable WHERE Durum = 1 AND Onay = 0 AND Silinmis = 0";
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed)
+                    baglanti.Open();
+
+                return (int)komut.ExecuteScalar();
+            }
+            finally
+            {
+                if (baglanti.State == ConnectionState.Open)
+                    baglanti.Close();
+            }
+        }
+
+        public int SilinmisKullaniciSayisiniGetir()
+        {
+            
+            komut.CommandText = "SELECT COUNT(*) FROM KullanicilarTable WHERE Silinmis = 1";
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed)
+                    baglanti.Open();
+
+                return (int)komut.ExecuteScalar();
+            }
+            finally
+            {
+                if (baglanti.State == ConnectionState.Open)
+                    baglanti.Close();
+            }
+        }
     }
+
+
+    #endregion
 }
+

@@ -59,6 +59,26 @@ namespace MektupSandigi
         {
             if (!string.IsNullOrEmpty(tb_baslik.Text) && !string.IsNullOrEmpty(tb_icerik.Text) && !string.IsNullOrEmpty(ddl_kategoriler.Text))
             {
+                
+                string[] gecerliUzantilar = { ".com", ".net", ".org" };
+                bool uzantiGecerli = false;
+
+                foreach (string uzanti in gecerliUzantilar)
+                {
+                    if (tb_aliciMail.Text.EndsWith(uzanti))
+                    {
+                        uzantiGecerli = true;
+                        break;
+                    }
+                }
+
+                if (!uzantiGecerli)
+                {
+                    lblSonuc.Text = "Alıcı e-posta adresinin .com, .net veya .org ile bitmesi gerekmektedir.";
+                    lblSonuc.ForeColor = System.Drawing.Color.Red;
+                    lblSonuc.Visible = true;
+                    return;
+                }
                 DateTime acilisTarihi;
                 if (DateTime.TryParse(tb_gonderimTarihi.Text, out acilisTarihi)) 
                 {

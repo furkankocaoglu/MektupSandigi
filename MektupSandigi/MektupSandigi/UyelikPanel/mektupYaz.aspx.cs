@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -34,6 +35,25 @@ namespace MektupSandigi.UyelikPanel
                         !string.IsNullOrEmpty(tb_icerik.Text) &&
                         ddl_kategoriler.SelectedIndex != -1) 
                     {
+                        string[] gecerliUzantilar = { ".com", ".net", ".org" };
+                        bool uzantiGecerli = false;
+
+                        foreach (string uzanti in gecerliUzantilar)
+                        {
+                            if (tb_aliciMail.Text.EndsWith(uzanti))
+                            {
+                                uzantiGecerli = true;
+                                break;
+                            }
+                        }
+
+                        if (!uzantiGecerli)
+                        {
+                            lblSonuc.Text = "Alıcı e-posta adresinin .com, .net veya .org ile bitmesi gerekmektedir.";
+                            lblSonuc.ForeColor = System.Drawing.Color.Red;
+                            lblSonuc.Visible = true;
+                            return;
+                        }
                         DateTime acilisTarihi;
                         
                         if (DateTime.TryParse(tb_gonderimTarihi.Text, out acilisTarihi))
@@ -99,7 +119,7 @@ namespace MektupSandigi.UyelikPanel
             }
 
         }
-
+        
         protected void btnTarihSec_Click(object sender, EventArgs e)
         {
             calendarGonderimTarihi.Visible = !calendarGonderimTarihi.Visible;
