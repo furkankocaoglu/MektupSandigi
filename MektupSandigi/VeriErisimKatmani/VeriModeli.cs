@@ -1202,84 +1202,8 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        public Mektup GetMektupByID(int mektupID)
-        {
-            Mektup mektup = null;
-
-            try
-            {
-                komut.CommandText = "SELECT MektupID, KullaniciID, KategoriID, Baslik, Icerik, AliciMail, AcilisTarihi, TeslimEdildiMi, OlusturmaTarihi FROM MektuplarTable WHERE MektupID = @mektupID";
-                komut.Parameters.Clear();
-                komut.Parameters.AddWithValue("@mektupID", mektupID);
-
-                baglanti.Open();
-                SqlDataReader okuyucu = komut.ExecuteReader();
-                if (okuyucu.Read())
-                {
-                    mektup = new Mektup
-                    {
-                        MektupID = okuyucu.GetInt32(0),
-                        KullaniciID = okuyucu.GetInt32(1),
-                        KategoriID = okuyucu.GetInt32(2),
-                        Baslik = okuyucu.GetString(3),
-                        Icerik = okuyucu.GetString(4),
-                        AliciMail = okuyucu.GetString(5),
-                        AcilisTarihi = okuyucu.GetDateTime(6),
-                        TeslimEdildiMi = okuyucu.GetBoolean(7),
-                        OlusturmaTarihi = okuyucu.GetDateTime(8)
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Mektup bilgileri alınırken hata oluştu: " + ex.Message);
-            }
-            finally
-            {
-                baglanti.Close();
-            }
-
-            return mektup;
-        }
-        public List<Mektup> GetOkunanMektuplar(int kullaniciID)
-        {
-            List<Mektup> mektuplar = new List<Mektup>();
-
-            try
-            {
-                komut = new SqlCommand("SELECT * FROM MektuplarTable WHERE KullaniciID = @kullaniciID AND TeslimEdildiMi = 1", baglanti);
-                komut.Parameters.Clear();
-                komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
-                baglanti.Open();
-
-                SqlDataReader okuyucu = komut.ExecuteReader();
-                while (okuyucu.Read())
-                {
-                    Mektup mktp = new Mektup
-                    {
-                        MektupID = okuyucu.GetInt32(0),
-                        KullaniciID = okuyucu.GetInt32(1),
-                        KategoriID = okuyucu.GetInt32(2),
-                        Baslik = okuyucu.GetString(3),
-                        Icerik = okuyucu.GetString(4),
-                        AliciMail = okuyucu.GetString(5),
-                        AcilisTarihi = okuyucu.GetDateTime(6),
-                        TeslimEdildiMi = okuyucu.GetBoolean(7),
-                        OlusturmaTarihi = okuyucu.GetDateTime(8)
-                    };
-                    mektuplar.Add(mktp);
-                }
-                return mektuplar;
-            }
-            catch
-            {
-                return null;
-            }
-            finally
-            {
-                baglanti.Close();
-            }
-        }
+        
+        
         #endregion
 
         #region üyelik paneli metodu
@@ -1390,80 +1314,7 @@ namespace VeriErisimKatmani
                 baglanti.Close();
             }
         }
-        public void YorumEkle(int kullaniciID, int mektupID, string yorumIcerik)
-        {
-            try
-            {
-                komut.CommandText = "INSERT INTO YorumlarTable (KullaniciID, MektupID, YorumIcerik, OlusturmaTarihi) VALUES (@kullaniciID, @mektupID, @yorumIcerik, @olusturmaTarihi)";
-                komut.Parameters.Clear();
-                komut.Parameters.AddWithValue("@kullaniciID", kullaniciID);
-                komut.Parameters.AddWithValue("@mektupID", mektupID);
-                komut.Parameters.AddWithValue("@yorumIcerik", yorumIcerik);
-                komut.Parameters.AddWithValue("@olusturmaTarihi", DateTime.Now);
-
-                baglanti.Open();
-                komut.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                System.IO.File.AppendAllText("C:\\path_to_log\\HataLog.txt",
-                    DateTime.Now + ": " + ex.Message + Environment.NewLine);
-                throw;
-            }
-            finally
-            {
-                baglanti.Close();
-            }
-        }
-        public void YorumSilme(int id)
-        {
-            try
-            {
-                komut.CommandText = "DELETE FROM YorumlarTable WHERE YorumID = @id";
-                komut.Parameters.Clear();
-                komut.Parameters.AddWithValue("@id", id);
-
-                baglanti.Open();
-                komut.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                System.IO.File.AppendAllText("C:\\path_to_log\\HataLog.txt",
-                    DateTime.Now + ": " + ex.Message + Environment.NewLine);
-                throw;
-            }
-            finally
-            {
-                baglanti.Close();
-            }
-        }
-        public void YorumDuzenle(int id, string yeniIcerik)
-        {
-            try
-            {
-                komut.CommandText = "UPDATE YorumlarTable SET YorumIcerik = @yeniIcerik WHERE YorumID = @id";
-                komut.Parameters.Clear();
-                komut.Parameters.AddWithValue("@yeniIcerik", yeniIcerik);
-                komut.Parameters.AddWithValue("@id", id);
-
-                baglanti.Open();
-                komut.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                System.IO.File.AppendAllText("C:\\path_to_log\\HataLog.txt",
-                    DateTime.Now + ": " + ex.Message + Environment.NewLine);
-                throw;
-            }
-            finally
-            {
-                baglanti.Close();
-            }
-        }
-
+        
 
 
 
