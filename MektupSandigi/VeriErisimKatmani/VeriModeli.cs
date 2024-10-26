@@ -107,10 +107,10 @@ namespace VeriErisimKatmani
                     kategoriler.Add(kat);
                 }
             }
-            catch (Exception ex)
+            catch 
             {
+                return null;
 
-                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -211,9 +211,9 @@ namespace VeriErisimKatmani
                 baglanti.Open();
                 komut.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch 
             {
-                Console.WriteLine($"Hata: {ex.Message}");
+                
 
             }
             finally
@@ -485,9 +485,9 @@ namespace VeriErisimKatmani
                 baglanti.Open();
                 komut.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine($"Hata: {ex.Message}");
+               
 
             }
             finally
@@ -627,7 +627,7 @@ namespace VeriErisimKatmani
                 }
                 return yorumlar;
             }
-            catch (Exception)
+            catch
             {
 
                 return null;
@@ -739,7 +739,7 @@ namespace VeriErisimKatmani
 
                 komut.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch
             {
 
             }
@@ -773,7 +773,7 @@ namespace VeriErisimKatmani
 
                 }
             }
-            catch (Exception)
+            catch 
             {
 
             }
@@ -906,7 +906,7 @@ namespace VeriErisimKatmani
 
                 komut.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch
             {
 
             }
@@ -1032,14 +1032,14 @@ namespace VeriErisimKatmani
                 
                 if (string.IsNullOrWhiteSpace(mektup.AliciMail))
                 {
-                    Console.WriteLine("Alici mail adresi boş olamaz.");
+                    
                     return false;
                 }
 
                 
                 if (mektup.AcilisTarihi < today)
                 {
-                    Console.WriteLine("Hata: Açılış tarihi geçmiş bir tarih olamaz.");
+                    
                     return false;
                 }
 
@@ -1072,9 +1072,9 @@ namespace VeriErisimKatmani
 
                 return true;
             }
-            catch (Exception ex)
+            catch 
             {
-                Console.WriteLine("Mektup eklenirken bir hata oluştu: " + ex.Message);
+                
                 return false;
             }
             finally
@@ -1169,11 +1169,11 @@ namespace VeriErisimKatmani
                 };
                 mail.To.Add(aliciMail);
                 smtpClient.Send(mail);
-                Console.WriteLine("Mail başarıyla gönderildi.");
+                
             }
-            catch (Exception ex)
+            catch 
             {
-                Console.WriteLine("Mail gönderimi sırasında hata oluştu: " + ex.Message);
+                
             }
 
         }
@@ -1190,12 +1190,12 @@ namespace VeriErisimKatmani
 
                 if (rowsAffected == 0)
                 {
-                    Console.WriteLine("Güncellenen kayıt yok."); 
+                    
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine("Güncelleme sırasında hata oluştu: " + ex.Message);
+                
             }
             finally
             {
