@@ -58,7 +58,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="tb_icerik" runat="server" TextMode="MultiLine" CssClass="metinKutu" Rows="15" Width=650px></asp:TextBox>
+                                <asp:TextBox ID="tb_icerik" runat="server" TextMode="MultiLine" CssClass="metinKutu" Rows="15" Width=650px Placeholder="Mektubunuzun gönderimi alıcı kişinin mail adresine yapılacağı için geri alınamayan bir işlem olduğunu ve içerik gönderildikten sonrasında düzenleme yapılamadığını belirtmek isteriz.."></asp:TextBox>
                             </td>
                         </tr>
                         <tr>

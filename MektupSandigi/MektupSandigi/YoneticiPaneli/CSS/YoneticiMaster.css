@@ -23,16 +23,16 @@
     flex-grow: 1; 
 }
 
-    .anaBaslik h2 {
-        margin: 0;
-        font-size: 24px;
-    }
+.anaBaslik h2 {
+    margin: 0;
+    font-size: 24px;
+}
 
-    .anaBaslik h5 {
-        margin: 5px 0 0 0;
-        font-size: 14px;
-        color: #cfcfcf;
-    }
+.anaBaslik h5 {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #cfcfcf;
+}
 
 
 .kullaniciAlani {
@@ -56,18 +56,18 @@
     padding: 10px 0;
 }
 
-    .ustMenuKategoriler a {
-        color: #ffffff;
-        text-decoration: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        margin: 0 10px;
-    }
+.ustMenuKategoriler a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+}
 
-        .ustMenuKategoriler a:hover {
-            background-color: #3b3f51;
-            border-radius: 5px; 
-        }
+.ustMenuKategoriler a:hover {
+    background-color: #3b3f51;
+    border-radius: 5px; 
+}
 
 
 .anaIcerik {

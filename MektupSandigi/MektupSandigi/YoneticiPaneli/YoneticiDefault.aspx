@@ -8,7 +8,7 @@
              <div class="panel">
              <div class="panel">
             <h2>İstatistikler</h2>
-            <p>Kullanıcı Sayısı: <asp:Label ID="lblKullaniciSayisi" runat="server" Text="0"></asp:Label></p>
+            <p>Aktif Kullanıcı Sayısı: <asp:Label ID="lblKullaniciSayisi" runat="server" Text="0"></asp:Label></p>
             <p>Gönderilen Mektup Sayısı: <asp:Label ID="lblMektupSayisi" runat="server" Text="0"></asp:Label></p>
             <p>Yorum Sayısı: <asp:Label ID="lblYorumSayisi" runat="server" Text="0"></asp:Label></p>
             <p>Destek Talep Sayısı: <asp:Label ID="lblDestekTalepSayisi" runat="server" Text="0"></asp:Label></p>

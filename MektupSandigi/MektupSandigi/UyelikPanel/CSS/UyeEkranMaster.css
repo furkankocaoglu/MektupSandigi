@@ -17,10 +17,10 @@
     align-items: center; 
 }
 
-    .Ustmenu h3 {
-        margin: 0; 
-        font-size: 24px; 
-    }
+.Ustmenu h3 {
+    margin: 0; 
+    font-size: 24px; 
+}
 
 .kullanici {
     display: flex;
@@ -28,22 +28,21 @@
     margin-left: auto; 
 }
 
-    .kullanici asp\:Label {
-        margin-right: 15px;
-        color: #cfcfcf; 
-    }
+.kullanici asp\:Label {
+    margin-right: 15px;
+    color: #cfcfcf; 
+}
 
+.kullanici a {
+    color: #cfcfcf; 
+    text-decoration: none; 
+    padding: 5px 10px;
+    border-radius: 5px; 
+}
 
-    .kullanici a {
-        color: #cfcfcf; 
-        text-decoration: none; 
-        padding: 5px 10px;
-        border-radius: 5px; 
-    }
-
-        .kullanici a:hover {
-            background-color: #3b3f51; 
-        }
+.kullanici a:hover {
+    background-color: #3b3f51; 
+}
 
 
 .altMenu {
@@ -53,18 +52,18 @@
     padding: 10px 0; 
 }
 
-    .altMenu a {
-        color: #ffffff; 
-        text-decoration: none; 
-        padding: 10px 20px; 
-        margin: 0 10px; 
-        font-size: 16px;
-    }
+.altMenu a {
+    color: #ffffff; 
+    text-decoration: none; 
+    padding: 10px 20px; 
+    margin: 0 10px; 
+    font-size: 16px;
+}
 
-        .altMenu a:hover {
-            background-color: #3b3f51;
-            border-radius: 5px; 
-        }
+.altMenu a:hover {
+    background-color: #3b3f51;
+    border-radius: 5px; 
+}
 
 
 .icerikTasiyici {

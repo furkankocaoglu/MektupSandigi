@@ -15,21 +15,20 @@ namespace MektupSandigi.UyelikPanel
         {
             if (!IsPostBack)
             {
-                // Session'dan uyeler nesnesini al
+                
                 Uyeler uye = Session["uye"] as Uyeler;
 
-                // Eğer uyeler nesnesi null değilse, KullaniciID'yi al
+                
                 if (uye != null)
                 {
-                    int kullaniciID = uye.KullaniciID; // Kullanıcı ID'sini al
+                    int kullaniciID = uye.KullaniciID; 
                     List<Mektup> mektuplar = vm.KullaniciMektuplariniGetir(kullaniciID);
                     gvMektuplar.DataSource = mektuplar;
                     gvMektuplar.DataBind();
                 }
                 else
                 {
-                    // Kullanıcı oturumu açmamışsa yapılacak işlemler
-                    // Örneğin, bir hata mesajı gösterebilirsiniz
+                    
                 }
             }
 

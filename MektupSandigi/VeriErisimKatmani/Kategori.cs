@@ -10,7 +10,6 @@ namespace VeriErisimKatmani
     {
         public int KategoriID { get; set; }
         public string KategoriIsim { get; set; }
-
         public bool Durum { get; set; }
         public bool Silinmis { get; set; }
     }

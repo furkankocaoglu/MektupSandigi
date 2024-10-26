@@ -18,17 +18,17 @@ h1 {
     margin: 20px 0;
 }
 
-    .panel h2 {
-        color: #444;
-        margin-bottom: 20px;
-    }
+.panel h2 {
+    color: #444;
+    margin-bottom: 20px;
+}
 
-    .panel p {
-        font-size: 16px;
-        color: #666;
-    }
+.panel p {
+    font-size: 16px;
+    color: #666;
+}
 
-    .panel label {
-        font-weight: bold;
-        color: #333;
-    }
+.panel label {
+    font-weight: bold;
+    color: #333;
+}

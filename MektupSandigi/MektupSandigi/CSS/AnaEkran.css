@@ -22,10 +22,10 @@
     transition: background-color 0.3s;
 }
 
-    .uyePanel a:hover {
-        background-color: #007bff;
-        color: white;
-    }
+.uyePanel a:hover {
+    background-color: #007bff;
+    color: white;
+}
 
 #ContentPlaceHolder1 {
     padding: 20px;

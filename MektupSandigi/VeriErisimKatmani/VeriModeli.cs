@@ -812,13 +812,42 @@ namespace VeriErisimKatmani
 
             return yorum;
         }
+        public Yorumlar YorumGetirme(int id) /*yorum düzenleme onaysız */
+        {
+            Yorumlar yorum = null;
+
+            string sorgu = "SELECT YorumID, YorumIcerik, Onay FROM YorumlarTable WHERE YorumID = @id AND Silinmis = 0";
+            using (SqlCommand komut = new SqlCommand(sorgu, baglanti))
+            {
+                komut.Parameters.AddWithValue("@id", id);
+                if (baglanti.State == ConnectionState.Closed)
+                {
+                    baglanti.Open();
+                }
+
+                using (SqlDataReader reader = komut.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        yorum = new Yorumlar
+                        {
+                            YorumID = Convert.ToInt32(reader["YorumID"]),
+                            YorumIcerik = reader["YorumIcerik"].ToString(),
+                            Onay = Convert.ToBoolean(reader["Onay"]) 
+                        };
+                    }
+                }
+            }
+
+            return yorum;
+        }
 
         public bool YorumGuncelle(Yorumlar yorum)
         {
             try
             {
                 
-                komut.CommandText = "UPDATE YorumlarTable SET YorumIcerik = @yorumIcerik, Onay = 0 WHERE YorumID = @id AND Silinmis = 0";
+                komut.CommandText = "UPDATE YorumlarTable SET YorumIcerik = @yorumIcerik WHERE YorumID = @id AND Silinmis = 0";
                 komut.Parameters.Clear();
                 komut.Parameters.AddWithValue("@id", yorum.YorumID);
                 komut.Parameters.AddWithValue("@yorumIcerik", yorum.YorumIcerik);
@@ -1440,7 +1469,7 @@ namespace VeriErisimKatmani
 
         #endregion
 
-        #region yönetici default metodları
+        #region yönetici default metotları
         public int KullaniciSayisiniGetir()
         {
            

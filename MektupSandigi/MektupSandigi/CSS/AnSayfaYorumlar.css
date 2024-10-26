@@ -40,9 +40,9 @@ asp\:Button {
     cursor: pointer; 
 }
 
-    asp\:Button:hover {
-        background-color: #4cae4c; 
-    }
+asp\:Button:hover {
+    background-color: #4cae4c; 
+}
 
 asp\:Label {
     margin-top: 10px; 

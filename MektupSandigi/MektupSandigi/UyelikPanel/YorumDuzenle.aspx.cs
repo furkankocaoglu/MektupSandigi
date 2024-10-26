@@ -13,6 +13,7 @@ namespace MektupSandigi.UyelikPanel
         VeriModeli vm= new VeriModeli();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 string yorumIdStr = Request.QueryString["id"];
@@ -27,22 +28,35 @@ namespace MektupSandigi.UyelikPanel
                 int yorumID;
                 if (int.TryParse(yorumIdStr, out yorumID))
                 {
-                    Yorumlar yorum = vm.YorumGetir(yorumID);
+                    Yorumlar yorum = vm.YorumGetirme(yorumID);
                     if (yorum != null)
                     {
                         txtYorumIcerik.Text = yorum.YorumIcerik;
+
+                        
+                        if (yorum.Onay) 
+                        {
+                            btnYorumDuzenle.Visible = false; 
+                            lblSonuc.Text = "Bu yorum onaylı, düzenleyemezsiniz.";
+                            lblSonuc.ForeColor = System.Drawing.Color.Red;
+                            lblSonuc.Visible = true;
+                        }
+                        else
+                        {
+                            btnYorumDuzenle.Visible = true;
+                        }
                     }
                     else
                     {
                         lblSonuc.Text = "Yorum bulunamadı.";
-                        lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                        lblSonuc.ForeColor = System.Drawing.Color.Red;
                         lblSonuc.Visible = true;
                     }
                 }
                 else
                 {
                     lblSonuc.Text = "Geçersiz yorum ID: " + yorumIdStr;
-                    lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                    lblSonuc.ForeColor = System.Drawing.Color.Red;
                     lblSonuc.Visible = true;
                 }
             }
@@ -54,6 +68,16 @@ namespace MektupSandigi.UyelikPanel
             if (int.TryParse(Request.QueryString["id"], out yorumID))
             {
                 string yorumIcerik = txtYorumIcerik.Text.Trim();
+
+                
+                Yorumlar mevcutYorum = vm.YorumGetir(yorumID);
+                if (mevcutYorum.Onay)
+                {
+                    lblSonuc.Text = "Bu yorum onaylı, düzenleyemezsiniz.";
+                    lblSonuc.ForeColor = System.Drawing.Color.Red;
+                    lblSonuc.Visible = true;
+                    return; 
+                }
 
                 if (!string.IsNullOrEmpty(yorumIcerik))
                 {
@@ -69,26 +93,26 @@ namespace MektupSandigi.UyelikPanel
                         if (sonuc)
                         {
                             lblSonuc.Text = "Yorum başarıyla güncellendi!";
-                            lblSonuc.ForeColor = System.Drawing.Color.Green; 
+                            lblSonuc.ForeColor = System.Drawing.Color.Green;
                         }
                         else
                         {
                             lblSonuc.Text = "Güncelleme işlemi başarısız oldu.";
-                            lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                            lblSonuc.ForeColor = System.Drawing.Color.Red;
                         }
                         lblSonuc.Visible = true;
                     }
                     catch (Exception ex)
                     {
                         lblSonuc.Text = "Bir hata oluştu: " + ex.Message;
-                        lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                        lblSonuc.ForeColor = System.Drawing.Color.Red;
                         lblSonuc.Visible = true;
                     }
                 }
                 else
                 {
                     lblSonuc.Text = "Lütfen bir yorum girin.";
-                    lblSonuc.ForeColor = System.Drawing.Color.Red; 
+                    lblSonuc.ForeColor = System.Drawing.Color.Red;
                     lblSonuc.Visible = true;
                 }
             }

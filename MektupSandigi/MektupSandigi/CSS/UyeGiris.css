@@ -49,10 +49,10 @@
     transition: border-color 0.3s;
 }
 
-    .FormMetinKutu:focus {
-        border-color: #007bff;
-        outline: none;
-    }
+.FormMetinKutu:focus {
+    border-color: #007bff;
+    outline: none;
+}
 
 .FormGirisButon {
     display: block;
@@ -65,13 +65,13 @@
     cursor: pointer;
     font-size: 16px;
     text-align: center;
-    text-decoration: none; /* Link görünümünü butona dönüştürme */
+    text-decoration: none; 
     transition: background-color 0.3s;
 }
 
-    .FormGirisButon:hover {
-        background-color: #0056b3;
-    }
+.FormGirisButon:hover {
+    background-color: #0056b3;
+}
 
 .basarisizpanel {
     background-color: #f8d7da;

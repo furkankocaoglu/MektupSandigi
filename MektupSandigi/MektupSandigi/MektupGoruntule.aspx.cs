@@ -84,19 +84,7 @@ namespace MektupSandigi
             }
             return null; 
         }
-        private void UpdateTeslimEdildi(int mektupID)
-        {
-            string connectionString = "Server=localhost\\SQLEXPRESS;Database=MektupSandigi_DB;Integrated Security=True;";
-
-            using (SqlConnection baglanti = new SqlConnection(connectionString))
-            {
-                SqlCommand komut = new SqlCommand("UPDATE MektuplarTable SET TeslimEdildiMi = 1 WHERE MektupID = @mektupID", baglanti);
-                komut.Parameters.AddWithValue("@mektupID", mektupID);
-
-                baglanti.Open();
-                komut.ExecuteNonQuery();
-            }
-        }
+        
     }
 
     

@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <title>Üye Paneli</title>
+    <title>Mektup Sandığı - Üye Ekranı</title>
     <link href="CSS/UyeEkranMaster.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>

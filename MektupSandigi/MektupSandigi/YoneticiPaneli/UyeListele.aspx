@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="sayfaBaslik">
-        <h3>UYELER</h3>
+        <h3>ÜYELER</h3>
     </div>
     <div class="tabloTasiyici">
         <div>

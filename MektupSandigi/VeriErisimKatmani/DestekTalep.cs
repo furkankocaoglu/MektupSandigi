@@ -10,7 +10,6 @@ namespace VeriErisimKatmani
     {
         public int DestekID { get; set; }
         public int KullaniciID { get; set; }
-
         public string Baslik { get; set; }
         public string Icerik { get; set; }
     }

@@ -18,10 +18,10 @@
     margin-top:10px;
 }
 
-    .formBaslik h3 {
-        font-size: 24px; 
-        color: #333; 
-    }
+.formBaslik h3 {
+    font-size: 24px; 
+    color: #333; 
+}
 
 
 asp\:TextBox {
@@ -52,6 +52,6 @@ asp\:Button {
     display: inline-block; 
 }
 
-    asp\:Button:hover {
-        background-color: #4cae4c; 
-    }
+asp\:Button:hover {
+    background-color: #4cae4c; 
+}

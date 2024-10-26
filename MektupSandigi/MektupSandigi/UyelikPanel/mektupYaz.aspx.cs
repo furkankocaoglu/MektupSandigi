@@ -98,18 +98,11 @@ namespace MektupSandigi.UyelikPanel
                         lblSonuc.Visible = true;
                     }
                 }
-                catch (InvalidCastException)
+                catch 
                 {
-                    lblSonuc.Text = "Oturumda beklenmedik bir kullanıcı nesnesi var.";
-                    lblSonuc.ForeColor = System.Drawing.Color.Red;
-                    lblSonuc.Visible = true;
+                    return;
                 }
-                catch (Exception ex)
-                {
-                    lblSonuc.Text = "Bir hata oluştu: " + ex.Message;
-                    lblSonuc.ForeColor = System.Drawing.Color.Red;
-                    lblSonuc.Visible = true;
-                }
+                
             }
             else
             {
